@@ -1,0 +1,93 @@
+body {
+    background-color: #222;
+    color: #fff;
+    font-family: Arial, sans-serif;
+
+    margin: 0;
+    padding: 0;
+}
+.formContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+#addProductForm{
+    background-color: #fff1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+}
+#addProductForm input{
+    display: flex;
+    margin-bottom: 10px;
+    min-width: 300px;
+    padding: 5px;
+    border-radius: 10px;
+}
+#addProductForm textarea{
+    background-color: #eee;
+    display: flex;
+    height: 50px;
+    min-width: 350px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-width: 360px;
+    max-height: 200px;
+}
+#addProductForm select{
+    background-color: #eee;
+    display: flex;
+    padding: 5px;
+    min-width: 350px;
+    border-radius: 10px;
+}
+#addProductForm input[type="file"] {
+    display: flex;
+    opacity: 1;
+    background-color: rgb(119, 0, 165);
+}
+#addProductForm input[type="file"]::-webkit-file-upload-button {
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+form button{
+    background-color: rgb(0, 178, 89);
+    color: #fff;
+    padding: 5px ;
+    margin-top: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.5s;
+}
+form button:hover{
+    background-color: rgb(0, 255, 119);
+    color: #222;
+}
+form button:active{
+    background-color: rgb(0, 99, 46);
+    color: #efefef;
+    scale: 0.9;
+}
+input {
+    background-color: #eee;
+    width: 100%;
+    padding: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
