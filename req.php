@@ -1,45 +1,70 @@
-<?php
-require_once 'dataBase.php';
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $productName = $_POST["product_name"];
-    $description = $_POST["description"];
-    $category = $_POST["category"];
-    $price = $_POST["price"];
-    $cost = $_POST["cost"];
-    echo "<br>";
-    print_r($_FILES);
-    echo "<br>";
-    echo "<br>";
-    echo "<br>";
-    echo "<br>";
+<!DOCTYPE html>
+<html lang="en">
 
-    // Handle file upload
-    if (!empty($_FILES["productImage"])) {
-        $targetDir = "uploads/";
-        $targetFile = $targetDir . basename($_FILES["productImage"]["name"]);
-        move_uploaded_file($_FILES["productImage"]["tmp_name"], $targetFile);
-    } else {
-        echo "No file uploaded.<br>";
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="src/req.css">
+</head>
 
-    // Insert data into the database
-    if (isset($_FILES["productImage"])) {
-        echo "File added successfully.<br>";
-        $sql = "INSERT INTO products (product_name, description, category, image_path, price, cost) 
-        VALUES ('$productName', '$description', '$category', '$targetFile', $price, $cost)";
-    } else {
-        echo "File did not add successfully.<br>";
-        $sql = "INSERT INTO products (product_name, description, category, price, cost) 
-        VALUES ('$productName', '$description', '$category', $price, $cost)";
-    }
-    if ($conn->query($sql) === True) {
-        echo "Data added successfully.<br>";
-    } else {
-        echo "Data did not add successfully.<br>";
-    }
-} else {
-    echo "Invalid request method.<br>";
-}
+<body>
+    <div class="productCardContainer" id="productCardContainer">
+        <div class="productcard">
+            <div class="productcardimg">
+                <img src="uploads/samplepic.jpg" alt="" class="productimg">
+            </div>
+            <div class="producttitle">
+                <h2>Product title</h2>
+            </div>
+            <div class="productdescription">
+                <p>productdescripsklzx</p>
+            </div>
+            <div class="productprice">
+                <h2>Rs.199.00</h2>
+            </div>
+            <div class="productbtncontainer">
+                <button class="productbtn" id="addtocart">Add to cart</button>
+            </div>
+        </div>
 
-$conn->close();
-?>
+        <?php
+        require_once 'dataBase.php';
+
+        // SQL QUERY 
+        $query = "SELECT * FROM `products`;";
+
+        // FETCHING DATA FROM DATABASE 
+        $result = $conn->query($query);
+
+        if ($result->num_rows > 0) {
+            // OUTPUT DATA OF EACH ROW 
+            while ($row = $result->fetch_assoc()) {
+                echo "
+                <div class='productcard'>
+                    <div class='productcardimg'>
+                        <img src='{$row['image_path']}' alt='' class='productimg'>
+                    </div>
+                    <div class='producttitle'>
+                        <h2>{$row['product_name']}</h2>
+                    </div>
+                    <div class='productdescription'>
+                        <p>{$row['description']}</p>
+                    </div>
+                    <div class='productprice'>
+                        <h2>Rs.{$row['price']}</h2>
+                    </div>
+                    <div class='productbtncontainer'>
+                        <button class='productbtn' id='addtocart'>Add to cart</button>
+                    </div>
+                </div>";
+            }
+        }
+
+        $conn->close();
+        ?>
+    </div>
+</body>
+</body>
+
+</html>

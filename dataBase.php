@@ -17,9 +17,9 @@ if ($conn->connect_error) {
 // Create database if not exists
 $sql = "CREATE DATABASE IF NOT EXISTS $dbname";
 if ($conn->query($sql) === TRUE) {
-    echo "Database created successfully or already exists<br>";
+    //echo "Database created successfully or already exists<br>";
 } else {
-    echo "Error creating database: " . $conn->error . "<br>";
+    //echo "Error creating database: " . $conn->error . "<br>";
 }
 
 // Select the database
@@ -37,10 +37,7 @@ $sql = "CREATE TABLE IF NOT EXISTS products (
 )";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Table 'products' created successfully or already exists";
+    // "Table 'products' created successfully or already exists";
 } else {
-    echo "Error creating table: " . $conn->error;
+    //echo "Error creating table: " . $conn->error;
 }
-
-
-?>
