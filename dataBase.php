@@ -47,10 +47,11 @@ $sql = "CREATE TABLE IF NOT EXISTS Users (
     last_name VARCHAR(50) NOT NULL,
     city VARCHAR(50) NOT NULL,
     street VARCHAR(50) NOT NULL,
-    address_No VARCHAR(50) NOT NULL,
+    address_no VARCHAR(50) NOT NULL,
     phone VARCHAR(10),
     email VARCHAR(50) NOT NULL unique,
-    password VARCHAR(200) NOT NULL
+    password VARCHAR(200) NOT NULL,
+    admin TINYINT(1) DEFAULT 0
 )";
 
 if ($conn->query($sql) === TRUE) {
@@ -58,10 +59,35 @@ if ($conn->query($sql) === TRUE) {
 } else {
     //echo "Error creating table: " . $conn->error;
 }
+
+
+// Check if admin user exists
+$checkAdminSQL = "SELECT * FROM Users WHERE email = 'admin@lattelane.com'";
+$result = $conn->query($checkAdminSQL);
+
+if ($result->num_rows == 0) {
+    // Admin user doesn't exist, so let's create one
+    $createAdminSQL = "INSERT INTO Users (first_name, last_name, city, street, address_No, phone, email, password, admin) 
+                       VALUES ('Admin', 'User', 'AdminCity', 'AdminStreet', '1', '1234567890', 'admin@lattelane.com', 'admin1.', 1)";
+
+    if ($conn->query($createAdminSQL) === TRUE) {
+        //echo "Admin user created successfully";
+    } else {
+        //echo "Error creating admin user: " . $conn->error;
+    }
+}
+
 // Start the session
 session_start();
 
 // Set session variables
+$_SESSION["first_name"] = "";
+$_SESSION["last_name"] = "";
+$_SESSION["city"] = "";
+$_SESSION["street"] = "";
+$_SESSION["address_no"] = "";
+$_SESSION["phone"] = "";
 $_SESSION["email"];
 $_SESSION["password"];
+$_SESSION["admin"] = 0;
 $cart = array();

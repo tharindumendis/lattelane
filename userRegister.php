@@ -64,6 +64,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             session_start();
             $_SESSION["email"] = $email;
             $_SESSION["password"] = $password;
+            $sql_check = "SELECT * FROM Users WHERE email = '$email'";
+            $result = $conn->query($sql_check);
+            if ($result->num_rows == 1) {
+                $row = $result->fetch_assoc();
+                $_SESSION["admin"] = $row["admin"];
+            } else {
+            }
 
             header("Location: userLogin.php");
         } else {
