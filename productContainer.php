@@ -5,10 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="src/req.css">
+    <link rel="stylesheet" href="src/productContainer.css">
 </head>
 
 <body>
+    <div class="topnav">
+        <a href="addProductForm.php">add products</a>
+        <a href="addProductForm.php">add products</a>
+    </div>
     <div class="productCardContainer" id="productCardContainer">
         <div class="productcard">
             <div class="productcardimg">
@@ -30,6 +34,14 @@
 
         <?php
         require_once 'dataBase.php';
+
+        // Start the session
+        session_start();
+
+        // Set session variables
+        echo "Session variables are set.";
+        echo "<br>";
+        echo "Session variables are: " . $_SESSION["email"] . " and " . $_SESSION["password"] . ".";
 
         // SQL QUERY 
         $query = "SELECT * FROM `products`;";

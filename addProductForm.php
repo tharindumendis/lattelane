@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +17,11 @@
 </head>
 
 <body>
+    <div class="topnav">
+        <a href="productContainer.php">req</a>
+        <a href="addProductForm.php">add products</a>
+
+    </div>
     <div class="formContainer">
 
         <form action="addProductForm.php" method="post" id="addProductForm" enctype="multipart/form-data">
@@ -29,7 +42,8 @@
             <input type="text" name="price" placeholder="Product Price">
             <label for="">Product Cost: Rs.</label>
             <input type="text" name="cost" id="productCost" placeholder="Product Cost">
-            <label for="">Product Image</label>
+            <label for="">Product Image </label>
+            <p>(Please upload 1 by 1 Image maximum 1.5mb )</p>
             <input type="file" name="productImage" placeholder="Product Image" id="productimage">
             <button class="submitbtn"> Register new product</button>
         </form>
@@ -57,14 +71,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Handle file upload
     if (isset($_FILES["productImage"])) {
         $targetDir = "uploads/";
-        $fileExtension = pathinfo($_FILES["productImage"]["name"], PATHINFO_EXTENSION);
-        $newFileName = uniqid() . '.' . $fileExtension;
-        $targetFile = $targetDir . $newFileName;
-        move_uploaded_file($_FILES["productImage"]["tmp_name"], $targetFile);
-    } else {
-        echo "No file uploaded.<br>";
+        if (!file_exists($targetDir)) {
+            mkdir($targetDir, 0777, true);
+        }
+        $fileName = $_FILES["productImage"]["name"];
+        $targetFile = $targetDir . $fileName;
+        if (move_uploaded_file($_FILES["productImage"]["tmp_name"], $targetFile)) {
+            //echo "File uploaded successfully.<br>";
+        } else {
+            //echo "Failed to upload file.<br>";
+        }
     }
-
     // Insert data into the database
     if (isset($_FILES["productImage"])) {
         $sql = "INSERT INTO products (product_name, description, category, image_path, price, cost) 
@@ -85,4 +102,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Invalid request method.<br>";
 }
 $conn->close();
+
+echo "<br>";
+echo "Session variables are: " . $_SESSION["email"] . " and " . $_SESSION["password"] . ".";
+echo "<br>";
 ?>
