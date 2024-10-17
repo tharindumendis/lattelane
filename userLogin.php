@@ -37,10 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
-        print_r($row);
-
         //check if the password is correct
-        if ($row["password"] == $password) {
+        if (password_verify($password, $row["password"])) {
             echo "Login successful!";
 
             //set session variables
@@ -53,6 +51,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["email"] = $row["email"];
             $_SESSION["password"] = $row["password"];
             $_SESSION["admin"] = $row["admin"];
+
+            
             echo "Login successful!";
             echo $_SESSION["admin"] . "<br>";
             echo $_SESSION["email"] . "<br>";

@@ -67,8 +67,9 @@ $result = $conn->query($checkAdminSQL);
 
 if ($result->num_rows == 0) {
     // Admin user doesn't exist, so let's create one
+    $defaltAdminPassword = password_hash("admin1.", PASSWORD_DEFAULT);
     $createAdminSQL = "INSERT INTO Users (first_name, last_name, city, street, address_No, phone, email, password, admin) 
-                       VALUES ('Admin', 'User', 'AdminCity', 'AdminStreet', '1', '1234567890', 'admin@lattelane.com', 'admin1.', 1)";
+                       VALUES ('Admin', 'User', 'AdminCity', 'AdminStreet', '1', '1234567890', 'admin@lattelane.com', '$defaltAdminPassword', 1)";
 
     if ($conn->query($createAdminSQL) === TRUE) {
         //echo "Admin user created successfully";

@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="src/stylesheet.css">
     <link rel="stylesheet" href="src/userForm.css">
 </head>
 
 <body>
+    <?php include 'tempnav.html'; ?>
     <div class="userFormContainer">
         <form action="userRegister.php" class="userForm" id="userForm" method="post" enctype="multipart/form-data">
             <h1>User Register Form</h1>
@@ -28,7 +30,6 @@
             <input type="password" name="password" placeholder="Password" required>
             <button class="submitbtn"> Register new user</button>
         </form>
-
     </div>
 </body>
 
@@ -44,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $city = $_POST["city"];
     $phone = $_POST["phone"];
     $email = $_POST["email"];
-    $password = $_POST["password"];
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
     //user existing verification
     $sql_check = "SELECT * FROM Users WHERE email = '$email'";
@@ -78,6 +79,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-
 
 $conn->close();
