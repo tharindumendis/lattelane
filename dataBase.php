@@ -54,6 +54,10 @@ $sql = "CREATE TABLE IF NOT EXISTS Users (
     admin TINYINT(1) DEFAULT 0
 )";
 
+
+//CREATE TABLE `lattelane_db`.`invoices` (`invoice_id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NOT NULL , `product_id` INT NOT NULL , `price` INT NOT NULL , `quantity` INT NOT NULL , `total` INT NOT NULL , PRIMARY KEY (`invoice_id`)) ENGINE = InnoDB;
+
+
 if ($conn->query($sql) === TRUE) {
     // "Table 'products' created successfully or already exists";
 } else {
@@ -82,16 +86,18 @@ if ($result->num_rows == 0) {
 session_start();
 
 // Set session variables
-$_SESSION["first_name"] = "";
-$_SESSION["last_name"] = "";
-$_SESSION["city"] = "";
-$_SESSION["street"] = "";
-$_SESSION["address_no"] = "";
-$_SESSION["phone"] = "";
-$_SESSION["email"] = "";
-$_SESSION["password"] = "";
-$_SESSION["admin"] = 0;
+$_SESSION["id"];
+$_SESSION["first_name"];
+$_SESSION["last_name"];
+$_SESSION["city"];
+$_SESSION["street"];
+$_SESSION["address_no"];
+$_SESSION["phone"];
+$_SESSION["email"];
+$_SESSION["password"];
+$_SESSION["admin"];
+$_SESSION["bill_count"];
 $_SESSION["cart"];
-$_SESSION["cartTotal"] = 0;
+$_SESSION["cartTotal"];
 $_SESSION["cartQuantity"];
 $search = "0";

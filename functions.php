@@ -25,6 +25,7 @@ function removeFromCart($productId)
         //echo $index;
         if ($index !== -1) {
             unset($_SESSION["cart"][$index]);
+            $_SESSION["cartQuantity"] -= 1;
         }
     }
     //print_r($_SESSION["cart"]);
@@ -46,8 +47,9 @@ function clearCart()
     if (isset($_SESSION["cart"])) {
         $_SESSION["cart"] = array();
         $_SESSION["cartTotal"] = 0;
+        $_SESSION["cartQuantity"] = 0;
     }
-    print_r($_SESSION["cart"]);
+    //print_r($_SESSION["cart"]);
 }
 
 // To display the products
@@ -85,22 +87,31 @@ function DisplayProducts($fetchQuery, $conn)
 function  getCartItems($conn)
 {
     if (isset($_SESSION['cart'])) {
+        $count = 0;
         foreach ($_SESSION['cart'] as $item) {
 
             $query = "SELECT * FROM `products` WHERE id = $item;";
 
             // FETCHING DATA FROM DATABASE 
             $result = $conn->query($query);
-
+            
             if ($result->num_rows > 0) {
+                
                 // OUTPUT DATA OF EACH ROW 
                 while ($row = $result->fetch_assoc()) {
+
                     echo "
                         <tr>
                             <td><img src='{$row['image_path']}' width='50'></td>
                             <td>{$row['product_name']}</td>
-                            <td>Rs.<input type='number' value='{$row['price']}' name='' id='price{$row['id']}' readonly ></td>
-                            <td><input type='number' name='' id='cartQuantity{$row['id']}' value='1' min='1' max='20'></td>
+                            
+                             <input type='hidden' name='itemId$count' id='itemId{$row['id']}' value='{$row['id']}'>
+
+                            <td>Rs.<input type='number' value='{$row['price']}' name='price$count' id='price{$row['id']}' readonly ></td>
+                            <td><input type='number' name='quantity$count' id='cartQuantity{$row['id']}' value='1' min='1' max='20'></td>
+                             <input type='submit' name='Submitnvoice$count' id=''>
+                            
+                            
                             <td>Rs.<input type='number' name='itemTotal' id='total{$row['id']}' readonly >
                             <form action='' method='post'>
                             <input type='hidden' name='removeItemId' id='itemId{$row['id']}' value='{$row['id']}'>
@@ -121,8 +132,9 @@ function  getCartItems($conn)
                         </tr>
                             
                             ";
+                    $count++;
                     $_SESSION["cartTotal"] += $row['price'];
-                    $_SESSION["cartQuantity"] += 1;
+                    $_SESSION["cartQuantity"] = $count;
                 }
             }
         };

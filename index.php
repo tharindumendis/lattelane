@@ -13,6 +13,9 @@ require_once 'dataBase.php';
 <body>
     <?php include 'tempnav.php'; ?>
     <h1>index</h1>
+    <?php
+    print_r($_SESSION);
+    ?>
 </body>
 
 </html>

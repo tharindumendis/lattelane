@@ -41,8 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //check if the password is correct
         if (password_verify($password, $row["password"])) {
             echo "Login successful!";
-
+            
             //set session variables
+            $_SESSION["id"] = $row["id"];
             $_SESSION["first_name"] = $row["first_name"];
             $_SESSION["last_name"] = $row["last_name"];
             $_SESSION["address_no"] = $row["address_no"];
@@ -52,7 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["email"] = $row["email"];
             $_SESSION["password"] = $row["password"];
             $_SESSION["admin"] = $row["admin"];
-
+            $_SESSION["bill_count"] = $row["bill_count"];
+            print_r($_SESSION);
 
             // echo "Login successful!";
             // echo $_SESSION["admin"] . "<br>";
@@ -68,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // echo $_SESSION["password"];
 
             //redirect to the user page
-            header("Location: index.php");
+            //header("Location: index.php");
         } else {
             echo "Invalid password.";
         }
