@@ -11,6 +11,7 @@ require_once 'dataBase.php';
 </head>
 
 <body>
+    <?php include 'tempnav.php'; ?>
     <h1>index</h1>
 </body>
 

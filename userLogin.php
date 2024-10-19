@@ -12,6 +12,7 @@ require_once 'dataBase.php';
 </head>
 
 <body>
+    <?php include 'tempnav.php'; ?>
     <div>
         <form action="userLogin.php" method="post">
             <label for="">Email</label>
@@ -52,19 +53,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["password"] = $row["password"];
             $_SESSION["admin"] = $row["admin"];
 
-            
-            echo "Login successful!";
-            echo $_SESSION["admin"] . "<br>";
-            echo $_SESSION["email"] . "<br>";
-            echo $_SESSION["password"] . "<br>";
-            echo $_SESSION["first_name"] . "<br>";
-            echo $_SESSION["last_name"] . "<br>";
-            echo $_SESSION["address_no"] . "<br>";
-            echo $_SESSION["street"] . "<br>";
-            echo $_SESSION["city"] . "<br>";
-            echo $_SESSION["phone"] . "<br>";
-            echo $_SESSION["email"] . "<br>";
-            echo $_SESSION["password"];
+
+            // echo "Login successful!";
+            // echo $_SESSION["admin"] . "<br>";
+            // echo $_SESSION["email"] . "<br>";
+            // echo $_SESSION["password"] . "<br>";
+            // echo $_SESSION["first_name"] . "<br>";
+            // echo $_SESSION["last_name"] . "<br>";
+            // echo $_SESSION["address_no"] . "<br>";
+            // echo $_SESSION["street"] . "<br>";
+            // echo $_SESSION["city"] . "<br>";
+            // echo $_SESSION["phone"] . "<br>";
+            // echo $_SESSION["email"] . "<br>";
+            // echo $_SESSION["password"];
 
             //redirect to the user page
             header("Location: index.php");

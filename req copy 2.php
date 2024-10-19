@@ -36,7 +36,6 @@
         require_once 'dataBase.php';
 
         // Start the session
-        session_start();
 
         // Set session variables
         $_SESSION["email"] = "green";

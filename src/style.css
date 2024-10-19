@@ -1,0 +1,487 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    
+}
+
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+li{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-evenly;
+}
+li a{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+    color: #2c2c2c;
+    font-size: 1.5rem;
+    transition: 0.5s;
+}
+li a i{
+    font-size: 1.5rem;
+    transition: 0.5s;
+}
+li a:hover{
+    color: #2E8A57;
+    scale: 1.2;
+    text-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+}
+#searchIcon{
+    border: solid 3px #2c2c2c36;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+    transition: 0.5s;
+}
+#searchIcon:hover{
+    border: none;
+    color: #2E8A57;
+    scale: 1.2;
+    rotate: 45deg;
+}
+#searchButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.mainContainer{
+    background-color: #2E8A57;
+    display: flex;
+    position: static;
+    top: 0;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 100vw;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: 2px;  /* Firefox */
+}
+.mainNavContainer{
+    background-color: rgba(255, 255, 255, 0.15);
+    display: flex;
+    position: fixed;
+    top: 0;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 80px;
+    gap: 10px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+.navUlLeft{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-evenly;
+    align-items: center;
+}
+.navUlRight{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+
+}
+
+.navUl li{
+    display: flex;
+    list-style: none;
+    margin-right: 10px;
+    text-decoration: none;
+    justify-content: space-evenly;
+    color: #202020;
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif
+}
+
+.navLeft{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    min-width: 422px;
+}
+.navMid{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+}
+.navMid form{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+    width: 200px;
+}
+.navMid form input{
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    color: #202020;
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+.navMid form input:focus{
+    outline: none;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.navRight{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        min-width: 213px;
+}
+#loginButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    min-width: 100px;
+    border: none;
+    border-radius: 20px;
+    background-color: #2E8A57;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 0.5s;
+}
+#loginButton:hover{
+    background-color: #2E8A57;
+    color: #fff;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+}
+.heroContainer{
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 650px;
+    overflow: hidden;
+}
+.ballContainer{
+    display: flex;
+    overflow: hidden;
+    z-index: 0;
+
+}
+.animBall{
+    position: absolute;
+    width: 40vw;
+    height: 40vw;
+    border-radius: 50%;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+#animBall1{
+    background-color: #e1fff1;
+    animation-name: animbBall1;
+}
+#animBall2{
+    width: 80vw;
+    height: 40vw;
+    top: 0;
+    left: 55VW;
+    background-color: #2E8A57;
+    animation-name: animbBall2;
+}
+#animBall3{
+    /*background-color: #FFAAAA;*/
+    background-color: #f99494;
+    animation-name: animbBall3;
+}
+#animBall4{
+    background-color: #EEF296;
+    animation-name: animbBall4;
+}
+.backBlur{
+    display: flex;
+    position: relative;
+    width: 100vw;
+    height: 650px;
+    background-color: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(200px);
+    z-index: 1;
+}
+@keyframes animbBall1 {
+    0%{
+        top: 0;
+        left: 0;
+        right: auto;
+        bottom: auto;
+        /*transform: translate(0, 0);*/
+    }
+    66%{
+        top: 100%;
+        left: 100%;
+        transform: translate(-100%, -100%);
+        right: auto;
+        bottom: auto;
+        /* transform: translate(60vw, 40vh); */
+    }
+    100%{
+        top: 0;
+        left: 0;
+        right: auto;
+        bottom: auto;
+        /* transform: translate(0, 0); */
+    }
+    
+}
+@keyframes animbBall2 {
+    0%{
+        top: 0;
+        left: auto;
+        right: 0;
+        bottom: auto;
+        /*transform: translate(0, 0);*/
+    }
+    40%{
+        top: 100%;
+        left: auto;
+        right: 100%;
+        bottom: auto;
+        transform: translate(100%, -100%);
+        /* transform: translate(60vw, 40vh); */
+    }
+    100%{
+        top: 0;
+        left: auto;
+        right: 0;
+        bottom: auto;
+        /*transform: translate(0, 0);*/
+    }
+    
+}
+@keyframes animbBall3 {
+    0%{
+        top: auto;
+        left: 0;
+        right: auto;
+        bottom: 0;
+        /*transform: translate(0, 0);*/
+    }
+    75%{
+        top: auto;
+        left: 100%;
+        right: auto;
+        bottom: 100%;
+        transform: translate(-100%, 100%);
+        /* transform: translate(60vw, 40vh); */
+    }
+    100%{
+        top: auto;
+        left: 0;
+        right: auto;
+        bottom: 0;
+        /*transform: translate(0, 0);*/
+    }
+    
+}
+@keyframes animbBall4 {
+    0%{
+        top: auto;
+        left: auto;
+        right: 0;
+        bottom: 0;
+        /*transform: translate(0, 0);*/
+    }
+    50%{
+        top: auto;
+        left: auto;
+        transform: translate(100%, 100%);
+        right: 100%;
+        bottom: 100%;
+        /* transform: translate(60vw, 40vh); */
+    }
+    100%{
+        top: auto;
+        left: auto;
+        right: 0;
+        bottom: 0;
+        /*transform: translate(0, 0);*/
+    }
+    
+}
+
+.heroAfter{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    background-color: #faf2ff;
+    color: #000000;
+    z-index: 1;
+}
+.hero{
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 650px;
+    color: #000000;
+    z-index: 1;
+}
+.advrtise {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, auto);
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 650px;
+    padding: 100px 20px 20px 20px;
+    color: #000000;
+    z-index: 2;
+}
+.advrtise div {
+    background-color: #f2fff984;
+}
+.advrtiseRight {
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    align-items: center;
+    color: #000000;
+    z-index: 2;
+    width: 400px;
+    height: 100%;
+    grid-column: 3;
+    grid-row: 1;
+}
+.adImageRight{
+    height: 400px;
+}
+.advrtiseLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #000000;
+    z-index: 2;
+    width: 400px;
+    height: 100%;
+    grid-column: 1;
+    grid-row: 1;
+}
+.advrtiseMid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #000000;
+    z-index: 2;
+    width: 400px;
+    height: 100%;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+   .mainNavContainer{
+    display: none;
+   }
+   .heroContainer{
+    height: 400px;
+
+   }
+   .animBall{
+    width: 50vw;
+    height: 60vw;
+}
+.advrtise { 
+    grid-template-columns: repeat(1, auto);
+    grid-template-rows: repeat(1, auto);
+    align-content: space-evenly;
+}
+.advrtiseRight {
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-end;
+    align-items: flex-end;
+    width: 100%;
+    grid-column: 0 / span 2;
+    grid-row: 2;
+}
+.adImageRight{
+    height: 200px;
+}
+
+}

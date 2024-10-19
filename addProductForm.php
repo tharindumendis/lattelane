@@ -1,8 +1,3 @@
-<?php
-session_start();
-
-
-?>
 
 
 
@@ -17,16 +12,11 @@ session_start();
 </head>
 
 <body>
-    <div class="topnav">
-        <a href="productContainer.php">req</a>
-        <a href="addProductForm.php">add products</a>
-
-    </div>
+    <?php include 'tempnav.php'; ?>
+    
     <div class="formContainer">
-
         <form action="addProductForm.php" method="post" id="addProductForm" enctype="multipart/form-data">
             <h1>Product Register Form</h1>
-
             <label for="">Product Name</label>
             <input type="text" name="product_name" placeholder="Product Name">
             <label for="">Product Description</label>
@@ -98,12 +88,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Data did not add successfully.<br>";
     }
-} else {
-    echo "Invalid request method.<br>";
 }
 $conn->close();
-
-echo "<br>";
-echo "Session variables are: " . $_SESSION["email"] . " and " . $_SESSION["password"] . ".";
-echo "<br>";
 ?>

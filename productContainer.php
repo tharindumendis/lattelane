@@ -6,77 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="src/productContainer.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
+    <?php include 'tempnav.php'; ?>
     <div class="topnav">
-        <a href="addProductForm.php">add products</a>
-        <a href="addProductForm.php">add products</a>
+        <form action="" method="POST">
+            <input type="text" placeholder="Search.." name="search" value="">
+            <button type="submit">Search</button>
+        </form>
+
     </div>
     <div class="productCardContainer" id="productCardContainer">
-        <div class="productcard">
-            <div class="productcardimg">
-                <img src="uploads/samplepic.jpg" alt="" class="productimg">
-            </div>
-            <div class="producttitle">
-                <h2>Product title</h2>
-            </div>
-            <div class="productdescription">
-                <p>productdescripsklzx</p>
-            </div>
-            <div class="productprice">
-                <h2>Rs.199.00</h2>
-            </div>
-            <div class="productbtncontainer">
-                <button class="productbtn" id="addtocart">Add to cart</button>
-            </div>
-        </div>
 
         <?php
         require_once 'dataBase.php';
-
-        // Start the session
-        session_start();
-
-        // Set session variables
-        echo "Session variables are set.";
-        echo "<br>";
-        echo "Session variables are: " . $_SESSION["email"] . " and " . $_SESSION["password"] . ".";
-
+        require_once 'functions.php';
         // SQL QUERY 
-        $query = "SELECT * FROM `products`;";
-
-        // FETCHING DATA FROM DATABASE 
-        $result = $conn->query($query);
-
-        if ($result->num_rows > 0) {
-            // OUTPUT DATA OF EACH ROW 
-            while ($row = $result->fetch_assoc()) {
-                echo "
-                <div class='productcard'>
-                    <div class='productcardimg'>
-                        <img src='{$row['image_path']}' alt='' class='productimg'>
-                    </div>
-                    <div class='producttitle'>
-                        <h2>{$row['product_name']}</h2>
-                    </div>
-                    <div class='productdescription'>
-                        <p>{$row['description']}</p>
-                    </div>
-                    <div class='productprice'>
-                        <h2>Rs.{$row['price']}</h2>
-                    </div>
-                    <div class='productbtncontainer'>
-                        <button class='productbtn' id='addtocart'>Add to cart</button>
-                    </div>
-                </div>";
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (($_POST['search']) != '') {
+                $search = $_POST['search'];
+                $fetchQuery = "SELECT * FROM `products` WHERE product_name LIKE '%{$search}%';";
+            } else {
+                $fetchQuery = "SELECT * FROM `products`;";
             }
+        }else{
+            $fetchQuery = "SELECT * FROM `products`;";
         }
 
-        $conn->close();
+
+        // FETCHING DATA FROM DATABASE
+        DisplayProducts($fetchQuery, $conn);
+
+
         ?>
     </div>
 </body>
 </body>
+</body>
+<script src="postScript.js"></script>
 
 </html>
+
+<?php
+print_r($_SESSION["cart"]);
+echo "<br>";

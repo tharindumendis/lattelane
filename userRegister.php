@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <?php include 'tempnav.html'; ?>
+    <?php include 'tempnav.php'; ?>
     <div class="userFormContainer">
         <form action="userRegister.php" class="userForm" id="userForm" method="post" enctype="multipart/form-data">
             <h1>User Register Form</h1>
@@ -62,7 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Data added successfully.<br>";
 
             // set session variables to new user
-            session_start();
             $_SESSION["email"] = $email;
             $_SESSION["password"] = $password;
             $sql_check = "SELECT * FROM Users WHERE email = '$email'";
