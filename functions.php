@@ -3,11 +3,13 @@ require_once 'dataBase.php';
 
 function addToCart($productId)
 {
+    $_SESSION["cart"];
+
     if (isset($_SESSION["cart"])) {
         array_push($_SESSION["cart"], $productId);
         $_SESSION["cart"] = array_unique($_SESSION["cart"]);
     }
-    //print_r($_SESSION["cart"]);
+    print_r($_SESSION["cart"]);
 }
 function findIndex($array, $element)
 {
@@ -76,7 +78,7 @@ function DisplayProducts($fetchQuery, $conn)
                         <h2>Rs.{$row['price']}</h2>
                     </div>
                     <div class='productbtncontainer'>
-                        <button id='add-to-cart' name='add-to-cart' data-product-id='{$row['id']}'>Add to Cart</button>
+                        <button class='addToCartBtn' id='add-to-cart' name='add-to-cart' data-product-id='{$row['id']}'></button>
                     </div>
                 </div>";
         }
@@ -94,9 +96,9 @@ function  getCartItems($conn)
 
             // FETCHING DATA FROM DATABASE 
             $result = $conn->query($query);
-            
+
             if ($result->num_rows > 0) {
-                
+
                 // OUTPUT DATA OF EACH ROW 
                 while ($row = $result->fetch_assoc()) {
 
@@ -109,7 +111,7 @@ function  getCartItems($conn)
 
                             <td>Rs.<input type='number' value='{$row['price']}' name='price$count' id='price{$row['id']}' readonly ></td>
                             <td><input type='number' name='quantity$count' id='cartQuantity{$row['id']}' value='1' min='1' max='20'></td>
-                             <input type='submit' name='Submitnvoice$count' id=''>
+                            
                             
                             
                             <td>Rs.<input type='number' name='itemTotal' id='total{$row['id']}' readonly >
@@ -138,5 +140,80 @@ function  getCartItems($conn)
                 }
             }
         };
+    }
+}
+
+
+
+function checkout($conn)
+{
+    for ($i = 0; $i < count($_SESSION["cart"]); $i++) {
+
+
+        $invoiceId = $_SESSION['bill_count'];
+        $userId = $_SESSION['id'];
+        $productId = $_POST['itemId' . $i];
+        $quantity = $_POST['quantity' . $i];
+        $price = $_POST['price' . $i];
+        $total = $quantity * $price;
+
+        $insertQuery = "INSERT INTO `invoices`( `user_id`, `user_Invoice_id`,`product_id`, `price`, `quantity`, `total`) 
+            VALUES ('$userId','$invoiceId','$productId','$price','$quantity','$total')";
+
+        if ($conn->query($insertQuery)) {
+
+            //echo "completed";
+        } else {
+            //echo "failed";
+        }
+    }
+    $SetNewBillCount = $_SESSION['bill_count'] + 1;
+    $_SESSION['bill_count'] = $SetNewBillCount;
+    $setUserBillCountQuery =
+        "UPDATE `users` 
+                SET `bill_count` = '$SetNewBillCount' 
+                WHERE `users`.`id` = $userId;";
+
+    if ($conn->query($setUserBillCountQuery)) {
+        clearCart();
+        //echo "completed";
+    } else {
+        //echo "failed";
+    }
+}
+
+function logIn($email, $password, $conn)
+{
+    //check if the user exists in the database
+    $sql_check = "SELECT * FROM Users WHERE email = '$email'";
+    $result = $conn->query($sql_check);
+
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+        //check if the password is correct
+        if (password_verify($password, $row["password"])) {
+            echo "Login successful!";
+
+            //set session variables
+            $_SESSION["id"] = $row["id"];
+            $_SESSION["first_name"] = $row["first_name"];
+            $_SESSION["last_name"] = $row["last_name"];
+            $_SESSION["address_no"] = $row["address_no"];
+            $_SESSION["street"] = $row["street"];
+            $_SESSION["city"] = $row["city"];
+            $_SESSION["phone"] = $row["phone"];
+            $_SESSION["email"] = $row["email"];
+            $_SESSION["password"] = $row["password"];
+            $_SESSION["admin"] = $row["admin"];
+            $_SESSION["bill_count"] = $row["bill_count"];
+            print_r($_SESSION);
+
+
+            header("Location: index.php");
+        } else {
+            echo "Invalid password.";
+        }
+    } else {
+        echo "Login failed. Please check your email and password.";
     }
 }

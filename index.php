@@ -12,10 +12,16 @@ require_once 'dataBase.php';
 
 <body>
     <?php include 'tempnav.php'; ?>
-    <h1>index</h1>
-    <?php
-    print_r($_SESSION);
-    ?>
+    <h1>Home</h1>
+
+    <h1>Hello !😊
+        <?php
+        if ($_SESSION["first_name"] != "") {
+            echo ($_SESSION["first_name"] . "...");
+        }
+
+
+        ?></h1>
 </body>
 
 </html>

@@ -6,7 +6,7 @@ $(document).ready(function () {
       type: "POST",
       data: { product_id: productId },
       success: function (response) {
-        alert("Product added to cart!", productId);
+        console.log(response);
       },
       error: function (xhr, status, error) {
         console.error("Error: " + error);

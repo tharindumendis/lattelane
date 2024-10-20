@@ -9,74 +9,63 @@ require_once 'dataBase.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./src/css/userLogin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
 </head>
 
 <body>
-    <?php include 'tempnav.php'; ?>
     <div>
+        <?php include 'tempnav.php'; ?>
+    </div>
+
+    <div class="formContainer">
+
         <form action="userLogin.php" method="post">
-            <label for="">Email</label>
-            <input type="text" name="email" placeholder="Email" required>
-            <label for="">Password</label>
-            <input type="password" name="password" placeholder="Password" required>
+            <h1>Log in</h1>
+            <label for="email">Email</label>
+            <input type="text" name="email" placeholder="email" required>
+            <label for="password">Password</label>
+            <div class="passwordContainer"><input type="password" name="password" placeholder="password" required>
+                <i class='bx bxs-lock-alt' id="lockIcon"></i>
+            </div>
             <button>Log in</button>
+            <p>Don't have an account? <a href="userRegister.php">Sign up</a></p>
+
         </form>
     </div>
 
 </body>
+<script>
+    console.log("hello");
+    const passwordInput = document.getElementsByName("password");
+    const lockIcon = document.getElementById("lockIcon");
+    let showPassword = false;
+    lockIcon.addEventListener("click", () => {
+        if (showPassword) {
+            passwordInput[0].type = "password";
+            lockIcon.classList.remove("lockIconOpen");
+            lockIcon.classList.add("lockIcon");
+            showPassword = false;
+        } else {
+            passwordInput[0].type = "text";
+            lockIcon.classList.remove("lockIcon");
+            lockIcon.classList.add("lockIconOpen");
+            showPassword = true;
+        }
+    });
+</script>
 
 </html>
 <?php
+require_once 'dataBase.php';
+require_once 'functions.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
-
-    //check if the user exists in the database
-    $sql_check = "SELECT * FROM Users WHERE email = '$email'";
-    $result = $conn->query($sql_check);
-
-    if ($result->num_rows == 1) {
-        $row = $result->fetch_assoc();
-        //check if the password is correct
-        if (password_verify($password, $row["password"])) {
-            echo "Login successful!";
-            
-            //set session variables
-            $_SESSION["id"] = $row["id"];
-            $_SESSION["first_name"] = $row["first_name"];
-            $_SESSION["last_name"] = $row["last_name"];
-            $_SESSION["address_no"] = $row["address_no"];
-            $_SESSION["street"] = $row["street"];
-            $_SESSION["city"] = $row["city"];
-            $_SESSION["phone"] = $row["phone"];
-            $_SESSION["email"] = $row["email"];
-            $_SESSION["password"] = $row["password"];
-            $_SESSION["admin"] = $row["admin"];
-            $_SESSION["bill_count"] = $row["bill_count"];
-            print_r($_SESSION);
-
-            // echo "Login successful!";
-            // echo $_SESSION["admin"] . "<br>";
-            // echo $_SESSION["email"] . "<br>";
-            // echo $_SESSION["password"] . "<br>";
-            // echo $_SESSION["first_name"] . "<br>";
-            // echo $_SESSION["last_name"] . "<br>";
-            // echo $_SESSION["address_no"] . "<br>";
-            // echo $_SESSION["street"] . "<br>";
-            // echo $_SESSION["city"] . "<br>";
-            // echo $_SESSION["phone"] . "<br>";
-            // echo $_SESSION["email"] . "<br>";
-            // echo $_SESSION["password"];
-
-            //redirect to the user page
-            //header("Location: index.php");
-        } else {
-            echo "Invalid password.";
-        }
-    } else {
-        echo "Login failed. Please check your email and password.";
-    }
+    logIn($email, $password, $conn);
 }
 
 ?>

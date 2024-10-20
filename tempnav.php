@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="src/nav.css">
+<link rel="stylesheet" href="src/css/nav.css">
 
 <nav class="nav">
     <div class="navLeft">

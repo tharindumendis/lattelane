@@ -34,7 +34,6 @@
     <?php include('tempnav.php'); ?>
     <?php
     require_once 'dataBase.php';
-    print_r($_SESSION);
     ?>
     <form action="" method="POST">
         <button name=crearCart>Clear Cart</button>
@@ -75,7 +74,7 @@
     </div>
 
 </body>
-<script src="cart.js"></script>
+<script src="./src/js/cart.js"></script>
 
 </html>
 
@@ -91,39 +90,14 @@ if (isset($_POST['removeFromCart'])) {
     removeFromCart($productId);
 }
 if (isset($_POST['submitInvoice'])) {
-    print_r($_POST);
-    for ($i = 0; $i < count($_SESSION["cart"]); $i++) {
-
-
-        $invoiceId = $_SESSION['bill_count'];
-        $userId = $_SESSION['id'];
-        $productId = $_POST['itemId' . $i];
-        $quantity = $_POST['quantity' . $i];
-        $price = $_POST['price' . $i];
-        $total = $quantity * $price;
-        echo $userId;
-
-        $insertQuery = "INSERT INTO `invoices`( `user_id`, `user_Invoice_id`,`product_id`, `price`, `quantity`, `total`) 
-        VALUES ('$userId','$invoiceId','$productId','$price','$quantity','$total')";
-
-        if ($conn->query($insertQuery)) {
-            echo "completed";
+    if (isset($_SESSION["quantity"]) && $_SESSION["quantity"] > 0) {
+        checkout($conn);
+        echo "Invoice created successfully!";
+    } else {
+        if (($_SESSION["id"] == "")) {
+            echo "Please log in to checkout!" . '<br>' . "<a href='./userLogin.php'><button>Login</button></a>";
         } else {
-            echo "failed";
+            echo "Please add items to cart!";
         }
     }
-    $SetNewBillCount = $_SESSION['bill_count'] + 1;
-    $_SESSION['bill_count'] = $SetNewBillCount;
-    $setUserBillCountQuery =
-        "UPDATE `users` 
-            SET `bill_count` = '$SetNewBillCount' 
-            WHERE `users`.`id` = $userId;";
-
-    if ($conn->query($setUserBillCountQuery)) {
-        echo "completed";
-    } else {
-        echo "failed";
-    }
-
-    echo "zzz";
 }

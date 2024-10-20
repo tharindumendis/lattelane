@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="src/productContainer.css">
+    <link rel="stylesheet" href="src/Css/productContainer.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
@@ -45,10 +45,7 @@
 </body>
 </body>
 </body>
-<script src="postScript.js"></script>
+<script src="./src/js/postScript.js"></script>
 
 </html>
 
-<?php
-print_r($_SESSION["cart"]);
-echo "<br>";

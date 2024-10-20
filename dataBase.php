@@ -7,6 +7,7 @@ $password = "";
 $dbname = "lattelane_db";
 
 // Create connection
+global $conn;
 $conn = new mysqli($servername, $username, $password);
 
 // Check connection
@@ -85,19 +86,29 @@ if ($result->num_rows == 0) {
 // Start the session
 session_start();
 
-// Set session variables
-$_SESSION["id"];
-$_SESSION["first_name"];
-$_SESSION["last_name"];
-$_SESSION["city"];
-$_SESSION["street"];
-$_SESSION["address_no"];
-$_SESSION["phone"];
-$_SESSION["email"];
-$_SESSION["password"];
-$_SESSION["admin"];
-$_SESSION["bill_count"];
-$_SESSION["cart"];
-$_SESSION["cartTotal"];
-$_SESSION["cartQuantity"];
-$search = "0";
+//Set session variables
+if (isset($_SESSION["id"])) {
+    //echo "Session variables are set.";
+} else {
+
+    $_SESSION["id"] = "";
+    $_SESSION["first_name"] = "";
+    $_SESSION["last_name"] = "";
+    $_SESSION["city"] = "";
+    $_SESSION["street"] = "";
+    $_SESSION["address_no"] = "";
+    $_SESSION["phone"] = "";
+    $_SESSION["email"] = "";
+    $_SESSION["password"] = "";
+    $_SESSION["admin"] = "";
+    $_SESSION["bill_count"] = "";
+    //echo "Session variables are not set.";
+}
+if (isset($_SESSION["cart"])) {
+    //echo "Session variables are set.";
+} else {
+    $_SESSION["cart"] = array();
+    $_SESSION["cartTotal"] = 0;
+    $_SESSION["cartQuantity"] = 0;
+    //echo "Session variables are not set.";
+}
