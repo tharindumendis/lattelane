@@ -35,11 +35,11 @@
     <?php
     require_once 'dataBase.php';
     ?>
-    <form action="" method="POST">
+    <form action="userUpdate.php" method="POST">
         <button name=crearCart>Clear Cart</button>
     </form>
     <div>
-        <form action="" method="POST">
+        <form action="userUpdate.php" method="POST">
             <table>
                 <thead>
                     <tr>
@@ -80,24 +80,3 @@
 
 <?php
 require_once 'dataBase.php';
-require_once 'functions.php';
-
-if (isset($_POST['crearCart'])) {
-    clearCart();
-}
-if (isset($_POST['removeFromCart'])) {
-    $productId = $_POST['removeItemId'];
-    removeFromCart($productId);
-}
-if (isset($_POST['submitInvoice'])) {
-    if (isset($_SESSION["quantity"]) && $_SESSION["quantity"] > 0) {
-        checkout($conn);
-        echo "Invoice created successfully!";
-    } else {
-        if (($_SESSION["id"] == "")) {
-            echo "Please log in to checkout!" . '<br>' . "<a href='./userLogin.php'><button>Login</button></a>";
-        } else {
-            echo "Please add items to cart!";
-        }
-    }
-}

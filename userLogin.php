@@ -1,5 +1,6 @@
 <?php
 require_once 'dataBase.php';
+require_once 'functions.php';
 
 ?>
 <!DOCTYPE html>
@@ -31,7 +32,7 @@ require_once 'dataBase.php';
                 <i class='bx bxs-lock-alt' id="lockIcon"></i>
             </div>
             <button>Log in</button>
-            <p>Don't have an account? <a href="userRegister.php">Sign up</a></p>
+            <p>Don't have an account? <a href="userRegister.php" id="singupLink">Sign up</a></p>
 
         </form>
     </div>
@@ -59,8 +60,7 @@ require_once 'dataBase.php';
 
 </html>
 <?php
-require_once 'dataBase.php';
-require_once 'functions.php';
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];

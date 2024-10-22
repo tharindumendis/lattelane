@@ -1,3 +1,7 @@
+<?php
+require_once 'dataBase.php';
+require_once 'functions.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,8 +25,7 @@
     <div class="productCardContainer" id="productCardContainer">
 
         <?php
-        require_once 'dataBase.php';
-        require_once 'functions.php';
+
         // SQL QUERY 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (($_POST['search']) != '') {
@@ -31,7 +34,7 @@
             } else {
                 $fetchQuery = "SELECT * FROM `products`;";
             }
-        }else{
+        } else {
             $fetchQuery = "SELECT * FROM `products`;";
         }
 
@@ -48,4 +51,3 @@
 <script src="./src/js/postScript.js"></script>
 
 </html>
-

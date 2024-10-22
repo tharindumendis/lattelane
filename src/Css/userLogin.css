@@ -2,10 +2,10 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image: url('../images/loginBI.jpg');
+    background: url('../images/loginBI.jpg') no-repeat center center fixed;
     background-size: cover;
+    height: 100vh;
   }
-
 .formContainer {
     display: flex;
     flex-direction: column;
@@ -119,14 +119,21 @@ label{
     scale: 1.1;
 
 }
-a{
+#singupLink{
     color: rgb(0, 153, 79);
     text-decoration: none;
     border: solid 3px rgba(0, 0, 0, 0.138);
     padding: 2px 6px;
     border-radius: 20px;
 }
-a:hover{
+#singupLink:hover{
     color: rgb(247, 255, 251);
     border: solid 3px #fff8;
+}
+
+
+@media screen and (max-width: 768px) {
+    
+    
+    
 }

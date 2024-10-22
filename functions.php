@@ -115,7 +115,7 @@ function  getCartItems($conn)
                             
                             
                             <td>Rs.<input type='number' name='itemTotal' id='total{$row['id']}' readonly >
-                            <form action='' method='post'>
+                            <form action='userUpdate.php' method='post'>
                             <input type='hidden' name='removeItemId' id='itemId{$row['id']}' value='{$row['id']}'>
                             <button type='submit' name='removeFromCart' id='removeFromCart'>Remove</button>
                             </form>
