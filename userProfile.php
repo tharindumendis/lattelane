@@ -1,6 +1,6 @@
 <?php
-include 'tempnav.php';
 require_once 'dataBase.php';
+require_once 'functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,11 +103,19 @@ require_once 'dataBase.php';
             background-color: #00000011;
             border-radius: 10px;
         }
+
+        .editBtnContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+
+        }
     </style>
 </head>
 
 <body>
-
+    <?php include 'tempnav.php'; ?>
 
     <div class="profileContainer">
         <h2>Profile Details</h2>
@@ -123,11 +131,36 @@ require_once 'dataBase.php';
                 <p>Address no: <input class="editInputs" type="text" name="address_no" id="" value="<?php echo $_SESSION['address_no']; ?>"></p>
                 <p>Street: <input class="editInputs" type="text" name="street" id="" value="<?php echo $_SESSION['street']; ?>"></p>
                 <p>City: <input class="editInputs" type="text" name="city" id="" value="<?php echo $_SESSION['city']; ?>"></p>
-                <button type="submit" id="editSubmit" name="update_profile" value="update_profile">Save Edits</button>
+                <div class="editBtnContainer"><button type="submit" id="editSubmit" name="update_profile" value="update_profile">Save Edits</button></div>
             </form>
         </div>
     </div>
 
+    <div>
+
+        <h2>Your Orders</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Invoice ID</th>
+                    <th>Date</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Payment Method</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                displayBills($conn);
+                ?>
+            </tbody>
+        </table>
+
+
+    </div>
 
 </body>
 <script>

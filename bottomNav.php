@@ -1,8 +1,8 @@
 <style>
     .navContainer {
         display: flex;
-        position: absolute;
-        top: 0;
+        position: sticky;
+        bottom: 0;
         justify-content: space-between;
         align-items: center;
         background-color: #00000044;
@@ -48,7 +48,7 @@
         color: #000000;
     }
 
-    .marginBar {
+    .marginBar:hover {
         width: 100%;
         height: 60px;
     }
@@ -56,7 +56,7 @@
 
     @media screen and (max-width: 768px) {
         .navContainer {
-            display: none;
+            display: flex;
         }
 
     }
