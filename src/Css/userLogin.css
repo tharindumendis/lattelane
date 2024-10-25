@@ -120,7 +120,7 @@ label{
 
 }
 #singupLink{
-    color: rgb(0, 153, 79);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     border: solid 3px rgba(0, 0, 0, 0.138);
     padding: 2px 6px;
@@ -130,6 +130,54 @@ label{
     color: rgb(247, 255, 251);
     border: solid 3px #fff8;
 }
+#message{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px;
+    margin-bottom: 0;
+    background-color: #f5f5f57d;
+    padding: 5px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px #ffffffbd;
+}
+#messageContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#shopNowBtn{
+    background-color: white;
+    color: black;
+    animation: flash 1s infinite;
+    border-radius: 20px;
+    padding: 10px;
+    border: none;
+}
+#shopNowBtn:hover{
+    scale: 1.1;
+}
+#shopNowBtn:active{
+    scale: 0.8;
+}
+@keyframes flash {
+    0% {
+      opacity: 1;
+      background-color: white;
+    color: black;
+    }
+    50% {
+      opacity: 0.8;
+      background-color: black;
+    color: white;
+    }
+    100% {
+      opacity: 1;
+      background-color: white;
+    color: black;
+    }
+  }
 
 
 @media screen and (max-width: 768px) {

@@ -70,7 +70,38 @@
             </table>
 
             <input type='submit' name='submitInvoice' id='' value="submitInvoice">
+            <label for="paymentMethod">COD</label>
+            <input type="radio" name="paymentMethod" id="" value="cod" checked="checked">
+            <label for="paymentMethod">visa/ master</label>
+            <input type="radio" name="paymentMethod" id="" value="visa/ master">
         </form>
+        <div class="card-form" id="cardForm" >
+            <form action="userUpdate.php" method="POST">
+                <div class="form-group">
+                    <label for="cardNumber">Card Number:</label>
+                    <input type="text" name="cardNumber" id="cardNumber" maxlength="16" required>
+                </div>
+                <div class="form-group">
+                    <label for="cardName">Cardholder Name:</label>
+                    <input type="text" name="cardName" id="cardName" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="expiryDate">Expiry Date:</label>
+                        <input type="text" name="expiryDate" id="expiryDate" placeholder="MM/YY" maxlength="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV:</label>
+                        <input type="text" name="cvv" id="cvv" maxlength="3" required>
+                    </div>
+                </div>
+                <input type="submit" name="submitCard" value="Pay Now">
+            </form>
+        </div>
+    </div>
+    <div>
+
+
     </div>
 
 </body>

@@ -77,6 +77,7 @@
         <a href="addProductForm.php">Add Product</a>
         <a href="productContainer.php">Shop</a>
         <a href="cart.php">Cart</a>
+        <a href="dashbord.php">Dashbord</a>
 
     </div>
 
