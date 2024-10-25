@@ -17,4 +17,10 @@ body{
     display:flex;
     flex-direction:column;
 }
-#
+#userform{
+    text-align:center ;
+
+}
+#bottom{
+    text-align:center ;
+}
