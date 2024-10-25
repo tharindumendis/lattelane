@@ -396,7 +396,7 @@ nav{
     z-index: 2;
 }
 .advrtise div {
-    background-color: #f2fff984;
+    background-color: #f2fff900;
 }
 .advrtiseRight {
     display: flex;
@@ -409,6 +409,7 @@ nav{
     height: 100%;
     grid-column: 3;
     grid-row: 1;
+    border
 }
 .adImageRight{
     height: 400px;

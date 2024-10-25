@@ -22,6 +22,8 @@ require_once 'dataBase.php';
 
 
         ?></h1>
+
+    <?php include 'bottomNav.php'; ?>
 </body>
 
 </html>

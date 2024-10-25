@@ -115,7 +115,7 @@ function  getCartItems($conn)
                             
                             
                             <td>Rs.<input type='number' name='itemTotal' id='total{$row['id']}' readonly >
-                            <form action='' method='post'>
+                            <form action='userUpdate.php' method='post'>
                             <input type='hidden' name='removeItemId' id='itemId{$row['id']}' value='{$row['id']}'>
                             <button type='submit' name='removeFromCart' id='removeFromCart'>Remove</button>
                             </form>
@@ -156,9 +156,10 @@ function checkout($conn)
         $quantity = $_POST['quantity' . $i];
         $price = $_POST['price' . $i];
         $total = $quantity * $price;
+        $PaymentMethod= $_POST['paymentMethod'];
 
-        $insertQuery = "INSERT INTO `invoices`( `user_id`, `user_Invoice_id`,`product_id`, `price`, `quantity`, `total`) 
-            VALUES ('$userId','$invoiceId','$productId','$price','$quantity','$total')";
+        $insertQuery = "INSERT INTO `invoices`( `user_id`, `user_Invoice_id`,`product_id`, `price`, `quantity`, `total`,`payment_method`) 
+            VALUES ('$userId','$invoiceId','$productId','$price','$quantity','$total','$PaymentMethod')";
 
         if ($conn->query($insertQuery)) {
 
@@ -192,7 +193,9 @@ function logIn($email, $password, $conn)
         $row = $result->fetch_assoc();
         //check if the password is correct
         if (password_verify($password, $row["password"])) {
-            echo "Login successful!";
+            echo "<div id='messageContainer' action='index.php''>
+            <p id='message'>Login successful!</p><a href='index.php'><button id='shopNowBtn'>Shop now</button></a>
+            </div>";
 
             //set session variables
             $_SESSION["id"] = $row["id"];
@@ -206,14 +209,184 @@ function logIn($email, $password, $conn)
             $_SESSION["password"] = $row["password"];
             $_SESSION["admin"] = $row["admin"];
             $_SESSION["bill_count"] = $row["bill_count"];
-            print_r($_SESSION);
-
-
-            header("Location: index.php");
         } else {
-            echo "Invalid password.";
+            echo "<p id='message'>Invalid password.</p>";
         }
     } else {
-        echo "Login failed. Please check your email and password.";
+        echo "<p id='message'>Login failed. Please check your email and password.</p>";
     }
+}
+
+function displayBills($conn)
+{
+    $user_id = $_SESSION['id'];
+    $getBills = "SELECT i.*, p.product_name FROM invoices i 
+                         JOIN products p ON i.product_id = p.id 
+                         WHERE i.user_id = '$user_id' 
+                         ORDER BY i.invoice_id DESC;";
+    $getBillsResult = mysqli_query($conn, $getBills);
+    $temp = $_SESSION['bill_count'] - 1;
+    $temptotal = 0;
+    $tempmethod = "";
+    $tempdate = "";
+    if (mysqli_num_rows($getBillsResult) > 0) {
+        while ($row = mysqli_fetch_assoc($getBillsResult)) {
+
+            if ($row['user_Invoice_id'] != $temp) {
+
+
+                echo "<tr>";
+                echo "<td>" . "" . "</td>";
+                echo "<td>" . $tempdate . "</td>";
+                echo "<td>" . "" . "</td>";
+                echo "<td>" . "" . "</td>";
+                // echo "<td>" . "" . "</td>";
+                echo "<td>" . $temptotal . ".00" . "</td>";
+                // echo "<td>" . "" . "</td>";
+                echo "<td>" . $tempmethod . "</td>";
+                echo "<td>" . "" . "</td>";
+                echo "</tr>";
+                $temp--;
+                $temptotal = 0;
+                echo "<tr>";
+                echo "<td>" . "." . "</td>";
+                echo "</tr>";
+            }
+            $temptotal +=  $row['total'];
+            echo "<tr>";
+            echo "<td>" . $row['invoice_id'] . "</td>";
+            // echo "<td>" . "" . "</td>";
+            echo "<td>" . $row['product_name'] . "</td>";
+            echo "<td>" . $row['price'] . ".00" . "</td>";
+            echo "<td>" . $row['quantity'] . "</td>";
+            echo "<td>" . $row['total'] . ".00" . "</td>";
+            // echo "<td>" . $row['status'] . "</td>";
+            echo "</tr>";
+            $tempmethod = $row['payment_method'];
+            $tempdate  = $row['date'];
+        }
+    } else {
+        echo "<tr><td colspan='9'>No bills found</td></tr>";
+    }
+    echo "<tr>";
+    echo "<td>" . "" . "</td>";
+    echo "<td>" . $tempdate . "</td>";
+    echo "<td>" . "" . "</td>";
+    echo "<td>" . "" . "</td>";
+    // echo "<td>" . "" . "</td>";
+    echo "<td>" . $temptotal . ".00" . "</td>";
+    // echo "<td>" . "" . "</td>";
+    echo "<td>" . $tempmethod . "</td>";
+    echo "<td>" . "" . "</td>";
+    echo "</tr>";
+    $temp--;
+    $temptotal = 0;
+    echo "<tr>";
+    echo "<td>" . "." . "</td>";
+    echo "</tr>";
+}
+
+function getAllinvoces($conn)
+{
+
+    $getAllBills = "SELECT i.*, p.product_name FROM invoices i 
+                         JOIN products p ON i.product_id = p.id 
+                         ORDER BY i.invoice_id DESC;";
+    $result = $conn->query($getAllBills);
+    if ($result->num_rows > 0) {
+
+        $tempBillNum = 0;
+        $tempDate = "";
+        $tempTotal = 0;
+        $tempUser_id = "";
+        $tempPaymentMethod = "";
+
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . $row["invoice_id"] . "</td>";
+            // echo "<td>" . "" . "</td>";
+            echo "<td>" . $row["product_name"] . "</td>";
+            echo "<td>" . 'Rs.' . $row["price"] . "</td>";
+            echo "<td>" . $row["quantity"] . "</td>";
+            echo "<td>" . 'Rs.' . $row["total"] . "</td>";
+            // echo "<td>" . $row["status"] . "</td>";
+            // echo "<td>" . "" . "</td>";
+            echo "<td>" . "" . "</td>";
+            echo "</tr>";
+            $tempTotal += $row["total"];
+            $tempPaymentMethod = $row["payment_method"];
+
+            if ($row["invoice_id"] != $tempBillNum && $row["date"] != $tempDate) {
+
+                echo "<tr>";
+                // echo "<th>" . "--------" . "</th>";
+                echo "<th>" . $tempDate . "</th>";
+                echo "<th>" . "" . "</th>";
+                echo "<th>" . "" . "</th>";
+                echo "<th>" . "Total" . "</th>";
+                echo "<th>" . 'Rs.' . $tempTotal . "</th>";
+                // echo "<th>" . "" . "</th>";
+                // echo "<th>" . $tempUser_id . "</th>";
+                echo "<th>" . $tempPaymentMethod . "</th>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<th>" . "." . "</th>";
+                echo "</th>";
+
+                $tempTotal = 0;
+            } else {
+            }
+
+
+            $tempBillNum = $row["invoice_id"];
+            $tempDate = $row["date"];
+            $tempUser_id = $row["user_id"];
+            $tempPaymentMethod = $row["payment_method"];
+        }
+        echo "<tr>";
+        // echo "<th>" . "--------" . "</th>";
+        echo "<th>" . $tempDate . "</th>";
+        echo "<th>" . "" . "</th>";
+        echo "<th>" . "" . "</th>";
+        echo "<th>" . "Total" . "</th>";
+        echo "<th>" . 'Rs.' . $tempTotal . "</th>";
+        // echo "<th>" . "" . "</th>";
+        // echo "<th>" . $tempUser_id . "</th>";
+        echo "<th>" . $tempPaymentMethod . "</th>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<th>" . "." . "</th>";
+        echo "</th>";
+
+        $tempTotal = 0;
+    }
+}
+
+function getMonthlySalesAndCost($conn)
+{
+    $query = "SELECT DATE_FORMAT(i.date, '%Y-%m') AS month,
+     SUM(i.total) AS total_sales, SUM(p.cost * i.quantity) AS total_cost,
+      SUM(i.total - (p.cost * i.quantity)) AS profit 
+      FROM invoices i JOIN products p ON i.product_id = p.id 
+      GROUP BY DATE_FORMAT(i.date, '%Y-%m') ORDER BY month ASC LIMIT 12;";
+
+    $result = mysqli_query($conn, $query);
+    $months = [];
+    $sales = [];
+    $costs = [];
+    $profits = [];
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $months[] = $row['month'];
+        $sales[] = $row['total_sales'];
+        $costs[] = $row['total_cost'];
+        $profits[] = $row['profit'];
+    }
+
+    return [
+        'months' => $months,
+        'sales' => $sales,
+        'costs' => $costs,
+        'profits' => $profits
+    ];
 }

@@ -84,7 +84,9 @@ if ($result->num_rows == 0) {
 }
 
 // Start the session
+
 session_start();
+
 
 //Set session variables
 if (isset($_SESSION["id"])) {

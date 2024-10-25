@@ -1,5 +1,6 @@
 <?php
 require_once 'dataBase.php';
+require_once 'functions.php';
 
 ?>
 <!DOCTYPE html>
@@ -21,7 +22,16 @@ require_once 'dataBase.php';
     </div>
 
     <div class="formContainer">
+        <?php
 
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+            logIn($email, $password, $conn);
+        }
+
+        ?>
         <form action="userLogin.php" method="post">
             <h1>Log in</h1>
             <label for="email">Email</label>
@@ -31,41 +41,81 @@ require_once 'dataBase.php';
                 <i class='bx bxs-lock-alt' id="lockIcon"></i>
             </div>
             <button>Log in</button>
-            <p>Don't have an account? <a href="userRegister.php">Sign up</a></p>
+            <p>Don't have an account? <a href="userRegister.php" id="singupLink">Sign up</a></p>
 
         </form>
     </div>
 
 </body>
+<?php
+$salesData = getMonthlySalesAndCost($conn);
+?>
 <script>
-    console.log("hello");
-    const passwordInput = document.getElementsByName("password");
-    const lockIcon = document.getElementById("lockIcon");
-    let showPassword = false;
-    lockIcon.addEventListener("click", () => {
-        if (showPassword) {
-            passwordInput[0].type = "password";
-            lockIcon.classList.remove("lockIconOpen");
-            lockIcon.classList.add("lockIcon");
-            showPassword = false;
-        } else {
-            passwordInput[0].type = "text";
-            lockIcon.classList.remove("lockIcon");
-            lockIcon.classList.add("lockIconOpen");
-            showPassword = true;
+    const ctx = document.getElementById('salesChart');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: <?php echo json_encode($salesData['months']); ?>,
+            datasets: [{
+                    label: 'Sales',
+                    data: <?php echo json_encode($salesData['sales']); ?>,
+                    borderColor: '#4A90E2',
+                    tension: 0.1,
+                    fill: false
+                },
+                {
+                    label: 'Cost',
+                    data: <?php echo json_encode($salesData['costs']); ?>,
+                    borderColor: '#E24A4A',
+                    tension: 0.1,
+                    fill: false
+                },
+                {
+                    label: 'Profit',
+                    data: <?php echo json_encode($salesData['profits']); ?>,
+                    borderColor: '#4AE24A',
+                    tension: 0.1,
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Amount (Rs.)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Month'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Monthly Sales, Cost and Profit Overview',
+                    font: {
+                        size: 16
+                    }
+                },
+                legend: {
+                    display: true,
+                    position: 'top'
+                }
+            }
         }
     });
 </script>
 
+
 </html>
-<?php
-require_once 'dataBase.php';
-require_once 'functions.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    logIn($email, $password, $conn);
-}
+<script>
 
-?>
+</script>

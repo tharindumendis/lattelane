@@ -25,3 +25,17 @@ document
       alert("reload2");
     }, 1000);
   });
+
+function showPaymentForm() {
+
+  const paymentMethod = document.getElementById("paymentMethod");
+  const cardForm = document.getElementById("cardForm");
+
+  if (paymentMethod.value === "cod") {
+    cardForm.style.display = "none";
+  } else {
+    cardForm.style.display = "block";
+  }
+}
+
+showPaymentForm();

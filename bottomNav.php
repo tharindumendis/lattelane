@@ -1,8 +1,8 @@
 <style>
     .navContainer {
         display: flex;
-        position: absolute;
-        top: 0;
+        position: sticky;
+        bottom: 0;
         justify-content: space-between;
         align-items: center;
         background-color: #00000044;
@@ -10,7 +10,7 @@
         width: 80%;
         margin-left: 8%;
         border-radius: 0 0 20px 20px;
-        height: 50px;
+        height: 70px;
 
     }
 
@@ -47,6 +47,19 @@
     .navRight a:hover {
         color: #000000;
     }
+
+    .marginBar:hover {
+        width: 100%;
+        height: 60px;
+    }
+
+
+    @media screen and (max-width: 768px) {
+        .navContainer {
+            display: flex;
+        }
+
+    }
 </style>
 
 <nav class="navContainer">
@@ -54,6 +67,7 @@
         <div class="logoContainer">`</div>
         <div class="logologo"></div>
     </div>
+
     <div class="navRight">
         <a href="userRegister.php">Sign Up</a>
         <a href="userLogin.php">Sign In</a>
@@ -65,10 +79,9 @@
         <a href="cart.php">Cart</a>
 
     </div>
-</nav>
-<script>
-    const message = document.getElementById('message');
 
-    $message.style.display = 'flex';
-    $message.innerHTML = '<?php echo $message; ?>';
-</script>
+</nav>
+<div class="marginBar">
+
+
+</div>
