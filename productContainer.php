@@ -15,6 +15,7 @@ require_once 'functions.php';
 
 <body>
     <?php include 'tempnav.php'; ?>
+
     <div class="topnav">
         <form action="" method="POST">
             <input type="text" placeholder="Search.." name="search" value="">
@@ -45,6 +46,7 @@ require_once 'functions.php';
 
         ?>
     </div>
+    <?php include 'mobileNav.html'; ?>
 </body>
 </body>
 </body>

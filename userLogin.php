@@ -19,6 +19,7 @@ require_once 'functions.php';
 <body>
     <div>
         <?php include 'tempnav.php'; ?>
+        <?php include 'mobileNav.html'; ?>
     </div>
 
     <div class="formContainer">

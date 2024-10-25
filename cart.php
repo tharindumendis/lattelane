@@ -32,6 +32,7 @@
 
 <body>
     <?php include('tempnav.php'); ?>
+    <?php include 'mobileNav.html'; ?>
     <?php
     require_once 'dataBase.php';
     ?>

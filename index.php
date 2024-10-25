@@ -12,6 +12,7 @@ require_once 'dataBase.php';
 
 <body>
     <?php include 'tempnav.php'; ?>
+
     <h1>Home</h1>
 
     <h1>Hello !😊
@@ -23,7 +24,7 @@ require_once 'dataBase.php';
 
         ?></h1>
 
-    <?php include 'bottomNav.php'; ?>
+    <?php include 'mobileNav.html'; ?>
 </body>
 
 </html>

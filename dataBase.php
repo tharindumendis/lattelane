@@ -63,7 +63,7 @@ if ($conn->query($sqlInvoice) === TRUE) {
     // "Table 'products' created successfully or already exists";
 }
 
-  
+
 $sqlUser = "CREATE TABLE IF NOT EXISTS `users` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `first_name` varchar(50) NOT NULL,
@@ -122,9 +122,9 @@ if ($result->num_rows == 0) {
 }
 
 // Start the session
-
-session_start();
-
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 //Set session variables
 if (isset($_SESSION["id"])) {
