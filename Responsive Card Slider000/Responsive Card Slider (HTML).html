@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-is/18.3.1/cjs/react-is.production.min.js">
+    
+</head>
+
+<section class="testimonials">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="title">Detais of ........</h2>
+        </div>
+        <div class="testimonials-content">
+            <div class="swiper testimonials-slider js-testimonials-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide testimonials-item">
+                        <div class="info">
+                            <div class="imgbox">
+                                <img src="R.jpg" alt="img">33
+
+                            </div>
+                            <div class="text-box">
+                                <h3 class="name">Shah Rukh Kha</h3>
+                                <span class="job">Actor</span>
+                            </div>
+                        </div>
+                        <p>Shah Rukh Khan (born November 2, 1965, Delhi, India) is an Indian actor known for his powerful screen presence and global appeal. Commonly known as SRK (an abbreviation of his full name), he is regarded as one of the icons of Indian cinema and an integral part of popular culture.</p>
+                        <div class="rating">
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                        </div>
+                    </div>
+                    <div class="swiper-slide testimonials-item">
+                        <div class="info">
+                            <div class="imgbox">
+                                <img src="M.jpg" alt="img">33
+
+                            </div>
+                            <div class="text-box">
+                                <h3 class="name">Mahinda Rajapaksa</h3>
+                                <span class="job">Leader</span>
+                            </div>
+                        </div>
+                        <p>Rajapaksa is a lawyer by profession and was first elected to the Parliament of Sri Lanka in 1970. He served as the leader of the Sri Lanka Freedom Party from 2005 to 2015. Rajapaksa was sworn in for his first six-year term as president on 19 November 2005. He was subsequently re-elected in 2010 for a second term</p>
+                        <div class="rating">
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                        </div>
+                    </div>
+                    <div class="swiper-slide testimonials-item">
+                        <div class="info">
+                            <div class="imgbox">
+                                <img src="E.jpg" alt="img">33
+
+                            </div>
+                            <div class="text-box">
+                                <h3 class="name">Elon Musk</h3>
+                                <span class="job">CEO</span>
+                            </div>
+                        </div>
+                        <p>Elon Musk, the CEO of Tesla, first married Justine Musk in 2000. They had six children together before divorcing in 2008. He then married English actress Talulah Riley in 2010. They divorced and remarried, with their second divorce finalized in 2016</p>
+                        <div class="rating">
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                        </div>
+                    </div>
+                    <div class="swiper-slide testimonials-item">
+                        <div class="info">
+                            <div class="imgbox">
+                                <img src="A.jpg" alt="img">33
+
+                            </div>
+                            <div class="text-box">
+                                <h3 class="name">Shavendra Silva</h3>
+                                <span class="job">SL Army</span>
+                            </div>
+                        </div>
+                        <p>General LHSC Silva WWV RWP RSP VSV USP ndc psc MPhil, more popularly known as General Shavendra Silva was appointed as the 8th Chief of Defence Staff of the Democratic Socialist Republic of Sri Lanka effective from 01 June 2022.</p>
+                        <div class="rating">
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                        </div>
+                    </div>
+                    <div class="swiper-slide testimonials-item">
+                        <div class="info">
+                            <div class="imgbox">
+                                <img src="K.jpg" alt="img">33
+
+                            </div>
+                            <div class="text-box">
+                                <h3 class="name">Kumar Sangakkara</h3>
+                                <span class="job">Cricketer</span>
+                            </div>
+                        </div>
+                        <p>Kumar Sangakkara is the author's favorite sportsman. He was a cornerstone of Sri Lankan cricket for nearly 15 years, serving as captain. Sangakkara is considered one of the best batsmen in international cricket, having played over 500 matches and scored over 11,000 runs for Sri Lanka across Test and one-day formats.</p>
+                        <div class="rating">
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                            <i class="fa fa star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination js-testimonials-pagination"></div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    const swiper = new Swiper('.js-testimonials-slider', {
+        grabCursor:true,
+        spaceBetween:30,
+        pagination:{
+            el:'.js-testimonials-pagination',
+            clickable: true
+        },
+        breakpoints:{
+            767:{
+                slidesPerView:2
+            }
+        }
+    });
+</script>
+
+<body>
+
+</html>
