@@ -27,7 +27,6 @@ document
   });
 
 function showPaymentForm() {
-
   const paymentMethod = document.getElementById("paymentMethod");
   const cardForm = document.getElementById("cardForm");
 
@@ -38,4 +37,25 @@ function showPaymentForm() {
   }
 }
 
-showPaymentForm();
+function cardFormShow() {
+  const cardDetailsContainer = document.getElementById("cardForm");
+  const cardNumber = document.getElementById("cardNumber");
+  const cardName = document.getElementById("cardName");
+  const expiryDate = document.getElementById("expiryDate");
+  const cvv = document.getElementById("cvv");
+
+
+  
+  cardDetailsContainer.style.display = "flex";
+  cardNumber.required = true;
+  cardName.required = true;
+  expiryDate.required = true;
+  cvv.required = true;
+  console.log("cardFormShow");
+
+}
+function cardFormhide() {
+  const cardDetailsContainer = document.getElementById("cardForm");
+  cardDetailsContainer.style.display = "none";
+  console.log("cardFormhide");
+}
