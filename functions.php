@@ -109,7 +109,7 @@ function  getCartItems($conn)
                              <input type='hidden' name='itemId$count' id='itemId{$row['id']}' value='{$row['id']}'>
 
                             <td>Rs.<input type='number' value='{$row['price']}' name='price$count' id='price{$row['id']}' readonly ></td>
-                            <td><input type='number' name='quantity$count' id='cartQuantity{$row['id']}' value='1' min='1' max='20'></td>
+                            <td><input class='qtyInput' type='number' name='quantity$count' id='cartQuantity{$row['id']}' value='1' min='1' max='20'></td>
                             
                             
                             
@@ -155,7 +155,7 @@ function checkout($conn)
         $quantity = $_POST['quantity' . $i];
         $price = $_POST['price' . $i];
         $total = $quantity * $price;
-        $PaymentMethod= $_POST['paymentMethod'];
+        $PaymentMethod = $_POST['paymentMethod'];
 
         $insertQuery = "INSERT INTO `invoices`( `user_id`, `user_Invoice_id`,`product_id`, `price`, `quantity`, `total`,`payment_method`) 
             VALUES ('$userId','$invoiceId','$productId','$price','$quantity','$total','$PaymentMethod')";
@@ -389,3 +389,81 @@ function getMonthlySalesAndCost($conn)
         'profits' => $profits
     ];
 }
+
+function fetchBlogs($conn)
+{
+
+    $fetchQuery = "SELECT * FROM blogs ORDER BY blog_id DESC;";
+
+    $result = $conn->query($fetchQuery);
+
+    if ($result->num_rows > 0) {
+        // OUTPUT DATA OF EACH ROW 
+        while ($row = $result->fetch_assoc()) {
+
+
+            echo " <div id='blog'>
+        <div id='nameContainer'>
+            <h3>{$row['user_first_name']} {$row['user_last_name']}</h3>
+        </div>
+        <div id='contentContainer'>
+            <p>{$row['content']}</p>
+        </div>
+        <div id='imageContainer'><img src='{$row['image_url']}'  id='blogImage'></div>
+        <div id='likeContainer' class='likeContainer'>
+            <p>Like : </p><p id='likeCount{$row['blog_id']}'>{$row['likes']}</p> 
+            <div><button id='likeBtn{$row['blog_id']}'  class='likeBtn'  name='likebtn'><i class='fa-regular fa-heart' id='likeicon{$row['blog_id']}'></i></button></div>
+        </div>
+        </div>
+        
+        <script>
+    const likeBtn{$row['blog_id']} = document.getElementById('likeBtn{$row['blog_id']}');
+    const likeCount{$row['blog_id']} = document.getElementById('likeCount{$row['blog_id']}');
+    const likeicon{$row['blog_id']} = document.getElementById('likeicon{$row['blog_id']}');
+    let liked{$row['blog_id']} = false;
+    likeBtn{$row['blog_id']}.addEventListener('click', () => {
+
+        if (liked{$row['blog_id']}) {
+            likeBtn{$row['blog_id']}.innerHTML = `<i class='fa-regular fa-heart'></i>`
+            liked{$row['blog_id']} = false;
+            likeCount{$row['blog_id']}.innerHTML = parseInt(likeCount{$row['blog_id']}.innerHTML) - 1;
+
+
+            $.ajax({
+                url: 'add_to_cart.php',
+                method: 'POST',
+                data: {
+                    blogid: {$row['blog_id']},
+                    action: 'nolike'
+                },
+                success: function(response) {
+                    console.log('Like processed:', response);
+                }
+            });
+
+
+        } else {
+            likeBtn{$row['blog_id']}.innerHTML = `<i class='fa-solid fa-heart'></i>`
+            liked{$row['blog_id']} = true;
+            likeCount{$row['blog_id']}.innerHTML = parseInt(likeCount{$row['blog_id']}.innerHTML) + 1;
+
+
+            $.ajax({
+                url: 'add_to_cart.php',
+                method: 'POST',
+                data: {
+                    blog_id: {$row['blog_id']},
+                    action: 'like'
+                },
+                success: function(response) {
+                    console.log('Like processed:', response);
+                }
+            });
+
+        }
+    })
+</script>";
+        }
+    }
+}
+//fetch blog in db

@@ -23,14 +23,12 @@ require_once 'functions.php';
 
     <div class="formContainer">
         <?php
-
-
+        //Display loging message
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $email = $_POST["email"];
             $password = $_POST["password"];
             logIn($email, $password, $conn);
         }
-
         ?>
         <form action="userLogin.php" method="post">
             <h1>Log in</h1>
@@ -45,18 +43,15 @@ require_once 'functions.php';
 
         </form>
     </div>
-<?php include 'mobileNav.html'; ?>
+    <?php include 'mobileNav.html'; ?>
 </body>
-<?php
-$salesData = getMonthlySalesAndCost($conn);
-?>
 
 </html>
 
 <script>
     function togglePasswordVisibility() {
-    const lockIcon = document.getElementById('lockIcon');
-    const passwordInput = document.querySelector('input[name="password"]');
+        const lockIcon = document.getElementById('lockIcon');
+        const passwordInput = document.querySelector('input[name="password"]');
         if (passwordInput.type === 'password') {
             passwordInput.type = 'text';
             lockIcon.classList.remove('bx-lock-alt');
@@ -68,5 +63,4 @@ $salesData = getMonthlySalesAndCost($conn);
             lockIcon.classList.add('bx-lock-alt');
         }
     }
-
 </script>

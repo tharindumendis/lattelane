@@ -20,8 +20,6 @@ require_once 'dataBase.php';
         if ($_SESSION["first_name"] != "") {
             echo ($_SESSION["first_name"] . "...");
         }
-
-
         ?></h1>
     <?php include 'productContainer.php'; ?>
 

@@ -1,4 +1,4 @@
-<?php require_once 'dataBase.php';?>
+<?php require_once 'dataBase.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,35 +10,41 @@
 </head>
 
 <body>
-    <?php include 'tempnav.php'; ?>
-    <div class="userFormContainer">
-        <form action="userRegister.php" class="userForm" id="userForm" method="post" enctype="multipart/form-data">
-            <h1 class="signupHead">Sign Up</h1>
-            <label for="">Name</label><br>
-            <input type="text" name="first_name" placeholder="First Name" required><br>
-            <label for=""></label>
-            <input type="text" name="last_name" placeholder="Last Name" required><br>
-            <label for="">Address</label><br>
-            <input type="text" name="address_no" id="" placeholder="No" required><br>
-            <input type="text" name="street" id="" placeholder="Street" required><br>
-            <input type="text" name="city" id="" placeholder="City" required><br>
-            <label for="">Contact Details</label><br>
-            <input type="text" name="phone" id="" placeholder="Phone"><br>
-            <label for=""></label><br>
-            <input type="text" name="email" placeholder="Email" required><br>
-            <label for="">Password</label><br>
-            <input type="password" name="password" placeholder="Password" required><br>
-            <button class="submitbtn"> Sign Up</button>
-        
-        </form>
-        <p class="signin">Already Have an Account? <a href="userLogin.php" id="signinLink">Sign In</a></p>
+    <div class="mainContainer">
+        <?php include 'tempnav.php'; ?>
 
+        <div class="userFormContainer">
+            <form action="userRegister.php" class="userForm" id="userForm" method="post" enctype="multipart/form-data">
+                <h1 class="signupHead">Sign Up</h1>
+                <label for="">Name</label><br>
+                <input type="text" name="first_name" placeholder="First Name" required><br>
+                <label for=""></label>
+                <input type="text" name="last_name" placeholder="Last Name" required><br>
+                <label for="">Address</label><br>
+                <input type="text" name="address_no" id="" placeholder="No" required><br>
+                <input type="text" name="street" id="" placeholder="Street" required><br>
+                <input type="text" name="city" id="" placeholder="City" required><br>
+                <label for="">Contact Details</label><br>
+                <input type="text" name="phone" id="" placeholder="Phone"><br>
+                <label for=""></label><br>
+                <input type="text" name="email" placeholder="Email" required><br>
+                <label for="">Password</label><br>
+                <input type="password" name="password" placeholder="Password" required><br>
+                <button class="submitbtn"> Sign Up</button>
+                <p class="signin">Already Have an Account? <a href="userLogin.php" id="signinLink">Sign In</a></p>
+            </form>
+
+
+        </div>
     </div>
 
+    <?php include 'mobileNav.html'; ?>
 
 </body>
 
 </html>
+
+
 <?php
 
 

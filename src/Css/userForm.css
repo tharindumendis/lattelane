@@ -10,8 +10,14 @@ body{
     align-items: center;
     background: url('../images/image11.svg') no-repeat center center fixed;
     background-size: cover;
-    height: 100vh;
     font-family: 'Open Sans', sans-serif;
+
+}
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
 }
 .signin{

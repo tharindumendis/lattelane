@@ -27,19 +27,19 @@
             z-index: 999;
         }
 
-        .mobileNav nav {
-            display: flex;
-            width: 100%;
-            flex-direction: row;
-            justify-content: center;
-            z-index: 1000;
-
-        }
 
         .mobileNav a {
             text-decoration: none;
             color: white;
             font-size: 30px;
+        }
+
+        .navlist {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            width: 100%;
+
         }
 
     }
@@ -52,14 +52,12 @@
 
 </head>
 <div class="mobileNav">
-    <nav>
+    <nav class="navlist">
         <a href="userLogin.php"><i class="fa-solid fa-right-to-bracket"></i></a>
         <a href="userRegister.php"><i class="fa-solid fa-address-card"></i></a>
-        <a href="userLogout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
         <a href="userProfile.php"><i class="fa-solid fa-user"></i></a>
         <a href="index.php"><i class="fa-solid fa-house"></i></a>
         <a href="addProductForm.php"><i class="fa-solid fa-cash-register"></i></a>
-        <a href="productContainer.php"><i class="fa-solid fa-cart-plus"></i></a>
         <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
         <a href="dashbord.php"><i class="fa-solid fa-chart-line"></i></a>
         <a href="cafeWall.php"><i class="fa-solid fa-message"></i></a>

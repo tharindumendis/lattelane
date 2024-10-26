@@ -24,9 +24,7 @@ require_once 'functions.php';
 
     </div>
     <div class="productCardContainer" id="productCardContainer">
-
         <?php
-
         // SQL QUERY 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (($_POST['search']) != '') {
@@ -38,12 +36,8 @@ require_once 'functions.php';
         } else {
             $fetchQuery = "SELECT * FROM `products`;";
         }
-
-
         // FETCHING DATA FROM DATABASE
         DisplayProducts($fetchQuery, $conn);
-
-
         ?>
     </div>
     <?php include 'mobileNav.html'; ?>
@@ -53,3 +47,5 @@ require_once 'functions.php';
 <script src="./src/js/postScript.js"></script>
 
 </html>
+
+<?php
