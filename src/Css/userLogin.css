@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
    
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background: url('../images/image11.svg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
@@ -19,6 +19,10 @@ body {
 p{
     color:white;
 
+}
+.email{
+  display: flex;
+  align-items: flex-start;
 }
  
 
@@ -55,9 +59,8 @@ h1 {
     border-radius: 20px;
     border-style: none;
     font-size: 16px;
+    background-color:#508d697e;
     
-    
-    background-color:#508d69;
     transition: all 0.5s ease-in-out;
 }
 .formContainer form input:focus{
@@ -71,6 +74,7 @@ h1 {
 }
 .formContainer form input::placeholder{
     transition: all 0.5s ease-in-out;
+    color:white;
 }
 .formContainer form button:hover{
     background-color: #508D69;
@@ -128,7 +132,7 @@ label{
     font-size: large;
     transform: translate(-50%, 60%);
 }
-.lockIconOpen{
+#lockIconOpen{
     cursor: pointer;
     position: absolute;
     right: 40px;
@@ -136,20 +140,20 @@ label{
     color: red;
     transform: translate(-50%, 60%);
 }
-.lockIconOpen:hover{
+#lockIconOpen:hover{
     color: rgb(153, 0, 0);
     scale: 1.1;
 
 }
-#singupLink{
-    color: rgb(255, 255, 255);
-    
-  
+#signupLink {
+    color:white;
+    text-decoration: underline; 
     
 }
-#singupLink:hover{
-    color: rgb(247, 255, 251);
-    border: solid 3px #fff8;
+
+#signupLink:hover {
+    color: white; 
+    text-decoration: none; 
 }
 #message{
     display: flex;

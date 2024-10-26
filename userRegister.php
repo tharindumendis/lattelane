@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="src/Css/userForm.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -14,24 +15,24 @@
     <div class="userFormContainer">
         <form action="userRegister.php" class="userForm" id="userForm" method="post" enctype="multipart/form-data">
             <h1 class="signupHead">Sign Up</h1>
-            <label for="">First Name</label>
-            <input type="text" name="first_name" placeholder="First Name" required>
-            <label for="">Last Name</label>
+            <label for="">Name</label><br>
+            <input type="text" name="first_name" placeholder="First Name" required><br>
+            <label for=""></label>
             <input type="text" name="last_name" placeholder="Last Name" required><br>
             <label for="">Address</label><br>
             <input type="text" name="address_no" id="" placeholder="No" required><br>
             <input type="text" name="street" id="" placeholder="Street" required><br>
             <input type="text" name="city" id="" placeholder="City" required><br>
-            <label for="">Phone</label><br>
+            <label for="">Contact Details</label><br>
             <input type="text" name="phone" id="" placeholder="Phone"><br>
-            <label for="">Email</label><br>
+            <label for=""></label><br>
             <input type="text" name="email" placeholder="Email" required><br>
             <label for="">Password</label><br>
             <input type="password" name="password" placeholder="Password" required><br>
             <button class="submitbtn"> Sign Up</button>
         
         </form>
-        <p class="signin">Already Have an Account? <a href="userLogin.php" id="singupLink">Sign In</a></p>
+        <p class="signin">Already Have an Account? <a href="userLogin.php" id="signinLink">Sign In</a></p>
 
     </div>
 </body>

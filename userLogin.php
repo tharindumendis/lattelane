@@ -32,14 +32,14 @@ require_once 'functions.php';
         ?>
         <form action="userLogin.php" method="post">
             <h1 >Welcome Back!</h1>
-            <label for="email">Email</label>
-            <input type="text" name="email" placeholder="email" required>
-            <label for="password">Password</label>
-            <div class="passwordContainer"><input type="password" name="password" placeholder="password" required>
+            <label for="email" class="email" ></label>
+            <input type="text" name="email"  placeholder="Email" required>
+            <label for="password" class="email"></label>
+            <div class="passwordContainer"><input type="password" name="password" placeholder="Password" required>
                 <i class='bx bxs-lock-alt' id="lockIcon"></i>
             </div>
             <button>Log in</button>
-            <p>Need an account? <a href="userRegister.php" id="singupLink"><u>Sign up</u></a></p>
+            <p>Need an account? <a href="userRegister.php" id="signupLink">Sign up</a></p>
 
         </form>
     </div>
