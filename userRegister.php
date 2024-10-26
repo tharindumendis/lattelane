@@ -9,10 +9,11 @@
 </head>
 
 <body>
+    
     <?php include 'tempnav.php'; ?>
     <div class="userFormContainer">
         <form action="userRegister.php" class="userForm" id="userForm" method="post" enctype="multipart/form-data">
-            <h1>User Register Form</h1>
+            <h1>Sign Up</h1>
             <label for="">First Name</label>
             <input type="text" name="first_name" placeholder="First Name" required>
             <label for="">Last Name</label>
@@ -26,8 +27,8 @@
             <label for="">Email</label>
             <input type="text" name="email" placeholder="Email" required>
             <label for="">Password</label>
-            <input type="password" name="password" placeholder="Password" required>
-            <button class="submitbtn"> Register new user</button>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <button class="submitbtn"> Sign Up</button>
         </form>
     </div>
 </body>

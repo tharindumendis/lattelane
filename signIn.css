@@ -4,6 +4,7 @@ body{
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    width:100vw;
 }
 #welcomeBack{
     text-align:center ;
@@ -15,6 +16,7 @@ body{
 }
 #container{
    text-align:center ;
+   font-family: ;
 }
 #userform{
     text-align:center ;
