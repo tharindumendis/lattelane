@@ -17,9 +17,7 @@ require_once 'functions.php';
 </head>
 
 <body>
-    <div>
-        <?php include 'tempnav.php'; ?>
-    </div>
+    
 
     <div class="formContainer">
         <?php
@@ -33,7 +31,7 @@ require_once 'functions.php';
 
         ?>
         <form action="userLogin.php" method="post">
-            <h1>Welcome Back!</h1>
+            <h1 >Welcome Back!</h1>
             <label for="email">Email</label>
             <input type="text" name="email" placeholder="email" required>
             <label for="password">Password</label>
@@ -41,7 +39,7 @@ require_once 'functions.php';
                 <i class='bx bxs-lock-alt' id="lockIcon"></i>
             </div>
             <button>Log in</button>
-            <p>Need an account? <a href="userRegister.php" id="singupLink">Sign up</a></p>
+            <p>Need an account? <a href="userRegister.php" id="singupLink"><u>Sign up</u></a></p>
 
         </form>
     </div>

@@ -10,26 +10,29 @@
 
 <body>
     
-    <?php include 'tempnav.php'; ?>
+   
     <div class="userFormContainer">
         <form action="userRegister.php" class="userForm" id="userForm" method="post" enctype="multipart/form-data">
-            <h1>Sign Up</h1>
+            <h1 class="signupHead">Sign Up</h1>
             <label for="">First Name</label>
             <input type="text" name="first_name" placeholder="First Name" required>
             <label for="">Last Name</label>
-            <input type="text" name="last_name" placeholder="Last Name" required>
-            <label for="">Address</label>
-            <input type="text" name="address_no" id="" placeholder="No" required>
-            <input type="text" name="street" id="" placeholder="Street" required>
-            <input type="text" name="city" id="" placeholder="City" required>
-            <label for="">Phone</label>
-            <input type="text" name="phone" id="" placeholder="Phone">
-            <label for="">Email</label>
-            <input type="text" name="email" placeholder="Email" required>
-            <label for="">Password</label>
+            <input type="text" name="last_name" placeholder="Last Name" required><br>
+            <label for="">Address</label><br>
+            <input type="text" name="address_no" id="" placeholder="No" required><br>
+            <input type="text" name="street" id="" placeholder="Street" required><br>
+            <input type="text" name="city" id="" placeholder="City" required><br>
+            <label for="">Phone</label><br>
+            <input type="text" name="phone" id="" placeholder="Phone"><br>
+            <label for="">Email</label><br>
+            <input type="text" name="email" placeholder="Email" required><br>
+            <label for="">Password</label><br>
             <input type="password" name="password" placeholder="Password" required><br>
             <button class="submitbtn"> Sign Up</button>
+        
         </form>
+        <p class="signin">Already Have an Account? <a href="userLogin.php" id="singupLink">Sign In</a></p>
+
     </div>
 </body>
 
