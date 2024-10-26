@@ -1,3 +1,7 @@
+<?php
+require_once 'dataBase.php';
+require_once 'functions.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,9 +37,7 @@
 <body>
     <?php include('tempnav.php'); ?>
     <?php include 'mobileNav.html'; ?>
-    <?php
-    require_once 'dataBase.php';
-    ?>
+
     <form action="userUpdate.php" method="POST">
         <button name=crearCart>Clear Cart</button>
     </form>
@@ -54,7 +56,7 @@
                 <tbody>
 
                     <?php
-                    require_once 'functions.php';
+
                     getCartItems($conn)
                     ?>
                     <tr>
@@ -77,27 +79,27 @@
             <input type="radio" name="paymentMethod" id="" value="visa/ master" onclick="cardFormShow()">
         </form>
         <div class="card-form" id="cardForm" style="display: none;">
-            
+
+            <div class="form-group">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" name="cardNumber" id="cardNumber" maxlength="16">
+            </div>
+            <div class="form-group">
+                <label for="cardName">Cardholder Name:</label>
+                <input type="text" name="cardName" id="cardName">
+            </div>
+            <div class="form-row">
                 <div class="form-group">
-                    <label for="cardNumber">Card Number:</label>
-                    <input type="text" name="cardNumber" id="cardNumber" maxlength="16">
+                    <label for="expiryDate">Expiry Date:</label>
+                    <input type="text" name="expiryDate" id="expiryDate" placeholder="MM/YY" maxlength="5">
                 </div>
                 <div class="form-group">
-                    <label for="cardName">Cardholder Name:</label>
-                    <input type="text" name="cardName" id="cardName">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" name="cvv" id="cvv" maxlength="3">
                 </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="expiryDate">Expiry Date:</label>
-                        <input type="text" name="expiryDate" id="expiryDate" placeholder="MM/YY" maxlength="5">
-                    </div>
-                    <div class="form-group">
-                        <label for="cvv">CVV:</label>
-                        <input type="text" name="cvv" id="cvv" maxlength="3">
-                    </div>
-                </div>
-                
-            
+            </div>
+
+
         </div>
     </div>
     <div>
@@ -110,5 +112,3 @@
 
 </html>
 
-<?php
-require_once 'dataBase.php';

@@ -1,3 +1,4 @@
+console.log("poatscript");
 $(document).ready(function () {
   $("[name='add-to-cart']").click(function () {
     var productId = $(this).data("product-id");
@@ -14,5 +15,7 @@ $(document).ready(function () {
     });
   });
 });
+
+console.log("poatscript");
 
 

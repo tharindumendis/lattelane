@@ -1,42 +1,17 @@
 body {
     margin: 0;
     padding: 0;
-   
-    font-family: 'Open Sans', sans-serif;
-    background: url('../images/image11.svg') no-repeat center center fixed;
+    font-family: Arial, sans-serif;
+    background: url('../images/loginBI.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
   }
-
 .formContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    
-  }
-p{
-    color:white;
-
-}
-.email{
-  display: flex;
-  align-items: flex-start;
-}
- 
-
-
-h1 {
-    display: block;
-    font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-    unicode-bidi: isolate;
-    color:white;
   }
 .formContainer form {
     display: flex;
@@ -47,8 +22,8 @@ h1 {
     width: 300px;
     padding: 20px;
     border-radius: 20px;
-    background-color: #508d6930;
-    backdrop-filter: blur(6px);
+    background-color: #f5f5f52c;
+    backdrop-filter: blur(10px);
     box-shadow: 0 0px 10px #6f6f6f5b;
 }
 .formContainer form input{
@@ -57,10 +32,11 @@ h1 {
     padding:8px;
     margin-bottom: 20px;
     border-radius: 20px;
-    border-style: none;
+    border-style: solid;
     font-size: 16px;
-    background-color:#508d697e;
-    
+    border-width: 5px;
+    border-color: rgba(0, 0, 0, 0.69);
+    background-color: rgba(255, 255, 255, 0.1);
     transition: all 0.5s ease-in-out;
 }
 .formContainer form input:focus{
@@ -74,22 +50,20 @@ h1 {
 }
 .formContainer form input::placeholder{
     transition: all 0.5s ease-in-out;
-    color:white;
 }
 .formContainer form button:hover{
-    background-color: #508D69;
+    background-color: rgb(0, 176, 91);
     color: #f5f5f5;
 }
 
 label{
     display: flex;
-    
     align-items: center;
     align-content: center;
     justify-content: center;
     width: 100px;
     padding: 10px;
-    color:white;
+    color:#000000;
     font-weight: bold;
     font-size: 16px;
 }
@@ -102,7 +76,7 @@ label{
     padding: 10px;
     border-radius: 20px;
     border: none;
-    background-color: #508D69;
+    background-color: rgb(0, 153, 79);
     color:#f5f5f5;
     font-weight: bold;
     font-size: 15px;
@@ -132,7 +106,7 @@ label{
     font-size: large;
     transform: translate(-50%, 60%);
 }
-#lockIconOpen{
+.lockIconOpen{
     cursor: pointer;
     position: absolute;
     right: 40px;
@@ -140,20 +114,21 @@ label{
     color: red;
     transform: translate(-50%, 60%);
 }
-#lockIconOpen:hover{
+.lockIconOpen:hover{
     color: rgb(153, 0, 0);
     scale: 1.1;
 
 }
-#signupLink {
-    color:white;
-    text-decoration: underline; 
-    
+#singupLink{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    border: solid 3px rgba(0, 0, 0, 0.138);
+    padding: 2px 6px;
+    border-radius: 20px;
 }
-
-#signupLink:hover {
-    color: white; 
-    text-decoration: none; 
+#singupLink:hover{
+    color: rgb(247, 255, 251);
+    border: solid 3px #fff8;
 }
 #message{
     display: flex;

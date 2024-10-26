@@ -10,23 +10,23 @@ dilshi
 To Do List
 
 Cart Add Logic - Done
-Cart Remove Logic -
-Cart Update Logic -
-Cart View -
-Cart Delete -
-Cart Checkout -
+Cart Remove Logic - Done
+Cart Update Logic - Done
+Cart View - Done
+Cart Delete - Done
+Cart Checkout - Done
 
 User Login - Done
 User Signup - Done
-User Logout - 
+User Logout - Done
 Admin logic - Done
-Profile view -
+Profile view - Done
 
 Register Product - Done
 Register Category -
 
-Blog Post -
+Blog Post - Done
 
-DashBord -
+DashBord - Done
 
 

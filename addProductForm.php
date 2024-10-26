@@ -1,4 +1,6 @@
-
+<?php
+require_once 'dataBase.php';
+?>
 
 
 <!DOCTYPE html>
@@ -14,7 +16,7 @@
 <body>
     <?php include 'tempnav.php'; ?>
     <?php include 'mobileNav.html'; ?>
-    
+
     <div class="formContainer">
         <form action="addProductForm.php" method="post" id="addProductForm" enctype="multipart/form-data">
             <h1>Product Register Form</h1>
@@ -45,7 +47,7 @@
 </html>
 
 <?php
-require_once 'dataBase.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $productName = $_POST["product_name"];
     $description = $_POST["description"];

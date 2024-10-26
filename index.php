@@ -23,6 +23,7 @@ require_once 'dataBase.php';
 
 
         ?></h1>
+    <?php include 'productContainer.php'; ?>
 
     <?php include 'mobileNav.html'; ?>
 </body>

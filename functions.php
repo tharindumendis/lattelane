@@ -57,7 +57,6 @@ function clearCart()
 // To display the products
 function DisplayProducts($fetchQuery, $conn)
 {
-    require_once 'dataBase.php';
     $result = $conn->query($fetchQuery);
 
     if ($result->num_rows > 0) {

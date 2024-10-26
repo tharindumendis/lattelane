@@ -45,7 +45,7 @@ require_once 'functions.php';
 
         </form>
     </div>
-
+<?php include 'mobileNav.html'; ?>
 </body>
 <?php
 $salesData = getMonthlySalesAndCost($conn);
