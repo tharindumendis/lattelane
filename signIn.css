@@ -1,0 +1,25 @@
+body{
+    background: url(image11.svg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#welcomeBack{
+    text-align:center ;
+    color:white;
+    font-size: 50px;
+    display:flex;
+    flex-direction:column;
+
+}
+#container{
+   text-align:center ;
+}
+#userform{
+    text-align:center ;
+
+}
+#bottom{
+    text-align:center ;
+}

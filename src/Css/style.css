@@ -409,7 +409,6 @@ nav{
     height: 100%;
     grid-column: 3;
     grid-row: 1;
-    border
 }
 .adImageRight{
     height: 400px;
@@ -435,6 +434,12 @@ nav{
     height: 100%;
     grid-column: 2;
     grid-row: 1;
+}
+.cardDetailsContainerShow{
+    display: block;
+}
+.cardDetailsContainerHide{
+    display: none;
 }
 
 

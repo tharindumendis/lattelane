@@ -1,8 +1,6 @@
 <style>
     .navContainer {
         display: flex;
-        position: absolute;
-        top: 0;
         justify-content: space-between;
         align-items: center;
         background-color: #00000044;
@@ -11,6 +9,9 @@
         margin-left: 8%;
         border-radius: 0 0 20px 20px;
         height: 70px;
+        position: fixed;
+        top: 0;
+        z-index: 1000;
 
     }
 
@@ -73,6 +74,7 @@
         <a href="userLogin.php">Sign In</a>
         <a href="userLogout.php">Sign Out</a>
         <a href="userProfile.php">Profile</a>
+        <a href="cafeWall.php">CafeWall</a>
         <a href="index.php">Home</a>
         <a href="addProductForm.php">Add Product</a>
         <a href="productContainer.php">Shop</a>

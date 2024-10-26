@@ -37,63 +37,72 @@ require_once 'functions.php';
 
 <body>
     <?php include 'tempnav.php'; ?>
-    <h2>Dashbord</h2>
-    <div class="salesChartContainer">
-        <canvas id="salesChart"></canvas>
+    <?php include 'mobileNav.html'; ?>
+
+    <div >
+
+
+        <div>
+
+
+            <h2>Dashbord</h2>
+            <div class="salesChartContainer">
+                <canvas id="salesChart"></canvas>
+            </div>
+            <div>
+                <button id="showInvoice">Show Invoices</button>
+            </div>
+            <h2>Monthly Sales Summary</h2>
+            <table id="salesTable">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Sales</th>
+                        <th>Cost</th>
+                        <th>Profit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    getMonthlySalesAndCostByTable($conn)
+                    ?>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="invoiceContainer" class="invoiceContainerHide">
+            <h2>Salea by invoce</h2>
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Invoice ID</th>
+                        <!-- <th>Date</th> -->
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <!-- <th>Status</th> -->
+                        <!-- <th>user_id</th> -->
+                        <th>Payment Method</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <?php
+                    if ($_SESSION["id"] != "") {
+                        getAllinvoces($conn);
+                    }
+
+                    ?>
+                </tbody>
+            </table>
+
+
+
+        </div>
+
+
     </div>
-    <div>
-        <button id="showInvoice">Show Invoices</button>
-    </div>
-    <div>
-        <h2>Monthly Sales Summary</h2>
-        <table id="salesTable">
-            <thead>
-                <tr>
-                    <th>Month</th>
-                    <th>Sales</th>
-                    <th>Cost</th>
-                    <th>Profit</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                getMonthlySalesAndCostByTable($conn)
-                ?>
-            </tbody>
-        </table>
-    </div>
-
-    <div id="invoiceContainer" class="invoiceContainerHide">
-        <h2>Salea by invoce</h2>
-        <table>
-
-            <thead>
-                <tr>
-                    <th>Invoice ID</th>
-                    <!-- <th>Date</th> -->
-                    <th>Product Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <!-- <th>Status</th> -->
-                    <!-- <th>user_id</th> -->
-                    <th>Payment Method</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-                <?php
-                if ($_SESSION["id"] != "") {
-                    getAllinvoces($conn);
-                }
-
-                ?>
-            </tbody>
-        </table>
-
-
-
-    </div>
-
 
 
 
