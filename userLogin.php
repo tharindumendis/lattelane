@@ -17,7 +17,9 @@ require_once 'functions.php';
 </head>
 
 <body>
-    
+    <div>
+        <?php include 'tempnav.php'; ?>
+    </div>
 
     <div class="formContainer">
         <?php
@@ -31,11 +33,11 @@ require_once 'functions.php';
 
         ?>
         <form action="userLogin.php" method="post">
-            <h1 >Welcome Back!</h1>
-            <label for="email" class="email" ></label>
-            <input type="text" name="email"  placeholder="Email" required>
-            <label for="password" class="email"></label>
-            <div class="passwordContainer"><input type="password" name="password" placeholder="Password" required>
+            <h1>Log in</h1>
+            <label for="email">Email</label>
+            <input type="text" name="email" placeholder="email" required>
+            <label for="password">Password</label>
+            <div class="passwordContainer"><input type="password" name="password" placeholder="password" required>
                 <i class='bx bxs-lock-alt' id="lockIcon"></i>
             </div>
             <button>Log in</button>
@@ -48,72 +50,23 @@ require_once 'functions.php';
 <?php
 $salesData = getMonthlySalesAndCost($conn);
 ?>
-<script>
-    const ctx = document.getElementById('salesChart');
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: <?php echo json_encode($salesData['months']); ?>,
-            datasets: [{
-                    label: 'Sales',
-                    data: <?php echo json_encode($salesData['sales']); ?>,
-                    borderColor: '#4A90E2',
-                    tension: 0.1,
-                    fill: false
-                },
-                {
-                    label: 'Cost',
-                    data: <?php echo json_encode($salesData['costs']); ?>,
-                    borderColor: '#E24A4A',
-                    tension: 0.1,
-                    fill: false
-                },
-                {
-                    label: 'Profit',
-                    data: <?php echo json_encode($salesData['profits']); ?>,
-                    borderColor: '#4AE24A',
-                    tension: 0.1,
-                    fill: false
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Amount (Rs.)'
-                    }
-                },
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Month'
-                    }
-                }
-            },
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Monthly Sales, Cost and Profit Overview',
-                    font: {
-                        size: 16
-                    }
-                },
-                legend: {
-                    display: true,
-                    position: 'top'
-                }
-            }
-        }
-    });
-</script>
-
 
 </html>
 
 <script>
+    function togglePasswordVisibility() {
+    const lockIcon = document.getElementById('lockIcon');
+    const passwordInput = document.querySelector('input[name="password"]');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            lockIcon.classList.remove('bx-lock-alt');
+            lockIcon.classList.add('lockIconOpen');
+
+        } else {
+            passwordInput.type = 'password';
+            lockIcon.classList.remove('lockIconOpen');
+            lockIcon.classList.add('bx-lock-alt');
+        }
+    }
 
 </script>

@@ -13,6 +13,7 @@
 
 <body>
     <?php include 'tempnav.php'; ?>
+    <?php include 'mobileNav.html'; ?>
     
     <div class="formContainer">
         <form action="addProductForm.php" method="post" id="addProductForm" enctype="multipart/form-data">

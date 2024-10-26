@@ -116,6 +116,7 @@ require_once 'functions.php';
 
 <body>
     <?php include 'tempnav.php'; ?>
+    <?php include 'mobileNav.html'; ?>
 
     <div class="profileContainer">
         <h2>Profile Details</h2>

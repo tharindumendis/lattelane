@@ -1,3 +1,4 @@
+<?php require_once 'dataBase.php';?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,12 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="src/Css/userForm.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    
-   
+    <?php include 'tempnav.php'; ?>
     <div class="userFormContainer">
         <form action="userRegister.php" class="userForm" id="userForm" method="post" enctype="multipart/form-data">
             <h1 class="signupHead">Sign Up</h1>
@@ -35,11 +34,13 @@
         <p class="signin">Already Have an Account? <a href="userLogin.php" id="signinLink">Sign In</a></p>
 
     </div>
+
+
 </body>
 
 </html>
 <?php
-require_once 'dataBase.php';
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $first_name = $_POST["first_name"];

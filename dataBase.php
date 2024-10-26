@@ -42,28 +42,66 @@ if ($conn->query($sql) === TRUE) {
 } else {
     //echo "Error creating table: " . $conn->error;
 }
-$sql = "CREATE TABLE IF NOT EXISTS Users (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
-    city VARCHAR(50) NOT NULL,
-    street VARCHAR(50) NOT NULL,
-    address_no VARCHAR(50) NOT NULL,
-    phone VARCHAR(10),
-    email VARCHAR(50) NOT NULL unique,
-    password VARCHAR(200) NOT NULL,
-    admin TINYINT(1) DEFAULT 0
-)";
+
 
 
 //CREATE TABLE `lattelane_db`.`invoices` (`invoice_id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NOT NULL , `product_id` INT NOT NULL , `price` INT NOT NULL , `quantity` INT NOT NULL , `total` INT NOT NULL , PRIMARY KEY (`invoice_id`)) ENGINE = InnoDB;
-
-
-if ($conn->query($sql) === TRUE) {
+$sqlInvoice = "CREATE TABLE IF NOT EXISTS `invoices` (
+    `invoice_id` int NOT NULL AUTO_INCREMENT,
+    `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `user_id` int NOT NULL,
+    `product_id` int NOT NULL,
+    `price` int NOT NULL,
+    `quantity` int NOT NULL,
+    `total` int NOT NULL,
+    `user_Invoice_id` int NOT NULL,
+    `status` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Pending',
+    `payment_method` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'visa/ master',
+    PRIMARY KEY (`invoice_id`)
+  ) ENGINE=InnoDB AUTO_INCREMENT=144 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;";
+if ($conn->query($sqlInvoice) === TRUE) {
     // "Table 'products' created successfully or already exists";
-} else {
-    //echo "Error creating table: " . $conn->error;
 }
+
+
+$sqlUser = "CREATE TABLE IF NOT EXISTS `users` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `street` varchar(50) NOT NULL,
+  `address_no` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `phone` varchar(10) DEFAULT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `admin` tinyint(1) DEFAULT NULL,
+  `bill_count` int NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+";
+
+if ($conn->query($sqlUser) === TRUE) {
+    // "Table 'products' created successfully or already exists";
+}
+
+$sqlProducts = "CREATE TABLE IF NOT EXISTS `products` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `product_name` varchar(100) NOT NULL,
+  `description` text,
+  `category` varchar(50) DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
+  `cost` decimal(10,2) DEFAULT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+";
+if ($conn->query($sqlProducts) === TRUE) {
+    // "Table 'products' created successfully or already exists";
+}
+
+
+
 
 
 // Check if admin user exists
@@ -84,9 +122,9 @@ if ($result->num_rows == 0) {
 }
 
 // Start the session
-
-session_start();
-
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 //Set session variables
 if (isset($_SESSION["id"])) {
