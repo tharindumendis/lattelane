@@ -1,0 +1,23 @@
+.emailLine{
+    display: flex;
+}
+td{
+
+}
+tr{
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    border-bottom: 1px solid black;
+}
+
+
+@media (max-width: 768px) {
+    .nameColumn{
+        display: none;
+    }
+    .phoneLine{
+        display: none;
+    }
+}

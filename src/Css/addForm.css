@@ -5,6 +5,22 @@ body {
     margin: 0;
     padding: 0;
 }
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+.subContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
 .formContainer{
     display: flex;
     justify-content: center;
@@ -20,6 +36,9 @@ body {
     border-radius: 10px;
     padding: 20px;
     margin: 20px;
+}
+#addProductForm h2{
+    margin-bottom: 10px;
 }
 #addProductForm input{
     display: flex;
@@ -37,6 +56,7 @@ body {
     margin-bottom: 10px;
     max-width: 360px;
     max-height: 200px;
+    padding: 5px;
 }
 #addProductForm select{
     background-color: #eee;
@@ -80,4 +100,22 @@ form button:active{
     background-color: rgb(0, 99, 46);
     color: #efefef;
     scale: 0.9;
+}
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+    body{
+        flex-direction: column;
+    }
+    .subContainer{
+        flex-direction: column;
+        padding-bottom: 100px;
+    }
 }

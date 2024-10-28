@@ -17,33 +17,38 @@ require_once 'functions.php';
 </head>
 
 <body>
-    <div>
-        <?php include 'tempnav.php'; ?>
+    <div class="mainContainer">
+        <div>
+            <?php include 'tempnav.php';
+            include 'mobileNav.html';
+            ?>
+        </div>
+
+        <div class="formContainer">
+            <?php
+            //Display loging message
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $email = $_POST["email"];
+                $password = $_POST["password"];
+                logIn($email, $password, $conn);
+            }
+            ?>
+            <form action="userLogin.php" method="post">
+                <h1>Log in</h1>
+                <label for="email">Email</label>
+                <input type="text" name="email" placeholder="email" required>
+                <label for="password">Password</label>
+                <div class="passwordContainer"><input type="password" name="password" placeholder="password" required>
+                    <i class='bx bxs-lock-alt' id="lockIcon"></i>
+                </div>
+                <button>Log in</button>
+                <p>Need an account? <a href="userRegister.php" id="signupLink">Sign up</a></p>
+
+            </form>
+        </div>
+
     </div>
 
-    <div class="formContainer">
-        <?php
-        //Display loging message
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $email = $_POST["email"];
-            $password = $_POST["password"];
-            logIn($email, $password, $conn);
-        }
-        ?>
-        <form action="userLogin.php" method="post">
-            <h1>Log in</h1>
-            <label for="email">Email</label>
-            <input type="text" name="email" placeholder="email" required>
-            <label for="password">Password</label>
-            <div class="passwordContainer"><input type="password" name="password" placeholder="password" required>
-                <i class='bx bxs-lock-alt' id="lockIcon"></i>
-            </div>
-            <button>Log in</button>
-            <p>Need an account? <a href="userRegister.php" id="signupLink">Sign up</a></p>
-
-        </form>
-    </div>
-    <?php include 'mobileNav.html'; ?>
 </body>
 
 </html>

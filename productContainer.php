@@ -29,12 +29,12 @@ require_once 'functions.php';
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (($_POST['search']) != '') {
                 $search = $_POST['search'];
-                $fetchQuery = "SELECT * FROM `products` WHERE product_name LIKE '%{$search}%';";
+                $fetchQuery = "SELECT * FROM `products` WHERE product_name LIKE '%{$search}%' AND active = 1;";
             } else {
-                $fetchQuery = "SELECT * FROM `products`;";
+                $fetchQuery = "SELECT * FROM `products`WHERE active = 1;";
             }
         } else {
-            $fetchQuery = "SELECT * FROM `products`;";
+            $fetchQuery = "SELECT * FROM `products` WHERE active = 1;";
         }
         // FETCHING DATA FROM DATABASE
         DisplayProducts($fetchQuery, $conn);

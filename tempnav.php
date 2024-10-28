@@ -5,19 +5,17 @@
 <nav class="navContainer">
     <div class="navLeft">
         <div class="logoContainer"></div>
-        <div class="logologo"></div>
+        <div class="logologo">
+            <div class="logoText"></div>
+        </div>
+
     </div>
 
     <div class="navRight">
-        <a href="userRegister.php">Sign Up</a>
-        <a href="userLogin.php">Sign In</a>
-        <a href="userProfile.php">Profile</a>
-        <a href="cafeWall.php">CafeWall</a>
-        <a href="index.php">Home</a>
-        <a href="addProductForm.php">Add Product</a>
-        <a href="cart.php">Cart</a>
-        <a href="dashbord.php">Dashbord</a>
-
+        <a class="navLink" href="index.php">Home</a>
+        <a class="navLink" href="cafeWall.php">Cafe Wall</a>
+        <a class="navLink" href="userProfile.php"><i class="fa-solid fa-user"></i></a>
+        <a class="navLink" href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
     </div>
 
 </nav>

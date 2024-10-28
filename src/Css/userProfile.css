@@ -9,6 +9,15 @@
     justify-content: center;
     align-items: center;
     width: 100vw;
+    padding-bottom: 100px;
+}
+.subContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100vw;
+    padding: 20px;
+    gap: 10px;
 }
 
 .profilePic {
@@ -24,6 +33,7 @@
     justify-content: center;
     align-items: center;
     width: 360px;
+    height:640px;
     border: solid 5px #0009;
     border-radius: 10px;
 }
@@ -34,9 +44,18 @@
     align-items: center;
     padding: 20px;
 }
+.profileBtn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
 
 .profilePicContainer a {
     text-decoration: none;
+    font-size: small;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,6 +63,7 @@
     height: 50px;
     background-color: #00000011;
     border-radius: 25px;
+    gap: 10px;
 }
 
 .profileContainer h2 {
@@ -112,4 +132,56 @@
     align-items: center;
     margin-top: 10px;
 
+}
+#editSubmit{
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #008738;
+    color: aliceblue;
+    border: none;
+    cursor: pointer;
+}
+.orderHistoryContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    height: 640px;
+    padding: 10px;
+    overflow: scroll;
+    border: solid 5px #0009;
+    border-radius: 10px;
+}
+.orderHistoryContainer h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: fit-content;
+    backdrop-filter: blur(2px);
+    position: sticky;
+    top: 0;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+th{
+    background-color: #00000011;
+}
+
+@media screen and (max-width: 768px) {
+    .profileContainer {
+        margin-top: 50px;
+        width: 90vw;
+        border: none;
+
+    }
+    .subContainer{
+        flex-direction: column;
+        align-items: center;
+    }
+    .orderHistoryContainer{
+        width: 90vw;
+        border: none;
+    }
 }

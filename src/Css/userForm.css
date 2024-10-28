@@ -49,10 +49,9 @@ label{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 750px;
-    width: 300px;
-    padding: 20px;
+    width: 280px;
     border-radius: 20px;
+    padding: 20px;
     background-color: #508d6930;
     backdrop-filter: blur(6px);
     box-shadow: 0 0px 10px #6f6f6f5b;

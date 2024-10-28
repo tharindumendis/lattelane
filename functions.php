@@ -235,20 +235,19 @@ function displayBills($conn)
 
 
                 echo "<tr>";
-                echo "<td>" . "" . "</td>";
-                echo "<td>" . $tempdate . "</td>";
-                echo "<td>" . "" . "</td>";
-                echo "<td>" . "" . "</td>";
-                // echo "<td>" . "" . "</td>";
-                echo "<td>" . $temptotal . ".00" . "</td>";
-                // echo "<td>" . "" . "</td>";
-                echo "<td>" . $tempmethod . "</td>";
-                echo "<td>" . "" . "</td>";
+                echo "<th>" . "" . "</th>";
+                echo "<th>" . $tempdate . "</th>";
+                echo "<th>" . "" . "</th>";
+                echo "<th>" . $tempmethod . "</th>";
+                // echo "<th>" . "" . "</th>";
+                echo "<th>" . $temptotal . ".00" . "</th>";
+                // echo "<th>" . "" . "</th>";
+                echo "<th>" . "" . "</th>";
                 echo "</tr>";
                 $temp--;
                 $temptotal = 0;
                 echo "<tr>";
-                echo "<td>" . "." . "</td>";
+                echo "<td>" . "__" . "</td>";
                 echo "</tr>";
             }
             $temptotal +=  $row['total'];
@@ -265,23 +264,28 @@ function displayBills($conn)
             $tempdate  = $row['date'];
         }
     } else {
-        echo "<tr><td colspan='9'>No bills found</td></tr>";
+        echo "<tr><td colspan='9'>No bills found</th></tr>";
     }
     echo "<tr>";
-    echo "<td>" . "" . "</td>";
-    echo "<td>" . $tempdate . "</td>";
-    echo "<td>" . "" . "</td>";
-    echo "<td>" . "" . "</td>";
-    // echo "<td>" . "" . "</td>";
-    echo "<td>" . $temptotal . ".00" . "</td>";
-    // echo "<td>" . "" . "</td>";
-    echo "<td>" . $tempmethod . "</td>";
-    echo "<td>" . "" . "</td>";
+    echo "<th>" . "" . "</th>";
+    echo "<th>" . $tempdate . "</th>";
+    echo "<th>" . "" . "</th>";
+    echo "<th>" . $tempmethod . "</th>";
+    // echo "<th>" . "" . "</th>";
+    echo "<th>" . $temptotal . ".00" . "</th>";
+    // echo "<th>" . "" . "</th>";
+    echo "<th>" . "" . "</th>";
     echo "</tr>";
     $temp--;
     $temptotal = 0;
     echo "<tr>";
-    echo "<td>" . "." . "</td>";
+    echo "<th>" . "." . "</th>";
+    echo "</tr>";
+
+    $temp--;
+    $temptotal = 0;
+    echo "<tr>";
+    echo "<td>" . "" . "</td>";
     echo "</tr>";
 }
 

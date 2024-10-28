@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(41, 41, 41);
+}
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    width: 100vw;
+    background-color: #000;
+}
+
+.adminPanelContainer{
+    display: flex;
+    position: fixed;
+    left: 10px;
+    top: 100px;
+    z-index: 999;
+
+}
+.adminPanel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+
+}
+.panelBtn{
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+}
+.panelLabel{
+    color: white;
+    margin-bottom: 10px;
+}
+.adminPanel button i{
+    scale: 2;
+}
+.btnSet{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .adminPanelContainer{
+        position: relative;
+        left:unset;
+        top: unset;
+    }
+    .adminPanel{
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 20px;
+        width: 80vw;
+        background-color: rgba(255, 255, 255, 0.06);
+        border-radius: 10px;
+
+    }
+    .btnSet{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .panelBtn{
+        width: 100px;
+        height: 100px;
+        border-radius: 20px;
+    }
+    .panelLabel{
+        color: white;
+        margin-bottom: 10px;
+    }
+    .adminPanel button i{
+        scale: 4;
+    }
+}

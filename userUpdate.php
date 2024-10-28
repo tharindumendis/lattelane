@@ -57,3 +57,36 @@ if (isset($_POST['submitInvoice'])) {
         }
     }
 }
+
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['status'])) {
+    $status = $_POST['status'];
+    $userId = $_POST['userId'];
+    
+    $sql = "UPDATE users SET admin = ? WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $status, $userId);
+    
+    if ($stmt->execute()) {
+        echo "Admin status updated successfully";
+    } else {
+        echo "Error updating admin status";
+    }
+    
+    $stmt->close();
+}
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
+    $userId = $_POST['userId'];
+    
+    $sql = "DELETE FROM users WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $userId);    
+    if ($stmt->execute()) {
+        echo "Admin status updated successfully";
+    } else {
+        echo "Error updating admin status";
+    }
+    
+    $stmt->close();
+}

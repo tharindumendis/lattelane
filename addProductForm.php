@@ -14,33 +14,44 @@ require_once 'dataBase.php';
 </head>
 
 <body>
-    <?php include 'tempnav.php'; ?>
-    <?php include 'mobileNav.html'; ?>
+    <div class="mainContainer">
+        <?php include 'tempnav.php'; ?>
+        <?php include 'mobileNav.html'; ?>
+        <div class="subContainer">
 
-    <div class="formContainer">
-        <form action="addProductForm.php" method="post" id="addProductForm" enctype="multipart/form-data">
-            <h1>Product Register Form</h1>
-            <label for="">Product Name</label>
-            <input type="text" name="product_name" placeholder="Product Name">
-            <label for="">Product Description</label>
-            <textarea type="text" name="description" placeholder="Product Description" id="description"></textarea>
-            <label for="">Product Category</label>
-            <select name="category" id="category">
-                <option value="cat1">Cat1</option>
-                <option value="cat2">Cat2</option>
-                <option value="cat3">Cat3</option>
-                <option value="cat4">Cat4</option>
-            </select><br>
-            <label for="">Product Price: Rs.</label>
-            <input type="text" name="price" placeholder="Product Price">
-            <label for="">Product Cost: Rs.</label>
-            <input type="text" name="cost" id="productCost" placeholder="Product Cost">
-            <label for="">Product Image </label>
-            <p>(Please upload 1 by 1 Image maximum 1.5mb )</p>
-            <input type="file" name="productImage" placeholder="Product Image" id="productimage">
-            <button class="submitbtn"> Register new product</button>
-        </form>
+            <div class="formContainer">
+                <form action="addProductForm.php" method="post" id="addProductForm" enctype="multipart/form-data">
+                    <h2>Product Register Form</h2>
+                    <label for="">Product Name</label>
+                    <input type="text" name="product_name" placeholder="Product Name" require>
+                    <label for="">Product Description</label>
+                    <textarea type="text" name="description" placeholder="Product Description" id="description"></textarea>
+                    <label for="">Product Category</label>
+                    <select name="category" id="category">
+                        <option value="cat1">Cat1</option>
+                        <option value="cat2">Cat2</option>
+                        <option value="cat3">Cat3</option>
+                        <option value="cat4">Cat4</option>
+                    </select><br>
+                    <label for="">Product Price: Rs.</label>
+                    <input type="text" name="price" placeholder="Product Price" require>
+                    <label for="">Product Cost: Rs.</label>
+                    <input type="text" name="cost" id="productCost" placeholder="Product Cost" require>
+                    <label for="">Product Image </label>
+                    <p>(Please upload 1 by 1 Image maximum 1.5mb )</p>
+                    <input type="file" name="productImage" placeholder="Product Image" id="productimage">
+                    <button class="submitbtn"> Register new product</button>
+                </form>
+
+            </div>
+            <?php include 'categoryRegister.php'; ?>
+
+
+
+        </div>
     </div>
+
+
 
 </body>
 
@@ -48,7 +59,7 @@ require_once 'dataBase.php';
 
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["product_name"])) {
     $productName = $_POST["product_name"];
     $description = $_POST["description"];
     $category = $_POST["category"];
@@ -92,5 +103,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Data did not add successfully.<br>";
     }
 }
-$conn->close();
+
 ?>
