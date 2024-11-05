@@ -11,70 +11,8 @@ require_once 'functions.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .productImage {
-            width: 50px;
-        }
+    <link rel="stylesheet" href="src/css/productUpdate.css">
 
-        .priceCostLine {
-            width: 80px;
-        }
-
-        .discountLine {
-            width: 30px;
-        }
-
-        input[type="file" i] {
-            width: 95px;
-        }
-
-        input[type="file"]::file-selector-button {
-            content: "select";
-            background-color: blue;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-
-        td {
-            display: flex;
-
-        }
-
-        tr {
-            display: flex;
-            flex-direction: row;
-            margin-bottom: 5px;
-        }
-
-        th {
-            display: flex;
-            flex-direction: row;
-            background-color: #0002;
-        }
-
-        #idLine {
-            width: 20px;
-        }
-
-        #productTableHeader {
-            display: flex;
-            flex-direction: row;
-            background-color: #0002;
-
-        }
-
-        #imagePathLine {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            width: 100px;
-            border: solid 1px black;
-            padding: 5px;
-        }
-    </style>
 </head>
 
 <body>
@@ -99,7 +37,7 @@ require_once 'functions.php';
         </div>
         <div>
         </div>
-        <div>
+        <div class="productContainer">
             <table class="productTable">
                 <thead>
                     <tr id="productTableHeader">
@@ -161,15 +99,13 @@ require_once 'functions.php';
                                                               </select></td>";
                         echo "<td><input class='discountLine' type='number' step='0.01' name='discount' value='" . $row['discount'] . "'></td>";
                         echo "<td>
-                                                                <button onclick='saveChanges(" . $row['id'] . ")'>Save</button>
+                                                                <button onclick='saveChanges(" . $row['id'] . ")' class='saveBtn'>Save</button>
                                                               </td>";
                         echo "</tr>";
                     }
                     ?> </tbody>
             </table>
-            <div>
-                <button onclick="addNewProduct()">Add New Product</button>
-            </div>
+
 
             <script>
                 function addNewProduct() {
@@ -212,7 +148,9 @@ require_once 'functions.php';
 
         </div>
 
-
+        <div>
+            <button onclick="addNewProduct()">Add New Product</button>
+        </div>
     </div>
     <?php include 'mobileNav.html'; ?>
 </body>

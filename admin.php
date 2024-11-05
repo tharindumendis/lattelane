@@ -25,7 +25,7 @@ require_once 'functions.php';
                     <label class="panelLabel">DashBoard</label>
                 </div>
                 <div class="btnSet">
-                    <button class="panelBtn" onclick="window.location.href='dashBoard.php';"><i class="fa-regular fa-file-lines"></i></button>
+                    <button class="panelBtn" onclick="window.location.href='invoices.php';"><i class="fa-regular fa-file-lines"></i></button>
                     <label class="panelLabel">Invoices</label>
                 </div>
                 <div class="btnSet">
@@ -44,12 +44,6 @@ require_once 'functions.php';
                     <button class="panelBtn" onclick="window.location.href='addProductForm.php';"><i class="fa-solid fa-table"></i></button>
                     <label class="panelLabel">Add Category</label>
                 </div>
-
-
-
-
-
-
 
             </div>
 

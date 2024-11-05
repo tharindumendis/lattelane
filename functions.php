@@ -235,14 +235,13 @@ function displayBills($conn)
 
 
                 echo "<tr>";
-                echo "<th>" . "" . "</th>";
-                echo "<th>" . $tempdate . "</th>";
+                echo "<th colspan='2' >" . $tempdate . "</th>";
                 echo "<th>" . "" . "</th>";
                 echo "<th>" . $tempmethod . "</th>";
-                // echo "<th>" . "" . "</th>";
-                echo "<th>" . $temptotal . ".00" . "</th>";
-                // echo "<th>" . "" . "</th>";
                 echo "<th>" . "" . "</th>";
+                echo "<th>" . $temptotal . ".00" . "</th>";
+                echo "<th>" . "" . "</th>";
+                echo "<th>" . $tempmethod . "</th>";
                 echo "</tr>";
                 $temp--;
                 $temptotal = 0;
@@ -253,12 +252,12 @@ function displayBills($conn)
             $temptotal +=  $row['total'];
             echo "<tr>";
             echo "<td>" . $row['invoice_id'] . "</td>";
-            // echo "<td>" . "" . "</td>";
+            echo "<td>" . "" . "</td>";
             echo "<td>" . $row['product_name'] . "</td>";
             echo "<td>" . $row['price'] . ".00" . "</td>";
             echo "<td>" . $row['quantity'] . "</td>";
             echo "<td>" . $row['total'] . ".00" . "</td>";
-            // echo "<td>" . $row['status'] . "</td>";
+            echo "<td>" . $row['status'] . "</td>";
             echo "</tr>";
             $tempmethod = $row['payment_method'];
             $tempdate  = $row['date'];
@@ -267,19 +266,18 @@ function displayBills($conn)
         echo "<tr><td colspan='9'>No bills found</th></tr>";
     }
     echo "<tr>";
-    echo "<th>" . "" . "</th>";
-    echo "<th>" . $tempdate . "</th>";
+    echo "<th colspan='2' >" . $tempdate . "</th>";
     echo "<th>" . "" . "</th>";
     echo "<th>" . $tempmethod . "</th>";
-    // echo "<th>" . "" . "</th>";
-    echo "<th>" . $temptotal . ".00" . "</th>";
-    // echo "<th>" . "" . "</th>";
     echo "<th>" . "" . "</th>";
+    echo "<th>" . $temptotal . ".00" . "</th>";
+    echo "<th>" . "" . "</th>";
+    echo "<th>" . $tempmethod . "</th>";
     echo "</tr>";
     $temp--;
     $temptotal = 0;
     echo "<tr>";
-    echo "<th>" . "." . "</th>";
+    echo "<td>" . "__" . "</td>";
     echo "</tr>";
 
     $temp--;
@@ -307,13 +305,17 @@ function getAllinvoces($conn)
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td>" . $row["invoice_id"] . "</td>";
-            // echo "<td>" . "" . "</td>";
+            echo "<td>" . "" . "</td>";
             echo "<td>" . $row["product_name"] . "</td>";
             echo "<td>" . 'Rs.' . $row["price"] . "</td>";
             echo "<td>" . $row["quantity"] . "</td>";
             echo "<td>" . 'Rs.' . $row["total"] . "</td>";
-            // echo "<td>" . $row["status"] . "</td>";
-            // echo "<td>" . "" . "</td>";
+            echo "<td><select name='status' onchange='updateStatus(this.value, " . $row["invoice_id"] . ")'>
+            <option value='pending' " . ($row["status"] == 'pending' ? 'selected' : '') . ">Pending</option>
+            <option value='Out for delivery' " . ($row["status"] == 'Out for delivery' ? 'selected' : '') . ">Out for delivery</option>
+            <option value='delivered' " . ($row["status"] == 'delivered' ? 'selected' : '') . ">delivered</option>
+            </select></td>";
+            echo "<td>" . "" . "</td>";
             echo "<td>" . "" . "</td>";
             echo "</tr>";
             $tempTotal += $row["total"];
@@ -322,14 +324,14 @@ function getAllinvoces($conn)
             if ($row["invoice_id"] != $tempBillNum && $row["date"] != $tempDate) {
 
                 echo "<tr>";
-                // echo "<th>" . "--------" . "</th>";
+                echo "<th>" . "--------" . "</th>";
                 echo "<th>" . $tempDate . "</th>";
                 echo "<th>" . "" . "</th>";
                 echo "<th>" . "" . "</th>";
                 echo "<th>" . "Total" . "</th>";
                 echo "<th>" . 'Rs.' . $tempTotal . "</th>";
-                // echo "<th>" . "" . "</th>";
-                // echo "<th>" . $tempUser_id . "</th>";
+                echo "<th>" . "" . "</th>";
+                echo "<th>" . $tempUser_id . "</th>";
                 echo "<th>" . $tempPaymentMethod . "</th>";
                 echo "</tr>";
                 echo "<tr>";
@@ -347,14 +349,14 @@ function getAllinvoces($conn)
             $tempPaymentMethod = $row["payment_method"];
         }
         echo "<tr>";
-        // echo "<th>" . "--------" . "</th>";
+        echo "<th>" . "--------" . "</th>";
         echo "<th>" . $tempDate . "</th>";
         echo "<th>" . "" . "</th>";
         echo "<th>" . "" . "</th>";
         echo "<th>" . "Total" . "</th>";
         echo "<th>" . 'Rs.' . $tempTotal . "</th>";
-        // echo "<th>" . "" . "</th>";
-        // echo "<th>" . $tempUser_id . "</th>";
+        echo "<th>" . "" . "</th>";
+        echo "<th>" . $tempUser_id . "</th>";
         echo "<th>" . $tempPaymentMethod . "</th>";
         echo "</tr>";
         echo "<tr>";

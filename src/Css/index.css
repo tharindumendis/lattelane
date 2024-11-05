@@ -1,2 +1,249 @@
 .mainContainer {
+    width: 100vw;
+}
+.hero{
+    background-image: url("../images/hero1.jpg");
+    background-size: cover;
+    color: white;
+    width: 100vw;
+    min-height: 500px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+body{
+    width: 100vw;
+}
+/*cup*/
+.tray{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background-color: #dedede;
+    box-shadow: -10px 10px 10px rgba(0, 0, 0, 1),
+                inset 0 5px 80px rgba(255, 255, 255, 0.516),
+                inset 10px 10px 20px rgba(255, 255, 255, 0.8),
+                inset 0 -10px 10px rgba(255, 255, 255, 0.8),
+                inset 0 0 70px rgb(255, 255, 255),
+                inset 0 0 70px rgb(255, 255, 255),
+                inset 0 0 70px rgb(255, 255, 255);
+    scale: 0.5;
+    cursor: pointer;
+}
+.tray:hover .shape100{
+    rotate: 30deg;
+    
+    transition: 1s;
+}
+.tray:hover .handle{
+    rotate: 90deg;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5),
+    inset -10px -10px 8px rgba(0, 0, 0, 0.3),
+    inset 20px 0px 10px rgba(0, 0, 0, 0.2),
+    -5px 10px 10px rgba(0, 0, 0, 0.5),
+    -10px 10px 10px rgba(0, 0, 0, 0.3);
+    transition: 1s;
+
+}
+.tray:active .handle{
+    rotate: 450deg;
+}
+.tray:hover .fog{
+    rotate: 30deg;
+    transform: translate(0px, -50px);
+}
+.tray:hover .fog1{
+    rotate: 30deg;
+    transform: translate(0px, -50px);
+}
+.tray:hover .fog2{
+    rotate: 30deg;
+    transform: translate(0px, -50px);
+}
+
+
+
+.activeColor{
+    background-color: green;
+}
+.shape100{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(10deg, hsl(27, 100%, 40%) 0%, rgb(130, 58, 0) 100%);
+    color: black;
+    border-radius: 49% 50% 72% 28% / 39% 47% 85% 61%  ;
+    transition: 0.2s ease-in-out;
+    box-shadow: inset 0 5px 15px rgba(48, 39, 0, 0.39);
+    animation: buble2 2s ease-in infinite;
+    transform-origin:center;
+    transition: 1s ease-out;
+}
+
+.cream{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    position: absolute;
+    background-image: url(../images/piclogo.png);
+    background-size: cover;
+    width: 180px;
+    height: 180px;
+    opacity: 0.7;
+    animation: shake 4s ease-in infinite;
+    filter: blur(1px) drop-shadow(0 0 10px rgb(255, 255, 255));
+
+}
+.cup{
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: fit-content;
+    background-color: #ffffff;
+    margin: 50px;
+    border-radius: 50%;
+    box-shadow: inset -5px 10px 10px rgba(0, 0, 0, 0.2), inset 0px 0px 10px rgba(0, 0, 0, 0.5),
+                        -10px 20px 10px rgba(0, 0, 0, 0.7), -10px 50px 10px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    transition: 0.7s ease-in-out;
+}
+
+.handle{
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+    transform: translateX(150px);
+    border-radius: 0px 40px 40px 0px;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5),
+                inset -10px -10px 8px rgba(0, 0, 0, 0.3),
+                inset 20px 0px 10px rgba(0, 0, 0, 0.2),
+                -5px 20px 10px rgba(0, 0, 0, 0.5),
+                -10px 50px 10px rgba(0, 0, 0, 0.3);
+    z-index: 99;
+    transition: 0.7s ease-in-out;
+}
+@keyframes buble2 {
+    0% {
+        border-radius: 100% 100% 100% 100% / 100% 100% 100% 100%    ;
+    }
+    
+    
+    60% {
+        border-radius:  70% 70% 80% 80% / 80% 70% 80% 80%  ;
+    }
+    
+    100% {
+        border-radius: 100% 100% 100% 100% / 100% 100% 100% 100%    ;
+    }
+    
+}
+@keyframes shake {
+    0% {
+        border-radius: 100% 100% 100% 100% / 100% 100% 100% 100%    ;
+    }
+
+
+    30% {
+        transform: translate(-2px, 5px);
+        rotate: -3deg;
+        border-radius: 70% 70% 80% 80% / 80% 70% 80% 80%  ;
+    }
+    
+    60% {
+        rotate: 0deg;
+    }
+    70%{
+        transform:skewY(3deg) skewX(1deg);
+    }
+    100% {
+        border-radius: 100% 100% 100% 100% / 100% 100% 100% 100%    ;
+    }
+    
+}
+.fog, .fog2, .fog3{
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+    background-image: url(../images/fog.png);
+    background-size: cover;
+    z-index: 101;
+    filter: blur(1px);
+    animation: fog 5s ease-in infinite;
+    transition: 3s ease-out;
+}
+.fog2{
+    
+    animation: fog2 10s ease-in infinite;
+    opacity: 1;
+
+}
+.fog2{
+    
+    animation: fog3 15s ease-in infinite;
+    opacity: 1;
+
+}
+@keyframes fog {
+    0% {
+        opacity: 0;
+    }
+    5% {
+        opacity: .3;
+    }
+    50% {
+        scale: 4;
+        opacity: 0;
+        rotate: 50deg;
+    }
+    100% {
+        opacity: 0;
+    }
+
+}
+@keyframes fog2 {
+    0% {
+        opacity: 0;
+    }
+    
+    50% {
+        opacity: .2;
+    }
+    100% {
+        scale: 4;
+        opacity: 0;
+        rotate: -50deg;
+    }
+
+}
+@keyframes fog3 {
+    0% {
+    }
+    00% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        scale: 4;
+        opacity: 0;
+        rotate: -50deg;
+    }
+
+}
+#liq{
 }

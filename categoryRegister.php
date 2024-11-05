@@ -67,4 +67,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["categoryName"])) {
         echo "Data did not add successfully.<br>";
     }
 }
-$conn->close(); ?>
+?>

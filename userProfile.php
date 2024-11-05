@@ -49,13 +49,13 @@ require_once 'functions.php';
                     <thead>
                         <tr>
                             <th>Invoice ID</th>
-                            <!-- <th>Date</th> -->
+                            <th>Date</th>
                             <th>Product Name</th>
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Total</th>
-                            <!-- <th>Status</th> -->
-                            <!-- <th>Payment Method</th> -->
+                            <th>Status</th>
+                            <th>Payment Method</th>
                         </tr>
                     </thead>
                     <tbody>

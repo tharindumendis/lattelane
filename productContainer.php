@@ -17,9 +17,9 @@ require_once 'functions.php';
     <?php include 'tempnav.php'; ?>
 
     <div class="topnav">
-        <form action="" method="POST">
-            <input type="text" placeholder="Search.." name="search" value="">
-            <button type="submit">Search</button>
+        <form action="" method="POST" class="searchContainer">
+            <input type="text" placeholder="Search.." name="search" value="" class="PSearch">
+            <button type="submit" class="searchBtn">Search</button>
         </form>
 
     </div>
