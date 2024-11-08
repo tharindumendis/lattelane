@@ -55,10 +55,10 @@ $sqlInvoice = "CREATE TABLE IF NOT EXISTS `invoices` (
     `quantity` int NOT NULL,
     `total` int NOT NULL,
     `user_Invoice_id` int NOT NULL,
-    `status` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Pending',
-    `payment_method` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'visa/ master',
+    `status` varchar(10) NOT NULL DEFAULT 'Pending',
+    `payment_method` varchar(20) NOT NULL DEFAULT 'visa/ master',
     PRIMARY KEY (`invoice_id`)
-  ) ENGINE=InnoDB AUTO_INCREMENT=144 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;";
+  );";
 if ($conn->query($sqlInvoice) === TRUE) {
     // "Table 'products' created successfully or already exists";
 }
@@ -70,7 +70,7 @@ $sqlUser = "CREATE TABLE IF NOT EXISTS `users` (
   `last_name` varchar(50) NOT NULL,
   `city` varchar(50) NOT NULL,
   `street` varchar(50) NOT NULL,
-  `address_no` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `address_no` varchar(50) NOT NULL,
   `phone` varchar(10) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(200) NOT NULL,
@@ -78,7 +78,7 @@ $sqlUser = "CREATE TABLE IF NOT EXISTS `users` (
   `bill_count` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 ";
 
 if ($conn->query($sqlUser) === TRUE) {
@@ -94,7 +94,7 @@ $sqlProducts = "CREATE TABLE IF NOT EXISTS `products` (
   `cost` decimal(10,2) DEFAULT NULL,
   `image_path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 ";
 if ($conn->query($sqlProducts) === TRUE) {
     // "Table 'products' created successfully or already exists";

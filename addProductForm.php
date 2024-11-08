@@ -28,11 +28,15 @@ require_once 'dataBase.php';
                     <textarea type="text" name="description" placeholder="Product Description" id="description"></textarea>
                     <label for="">Product Category</label>
                     <select name="category" id="category">
-                        <option value="cat1">Cat1</option>
-                        <option value="cat2">Cat2</option>
-                        <option value="cat3">Cat3</option>
-                        <option value="cat4">Cat4</option>
-                    </select><br>
+                                            <?php
+                                            $sql = "SELECT * FROM category";
+                                            $result = $conn->query($sql);
+                                            if ($result->num_rows > 0) {
+                                                while($row = $result->fetch_assoc()) {
+                                                    echo '<option value="'.$row['category_name'].'">'.$row['category_name'].'</option>';
+                                                }
+                                            }
+                                            ?>                    </select><br>
                     <label for="">Product Price: Rs.</label>
                     <input type="text" name="price" placeholder="Product Price" require>
                     <label for="">Product Cost: Rs.</label>

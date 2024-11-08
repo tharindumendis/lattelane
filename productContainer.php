@@ -25,7 +25,6 @@ require_once 'functions.php';
     </div>
     <div class="productCardContainer" id="productCardContainer">
         <?php
-        // SQL QUERY 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (($_POST['search']) != '') {
                 $search = $_POST['search'];

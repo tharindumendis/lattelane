@@ -12,9 +12,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 body{
     width: 100vw;
+    overflow-x: hidden;
 }
 /*cup*/
 .tray{

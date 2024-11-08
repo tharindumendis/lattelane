@@ -4,6 +4,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    width: 100vw;
+    overflow-x:hidden;
+}
 
 .productCardContainer{
     display: flex;
@@ -120,13 +124,13 @@
     display: flex;
     width: 500px;
     padding: 10px;
-    border-radius: 20px 0px 0px 20px
+    border-radius: 20px 0px 0px 20px;
+    border-right: none;
 }
 .searchContainer{
     display: flex;
     flex-direction: row;
     width: 550px;
-    gap: 1px;
 }
 .searchBtn{
     display: flex;
@@ -134,4 +138,17 @@
     border-radius: 0px 20px 20px 0px;
     background-color: rgb(0, 153, 79);
     color: white;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+    .PSearch{
+        width: auto;
+    }
+    .searchContainer{
+        width: auto;
+    }
+
+
+
 }
