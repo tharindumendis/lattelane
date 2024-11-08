@@ -30,7 +30,7 @@ function showPaymentForm() {
   const paymentMethod = document.getElementById("paymentMethod");
   const cardForm = document.getElementById("cardForm");
 
-  if (paymentMethod.value === "cod") {
+  if (paymentMethod.value === "code") {
     cardForm.style.display = "none";
   } else {
     cardForm.style.display = "block";
