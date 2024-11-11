@@ -45,12 +45,12 @@ require_once 'functions.php';
             <div class="checkoutBtnContainer">
                 <div class="paymentBtn">
                     <div class="radioBtnContainer">
-                        <label for="paymentMethod">COD 💵</label>
-                        <input type="radio" name="paymentMethod" id="" value="cod" checked="checked" onclick="cardFormhide()">
+                        <label for="paymentMethod">Cash On Delivery 💵</label>
+                        <input type="radio" name="paymentMethod" id="" value="cod" checked="checked" onclick="showPaymentForm()">
                     </div>
                     <div class="radioBtnContainer">
                         <label for="paymentMethod">Visa/ Master 💳</label>
-                        <input type="radio" name="paymentMethod" id="" value="visa/ master" onclick="cardFormShow()">
+                        <input type="radio" name="paymentMethod" id="" value="visa/ master" onclick="showPaymentForm()">
                     </div>
                 </div>
                 <div id="cardBtncod">

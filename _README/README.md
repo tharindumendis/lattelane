@@ -75,7 +75,7 @@ Initial admin credentials for first-time setup:
 4. Start your PHP server
 5. Access the application through your web browser
 6. Log in with the default admin credentials
-7. Start managing your coffee shop platform
+7. Start managing your coffee shop platform (add products, manage users, etc.)
 
 ## Requirements
 

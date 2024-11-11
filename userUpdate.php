@@ -54,18 +54,19 @@ if (isset($_POST['removeFromCart'])) {
     header("Location: cart.php");
 }
 if (isset($_POST['submitInvoice'])) {
-    if (isset($_SESSION["cartQuantity"]) && $_SESSION["cartQuantity"] && ($_SESSION["id"] != "")) {
+    if (isset($_SESSION["cartQuantity"]) && $_SESSION["cartQuantity"] > 0 && ($_SESSION["id"] != "")) {
         checkout($conn);
         echo "<script> alert('Order Placed successfully!')</script>";
 
-        header("Refresh: 3; URL=cart.php");
+        header("Refresh: 0; URL=cart.php");
     } else {
         if (($_SESSION["id"] == "")) {
             echo "<script> alert('please Login to Place Order')</script>";
 
             header("Refresh: 0; URL=userLogin.php");
         } else {
-            echo "<Script>alerts('Please add items to cart!')</Script>";
+            echo "<Script>alert('Please add items to cart!')</Script>";
+            header("Refresh: 0; URL=cart.php");
         }
     }
 }

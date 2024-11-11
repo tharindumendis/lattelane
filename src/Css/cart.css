@@ -95,10 +95,13 @@ td input[type="number"] {
 
 .checkoutBtnContainer{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
-    gap: 10px;
+    max-width: 400px;
+    background-color: #008e6133;
+    padding: 10px;
+    border-radius: 10px;
 }
 .paymentBtn{
     display: flex;
@@ -256,7 +259,7 @@ input[type="radio"] {
 input[type="radio"]:checked {
     background: linear-gradient(45deg, #f6ff00, #00a952);
     box-shadow: 0 0 0 2px white inset;
-    transform: scale(1.5);
+    transform: scale(1.2);
 }
 
 @media screen and (max-width: 768px) {
