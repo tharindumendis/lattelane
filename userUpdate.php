@@ -33,8 +33,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
 require_once 'functions.php';
 
 if (isset($_POST['crearCart'])) {
+    echo "<script>
+        if(confirm('⚠️Are you sure you want to ❌clear your 🛒cart?')) {
+            window.location.href = 'userUpdate.php?clearCart=1';
+        } else {
+            window.location.href = 'cart.php';
+        }
+    </script>";
+    exit();
+}
+
+if (isset($_GET['clearCart']) && $_GET['clearCart'] == 1) {
     clearCart();
     header("Location: cart.php");
+    exit();
 }
 if (isset($_POST['removeFromCart'])) {
     $productId = $_POST['removeItemId'];
@@ -42,18 +54,18 @@ if (isset($_POST['removeFromCart'])) {
     header("Location: cart.php");
 }
 if (isset($_POST['submitInvoice'])) {
-    echo "Total items count: " . $_SESSION["cartQuantity"] . "<br>";
-    if (isset($_SESSION["cartQuantity"]) && $_SESSION["cartQuantity"] > 0) {
+    if (isset($_SESSION["cartQuantity"]) && $_SESSION["cartQuantity"] && ($_SESSION["id"] != "")) {
         checkout($conn);
-        echo "Invoice created successfully!";
-        header("Location: cart.php");
+        echo "<script> alert('Order Placed successfully!')</script>";
+
+        header("Refresh: 3; URL=cart.php");
     } else {
         if (($_SESSION["id"] == "")) {
-            header("Location: cart.php");
-            echo "Please log in to checkout!" . '<br>' . "<a href='./userLogin.php'><button>Login</button></a>";
+            echo "<script> alert('please Login to Place Order')</script>";
+
+            header("Refresh: 0; URL=userLogin.php");
         } else {
-            echo "<Script>alerts('Please add items to cart!')</Script>" ;
-            header("Location: cart.php");
+            echo "<Script>alerts('Please add items to cart!')</Script>";
         }
     }
 }
@@ -63,30 +75,30 @@ if (isset($_POST['submitInvoice'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['status'])) {
     $status = $_POST['status'];
     $userId = $_POST['userId'];
-    
+
     $sql = "UPDATE users SET admin = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ii", $status, $userId);
-    
+
     if ($stmt->execute()) {
         echo "Admin status updated successfully";
     } else {
         echo "Error updating admin status";
     }
-    
+
     $stmt->close();
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
     $userId = $_POST['userId'];
-    
+
     $sql = "DELETE FROM users WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $userId);    
+    $stmt->bind_param("i", $userId);
     if ($stmt->execute()) {
         echo "Admin status updated successfully";
     } else {
         echo "Error updating admin status";
     }
-    
+
     $stmt->close();
 }

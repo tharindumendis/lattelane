@@ -1,12 +1,15 @@
+
 .mainContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding-bottom: 100px;
     width: 100vw;
 }
 .productContainer{
     display: flex;
-    align-items: center;
-    overflow: scroll;
-    width: 100vw;
+    overflow-x: scroll;
 }
 .productImage {
     width: 50px;
@@ -20,25 +23,68 @@
 .discountLine {
     width: 30px;
 }
-
-input[type="file" i] {
-    width: 95px;
+td input,textarea, select {
+    background-color: #0001;
+    color: white;
+    border: none;
+    border-right: 1px solid white;;
+}
+td option {
+    background-color: #0001;
+    color: rgb(0, 0, 0);
+}
+td input ,select, option:placeholder-shown {
+    color: white;
 }
 
+input[type="file" i] {
+    display: flex;
+    position: absolute;
+}
+input[type="file"]::file-selector-button:hover {
+    background-color: rgb(100, 100, 100);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    opacity: .5;
+    height: 50px;
+}
+input[type="file"] {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    opacity: 0;
+    width: 100px;
+}
+input[type="file"]:hover {
+    opacity: .5;
+    width: 200px;
+    
+}
+
+
 input[type="file"]::file-selector-button {
-    content: "select";
     background-color: rgb(20, 20, 20);
     color: white;
     border: none;
     border-radius: 20px;
     padding: 5px 10px;
     cursor: pointer;
+    height: 50px;
 }
 
 
 td {
     display: flex;
+    color: #eee;
+    border-bottom: 1px solid #eee4;
 
+}
+#idLine{
+    color: #fff;
+    padding-left: 5px;
 }
 
 tr {
@@ -49,10 +95,61 @@ tr {
 
 th {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: row;
-    background-color: #0002;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    color: aliceblue;
+    height: 40px;
 }
+.searchForm{
+    display: flex;
+    gap: 5px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.searchForm input,select{
+    background-color: #fff2;
+    padding: 10px;
+    color: white;
+    border: none;
+    border-right: 1px solid white;
+    border-radius: 10px;
+    transition: all .5s;
+}
+.searchForm option{
+    color: rgb(0, 0, 0);
+    transition: all .5s;
+}
+.searchForm input:hover,select:hover{
+    background-color: #fff3;
+}
+.searchForm input:focus,select:focus{
+    outline: none;
+    background-color: #fff5;
+}
+td textarea:focus{
+    height: 100px;
 
+
+}
+.searchForm button{
+    background-color: rgb(0, 189, 85);
+    color: aliceblue;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all .5s;
+    cursor: pointer;
+    padding: 10px;
+}
+.menuBtn,menu{
+    z-index: 1001;
+}
 #idLine {
     width: 20px;
 }
@@ -91,4 +188,70 @@ th {
 .saveBtn:hover{
     background-color: rgb(189, 186, 0);
     scale: 1.1;
+}
+.btnSetBottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.btnSetBottom button{
+    background-color: rgb(0, 189, 85);
+    color: aliceblue;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all .5s;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 15px;
+    height: 40px;
+}
+.menuBtn{
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    left: 45px;
+    top: 50px;
+    width: 60px;
+    height: 60px;
+    background-color: #feb1b1;
+    padding: 10px;
+    border-radius: 30%;
+    z-index: 999;
+    transform: all 1s;
+
+}
+.menuBtn i{
+    scale: 2.5;
+}
+
+
+@media screen and (max-width: 768px) {
+    .productTable{
+        justify-content: flex-start;
+    }
+    .productContainer{
+        width: 100vw;
+        
+        justify-content: flex-start;
+    }
+    .saveBtn{
+        position:absolute;
+        right: 1px;
+        height: 30px;
+        transform: translateY(50%);
+    }
+    .lastColumn{
+        margin-right: 70px;
+    }
+    .menuBtn{
+        display: none;
+    }
 }

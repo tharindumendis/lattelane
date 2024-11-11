@@ -1,0 +1,83 @@
+#invoiceContainer{
+    height: 80vh;
+    overflow: scroll;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+    padding-bottom: 100px;
+}
+
+#invoiceContainer::-webkit-scrollbar {
+    display: none; 
+}
+thead th{
+    background-color: #0004;
+    border: solid 2px #fff;
+    padding: 10px 10px;
+    border-radius: 0 0 20px 20px;
+}
+thead{
+    background-color: #0004;
+    border: solid 2px #fff;
+    position: sticky;
+    top: 0;
+    
+}
+.total{
+    background-color: #00a955;
+    padding: 10px 0;
+}
+.totalBox{
+    background-color: #ffd900;
+    color: #000;
+}
+select {
+    padding: 5px;
+    border: none;
+    background: linear-gradient(45deg, #0080ff, #000000);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    margin:  10px 0;
+}
+option{
+    background-color: #000;
+}
+.qtyColumn{
+    text-align: center;
+    font-size: large;
+    font-weight: 600;
+    background-color: #a00098;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+h2{
+    margin: 20px ;
+}
+
+option:checked{
+    background: rgb(246, 255, 0);
+    color:#000;
+}
+
+td{
+    color: #fff;
+}
+@media screen and (min-width: 900px) {
+    
+    #invoiceContainer{
+        width: 70vw;
+    }
+    table{
+        width: 100%;
+    }
+    td,th {
+        width: auto;
+        height: auto;
+        font-size: larger;
+        text-justify: center;
+    }
+  
+}

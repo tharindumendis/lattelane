@@ -20,14 +20,14 @@ require_once 'functions.php';
     <div class="mainContainer">
         <div>
             <?php include 'tempnav.php';
-            include 'mobileNav.html';
+            include 'mobileNav.php';
             ?>
         </div>
 
         <div class="formContainer">
             <?php
             //Display loging message
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if ($_SERVER["REQUEST_METHOD"] == "POST" && ($_POST["login"]) == 1) {
                 $email = $_POST["email"];
                 $password = $_POST["password"];
                 logIn($email, $password, $conn);
@@ -36,12 +36,12 @@ require_once 'functions.php';
             <form action="userLogin.php" method="post">
                 <h1>Log in</h1>
                 <label for="email">Email</label>
-                <input type="text" name="email" placeholder="email" required>
+                <input type="email" name="email" placeholder="email" required>
                 <label for="password">Password</label>
                 <div class="passwordContainer"><input type="password" name="password" placeholder="password" required>
-                    <i class='bx bxs-lock-alt' id="lockIcon"></i>
+
                 </div>
-                <button>Log in</button>
+                <button name="login" value="1">Log in</button>
                 <p>Need an account? <a href="userRegister.php" id="signupLink">Sign up</a></p>
 
             </form>
@@ -53,7 +53,7 @@ require_once 'functions.php';
 
 </html>
 
-<script>
+<!-- <script>
     function togglePasswordVisibility() {
         const lockIcon = document.getElementById('lockIcon');
         const passwordInput = document.querySelector('input[name="password"]');
@@ -68,4 +68,4 @@ require_once 'functions.php';
             lockIcon.classList.add('bx-lock-alt');
         }
     }
-</script>
+</script> -->

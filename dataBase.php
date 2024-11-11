@@ -27,15 +27,14 @@ if ($conn->query($sql) === TRUE) {
 $conn->select_db($dbname);
 
 // Create table if not exists
-$sql = "CREATE TABLE IF NOT EXISTS products (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    product_name VARCHAR(100) NOT NULL,
-    description TEXT,
-    category VARCHAR(50),
-    price DECIMAL(10, 2),
-    cost DECIMAL(10, 2),
-    image_path VARCHAR(255)
-)";
+$sql = "CREATE TABLE `category` (
+  `cat_id` int NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(50) NOT NULL,
+  `cat_description` varchar(255) DEFAULT NULL,
+  `image_path` varchar(255) NOT NULL,
+  PRIMARY KEY (`cat_id`)
+);
+";
 
 if ($conn->query($sql) === TRUE) {
     // "Table 'products' created successfully or already exists";
@@ -46,19 +45,19 @@ if ($conn->query($sql) === TRUE) {
 
 
 //CREATE TABLE `lattelane_db`.`invoices` (`invoice_id` INT NOT NULL AUTO_INCREMENT , `user_id` INT NOT NULL , `product_id` INT NOT NULL , `price` INT NOT NULL , `quantity` INT NOT NULL , `total` INT NOT NULL , PRIMARY KEY (`invoice_id`)) ENGINE = InnoDB;
-$sqlInvoice = "CREATE TABLE IF NOT EXISTS `invoices` (
-    `invoice_id` int NOT NULL AUTO_INCREMENT,
-    `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `user_id` int NOT NULL,
-    `product_id` int NOT NULL,
-    `price` int NOT NULL,
-    `quantity` int NOT NULL,
-    `total` int NOT NULL,
-    `user_Invoice_id` int NOT NULL,
-    `status` varchar(10) NOT NULL DEFAULT 'Pending',
-    `payment_method` varchar(20) NOT NULL DEFAULT 'visa/ master',
-    PRIMARY KEY (`invoice_id`)
-  );";
+$sqlInvoice = "CREATE TABLE `invoices` (
+  `invoice_id` int NOT NULL AUTO_INCREMENT,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `price` int NOT NULL,
+  `quantity` int NOT NULL,
+  `total` int NOT NULL,
+  `user_Invoice_id` int NOT NULL,
+  `status` varchar(50) NOT NULL DEFAULT 'Pending',
+  `payment_method` varchar(20) NOT NULL DEFAULT 'visa/ master',
+  PRIMARY KEY (`invoice_id`)
+);";
 if ($conn->query($sqlInvoice) === TRUE) {
     // "Table 'products' created successfully or already exists";
 }
@@ -74,8 +73,9 @@ $sqlUser = "CREATE TABLE IF NOT EXISTS `users` (
   `phone` varchar(10) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `admin` tinyint(1) DEFAULT NULL,
+  `admin` tinyint(1) DEFAULT '0',
   `bill_count` int NOT NULL DEFAULT '1',
+  `image_path` varchar(255) NOT NULL DEFAULT './src/images/defaltUser.png',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 );
@@ -93,8 +93,24 @@ $sqlProducts = "CREATE TABLE IF NOT EXISTS `products` (
   `price` decimal(10,2) DEFAULT NULL,
   `cost` decimal(10,2) DEFAULT NULL,
   `image_path` varchar(255) DEFAULT NULL,
+  `active` int NOT NULL DEFAULT '1',
+  `discount` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 );
+";
+if ($conn->query($sqlProducts) === TRUE) {
+    // "Table 'products' created successfully or already exists";
+}
+$sqlProducts = "CREATE TABLE IF NOT EXISTS `blogs` (
+  `blog_id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `user_first_name` varchar(100) DEFAULT NULL,
+  `user_last_name` varchar(100) DEFAULT NULL,
+  `image_url` varchar(255)NULL,
+  `content` varchar(255) DEFAULT NULL,
+  `likes` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`blog_id`)
+) ;
 ";
 if ($conn->query($sqlProducts) === TRUE) {
     // "Table 'products' created successfully or already exists";

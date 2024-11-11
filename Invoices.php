@@ -10,28 +10,30 @@ require_once 'functions.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./src/Css/invoices.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
 <body>
-    <?php include 'tempnav.php'; ?>
+
     <div class="mainContainer">
+        <?php
+        include 'tempnav.php';
+        adminPanel();
+        ?>
+        <h2>Salea by invoce</h2>
         <div id="invoiceContainer" class="invoiceContainerHide">
-            <h2>Salea by invoce</h2>
+            
 
             <table>
 
                 <thead>
                     <tr>
-                        <th>Invoice ID</th>
-                        <th>Date</th>
-                        <th>Product Name</th>
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Total</th>
                         <th>Status</th>
-                        <th>user_id</th>
-                        <th>Payment Method</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody">
@@ -48,7 +50,7 @@ require_once 'functions.php';
 
 
         </div>
-        <?php include 'mobileNav.html'; ?>
+        <?php include 'mobileNav.php'; ?>
 
     </div>
 </body>
@@ -74,5 +76,6 @@ require_once 'functions.php';
         });
     }
 </script>
+<script src="./src/js/adminBtn.js"></script>
 
 </html>

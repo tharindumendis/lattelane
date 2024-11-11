@@ -29,7 +29,7 @@
                 <label for=""></label><br>
                 <input type="text" name="email" placeholder="Email" required><br>
                 <label for="">Password</label><br>
-                <input type="password" name="password" placeholder="Password" required><br>
+                <input type="password" name="password" placeholder="Password" required minlength="8"><br>
                 <button class="submitbtn"> Sign Up</button>
                 <p class="signin">Already Have an Account? <a href="userLogin.php" id="signinLink">Sign In</a></p>
             </form>
@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <?php include 'mobileNav.html'; ?>
+    <?php include 'mobileNav.php'; ?>
 
 </body>
 

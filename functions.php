@@ -67,6 +67,7 @@ function DisplayProducts($fetchQuery, $conn)
                     <div class='productcardimg'>
                         <img src='{$row['image_path']}' alt='' class='productimg'>
                     </div>
+                    <div class='productcardinfo'>
                     <div class='producttitle'>
                         <h2>{$row['product_name']}</h2>
                     </div>
@@ -77,12 +78,24 @@ function DisplayProducts($fetchQuery, $conn)
                         <h2>Rs.{$row['price']}</h2>
                     </div>
                     <div class='productbtncontainer'>
-                        <button class='addToCartBtn' id='add-to-cart' name='add-to-cart' data-product-id='{$row['id']}'></button>
+                        <button class='addToCartBtn btn{$row['id']}' id='add-to-cart' name='add-to-cart' data-product-id='{$row['id']}' onclick='click()'></button>
                     </div>
+                </div>
+                    
                 </div>";
+            echo "<script>
+                        const btn{$row['id']} = document.querySelectorAll('.btn{$row['id']}');
+                        btn{$row['id']}.forEach(button => {
+                            button.addEventListener('click', () => {
+                                btn{$row['id']}.forEach(btn => {
+                                    btn.textContent = '✅';                                });
+                            });
+                        });
+                    </script>";
         }
     }
 }
+
 
 
 function  getCartItems($conn)
@@ -103,22 +116,37 @@ function  getCartItems($conn)
 
                     echo "
                         <tr>
-                            <td><img src='{$row['image_path']}' width='50'></td>
-                            <td>{$row['product_name']}</td>
-                            
-                             <input type='hidden' name='itemId$count' id='itemId{$row['id']}' value='{$row['id']}'>
+                            <td class='pImgBox'><img src='{$row['image_path']}' class='pImg'></td>
+                            <td colspan='3' >{$row['product_name']}<br>
+                            Rs.<input type='number' value='{$row['price']}' name='price$count' id='price{$row['id']}' readonly ></td>
+                        </tr>
 
-                            <td>Rs.<input type='number' value='{$row['price']}' name='price$count' id='price{$row['id']}' readonly ></td>
-                            <td><input class='qtyInput' type='number' name='quantity$count' id='cartQuantity{$row['id']}' value='1' min='1' max='20'></td>
+                        <tr class='itemBox'>
                             
                             
+                            <input type='hidden' name='itemId$count' id='itemId{$row['id']}' value='{$row['id']}'>
+
                             
-                            <td>Rs.<input type='number' name='itemTotal' id='total{$row['id']}' readonly >
+                            
+
+                            
+
                             <form action='userUpdate.php' method='post'>
-                            <input type='hidden' name='removeItemId' id='itemId{$row['id']}' value='{$row['id']}'>
-                            <button type='submit' name='removeFromCart' id='removeFromCart'>Remove</button>
-                            </form>
-                            </td>
+                            <td><input type='hidden' name='removeItemId' id='itemId{$row['id']}' value='{$row['id']}'>
+                            <button type='submit' name='removeFromCart' id='removeFromCart'><i class='fa-solid fa-trash-can'></i></button>
+                            </form></td>
+                            
+                            <td colspan='3' ><div class='totalContainer'><input class='qtyInput' type='number' name='quantity$count' id='cartQuantity{$row['id']}' value='1' min='1' max='20'>
+                            <div class='subtotalContainer'>
+                            <label for='quantity' class='qtyLabel'>Total</label>
+                            <div>
+                            Rs.<input type='number' name='itemTotal' class='itemTotal' id='total{$row['id']}' readonly >
+                            </div>
+                            </div>
+                            </div></td>
+
+
+
                             <script>
                                 function calculateTotal() {
                                     var quantity = parseInt(document.getElementById('cartQuantity{$row['id']}').value);
@@ -146,39 +174,46 @@ function  getCartItems($conn)
 
 function checkout($conn)
 {
-    for ($i = 0; $i < count($_SESSION["cart"]); $i++) {
+    if ($_SESSION['id'] == "") {
+        echo "<script>
+        alert('Please login to checkout');
+        window.location.href = 'UserLogin.php';
+        </script>";
+    } else {
+        for ($i = 0; $i < count($_SESSION["cart"]); $i++) {
 
 
-        $invoiceId = $_SESSION['bill_count'];
-        $userId = $_SESSION['id'];
-        $productId = $_POST['itemId' . $i];
-        $quantity = $_POST['quantity' . $i];
-        $price = $_POST['price' . $i];
-        $total = $quantity * $price;
-        $PaymentMethod = $_POST['paymentMethod'];
+            $invoiceId = $_SESSION['bill_count'];
+            $userId = $_SESSION['id'];
+            $productId = $_POST['itemId' . $i];
+            $quantity = $_POST['quantity' . $i];
+            $price = $_POST['price' . $i];
+            $total = $quantity * $price;
+            $PaymentMethod = $_POST['paymentMethod'];
 
-        $insertQuery = "INSERT INTO `invoices`( `user_id`, `user_Invoice_id`,`product_id`, `price`, `quantity`, `total`,`payment_method`) 
+            $insertQuery = "INSERT INTO `invoices`( `user_id`, `user_Invoice_id`,`product_id`, `price`, `quantity`, `total`,`payment_method`) 
             VALUES ('$userId','$invoiceId','$productId','$price','$quantity','$total','$PaymentMethod')";
 
-        if ($conn->query($insertQuery)) {
+            if ($conn->query($insertQuery)) {
 
+                //echo "completed";
+            } else {
+                //echo "failed";
+            }
+        }
+        $SetNewBillCount = $_SESSION['bill_count'] + 1;
+        $_SESSION['bill_count'] = $SetNewBillCount;
+        $setUserBillCountQuery =
+            "UPDATE `users` 
+                SET `bill_count` = '$SetNewBillCount' 
+                WHERE `users`.`id` = $userId;";
+
+        if ($conn->query($setUserBillCountQuery)) {
+            clearCart();
             //echo "completed";
         } else {
             //echo "failed";
         }
-    }
-    $SetNewBillCount = $_SESSION['bill_count'] + 1;
-    $_SESSION['bill_count'] = $SetNewBillCount;
-    $setUserBillCountQuery =
-        "UPDATE `users` 
-                SET `bill_count` = '$SetNewBillCount' 
-                WHERE `users`.`id` = $userId;";
-
-    if ($conn->query($setUserBillCountQuery)) {
-        clearCart();
-        //echo "completed";
-    } else {
-        //echo "failed";
     }
 }
 
@@ -208,6 +243,8 @@ function logIn($email, $password, $conn)
             $_SESSION["password"] = $row["password"];
             $_SESSION["admin"] = $row["admin"];
             $_SESSION["bill_count"] = $row["bill_count"];
+
+            echo "<script>setTimeout(function() { window.location.href = 'index.php'; }, 500);</script>";
         } else {
             echo "<p id='message'>Invalid password.</p>";
         }
@@ -236,12 +273,8 @@ function displayBills($conn)
 
                 echo "<tr>";
                 echo "<th colspan='2' >" . $tempdate . "</th>";
-                echo "<th>" . "" . "</th>";
-                echo "<th>" . $tempmethod . "</th>";
-                echo "<th>" . "" . "</th>";
                 echo "<th>" . $temptotal . ".00" . "</th>";
-                echo "<th>" . "" . "</th>";
-                echo "<th>" . $tempmethod . "</th>";
+                echo "<th class='payment' >" . $tempmethod . "</th>";
                 echo "</tr>";
                 $temp--;
                 $temptotal = 0;
@@ -249,15 +282,19 @@ function displayBills($conn)
                 echo "<td>" . "__" . "</td>";
                 echo "</tr>";
             }
+
+            echo "<tr>";
+
+            echo "<td colspan='2' >" . "Invoice ID : " . $row['invoice_id'] . "</td>";
+            echo "<td colspan='2'>" . $row['product_name'] . "</td>";
+            echo "<th> </th>";
+
             $temptotal +=  $row['total'];
             echo "<tr>";
-            echo "<td>" . $row['invoice_id'] . "</td>";
-            echo "<td>" . "" . "</td>";
-            echo "<td>" . $row['product_name'] . "</td>";
             echo "<td>" . $row['price'] . ".00" . "</td>";
             echo "<td>" . $row['quantity'] . "</td>";
             echo "<td>" . $row['total'] . ".00" . "</td>";
-            echo "<td>" . $row['status'] . "</td>";
+            echo "<td class='status pending'>" . $row['status'] . "</td>";
             echo "</tr>";
             $tempmethod = $row['payment_method'];
             $tempdate  = $row['date'];
@@ -267,12 +304,8 @@ function displayBills($conn)
     }
     echo "<tr>";
     echo "<th colspan='2' >" . $tempdate . "</th>";
-    echo "<th>" . "" . "</th>";
-    echo "<th>" . $tempmethod . "</th>";
-    echo "<th>" . "" . "</th>";
     echo "<th>" . $temptotal . ".00" . "</th>";
-    echo "<th>" . "" . "</th>";
-    echo "<th>" . $tempmethod . "</th>";
+    echo "<th class='payment' >" . $tempmethod . "</th>";
     echo "</tr>";
     $temp--;
     $temptotal = 0;
@@ -304,17 +337,19 @@ function getAllinvoces($conn)
 
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
-            echo "<td>" . $row["invoice_id"] . "</td>";
-            echo "<td>" . "" . "</td>";
-            echo "<td>" . $row["product_name"] . "</td>";
-            echo "<td>" . 'Rs.' . $row["price"] . "</td>";
-            echo "<td>" . $row["quantity"] . "</td>";
-            echo "<td>" . 'Rs.' . $row["total"] . "</td>";
-            echo "<td><select name='status' onchange='updateStatus(this.value, " . $row["invoice_id"] . ")'>
-            <option value='pending' " . ($row["status"] == 'pending' ? 'selected' : '') . ">Pending</option>
+            echo "<td colspan='2'>" . "____O. ID : " . $row["invoice_id"] . "</td>";
+            echo "<td colspan='1'>" . $row["product_name"] . "</td>";
+            echo "<td colspan='1'><select name='status' onchange='updateStatus(this.value, " . $row["invoice_id"] . ")'>
+            <option value='pending' " . ($row["status"] == 'pending' ? 'selected' : '') . ">Pending<i class='fa-solid fa-truck-arrow-right'></i></option>
             <option value='Out for delivery' " . ($row["status"] == 'Out for delivery' ? 'selected' : '') . ">Out for delivery</option>
             <option value='delivered' " . ($row["status"] == 'delivered' ? 'selected' : '') . ">delivered</option>
             </select></td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<td>" . 'Rs.' . $row["price"] . "</td>";
+            echo "<td class='qtyColumn'>" . $row["quantity"] . "</td>";
+            echo "<td>" . 'Rs.' . $row["total"] . "</td>";
+
             echo "<td>" . "" . "</td>";
             echo "<td>" . "" . "</td>";
             echo "</tr>";
@@ -323,19 +358,15 @@ function getAllinvoces($conn)
 
             if ($row["invoice_id"] != $tempBillNum && $row["date"] != $tempDate) {
 
+                $tempDate = $row["date"];
+                $tempUser_id = $row["user_id"];
+
+                echo "<tr class='total'>";
+                echo "<th colspan='2'>" . $tempDate . "</th>";
+                echo "<th class='totalBox'>" . 'Total Rs. ' . $tempTotal . ".00" . "</th>";
+                echo "<th colspan'1'>" . 'Custamer_Id:' . $tempUser_id . " " . $tempPaymentMethod . "</th>";
                 echo "<tr>";
-                echo "<th>" . "--------" . "</th>";
-                echo "<th>" . $tempDate . "</th>";
-                echo "<th>" . "" . "</th>";
-                echo "<th>" . "" . "</th>";
-                echo "<th>" . "Total" . "</th>";
-                echo "<th>" . 'Rs.' . $tempTotal . "</th>";
-                echo "<th>" . "" . "</th>";
-                echo "<th>" . $tempUser_id . "</th>";
-                echo "<th>" . $tempPaymentMethod . "</th>";
-                echo "</tr>";
-                echo "<tr>";
-                echo "<th>" . "." . "</th>";
+                echo "<th colspan='4'>" . "____________________________" . "</th>";
                 echo "</th>";
 
                 $tempTotal = 0;
@@ -348,20 +379,14 @@ function getAllinvoces($conn)
             $tempUser_id = $row["user_id"];
             $tempPaymentMethod = $row["payment_method"];
         }
+        echo "<tr class='total'>";
+        echo "<th colspan='2'>" . $tempDate . "</th>";
+        echo "<th class='totalBox'>" . 'Total Rs. ' . $tempTotal . ".00" . "</th>";
+        echo "<th colspan'1'>" . 'Custamer_Id:' . $tempUser_id . " " . $tempPaymentMethod . "</th>";
         echo "<tr>";
-        echo "<th>" . "--------" . "</th>";
-        echo "<th>" . $tempDate . "</th>";
-        echo "<th>" . "" . "</th>";
-        echo "<th>" . "" . "</th>";
-        echo "<th>" . "Total" . "</th>";
-        echo "<th>" . 'Rs.' . $tempTotal . "</th>";
-        echo "<th>" . "" . "</th>";
-        echo "<th>" . $tempUser_id . "</th>";
-        echo "<th>" . $tempPaymentMethod . "</th>";
-        echo "</tr>";
-        echo "<tr>";
-        echo "<th>" . "." . "</th>";
+        echo "<th colspan='4'>" . "____________________________" . "</th>";
         echo "</th>";
+
 
         $tempTotal = 0;
     }
@@ -395,6 +420,32 @@ function getMonthlySalesAndCost($conn)
         'profits' => $profits
     ];
 }
+function getMonthlySalesAndCostByTable($conn)
+{
+    $totalSales = 0;
+    $totalCost = 0;
+    $totalProfit = 0;
+    $salesData = getMonthlySalesAndCost($conn);
+    for ($i = 0; $i < count($salesData['months']); $i++) {
+        $totalSales += $salesData['sales'][$i];
+        $totalCost += $salesData['costs'][$i];
+        $totalProfit += $salesData['profits'][$i];
+
+        echo "<tr>";
+        echo "<td class='monthColumn'>" . $salesData['months'][$i] . "" . "</td>";
+        echo "<td>" . $salesData['sales'][$i]  . ".00" . "</td>";
+        echo "<td>" . $salesData['costs'][$i] . "</td>";
+        echo "<td>" . $salesData['profits'][$i] . "</td>";
+        echo "</tr>";
+    }
+    echo "<tr class='totalTr'>";
+    echo "<td class='monthColumn'>" . "Total Rs." . "</td>";
+    echo "<td>" . $totalSales . ".00" . "</td>";
+    echo "<td>" . $totalCost . ".00". "</td>";
+    echo "<td>" . $totalProfit . ".00". "</td>";
+    echo "</tr>";
+}
+
 
 function fetchBlogs($conn)
 {
@@ -472,4 +523,49 @@ function fetchBlogs($conn)
         }
     }
 }
-//fetch blog in db
+function adminPanel()
+{
+    echo "
+    
+    <div class='btnSet'><button class='menuBtn' id='menuBtn'><i class='fa-solid fa-xmark' id='menuIcon'></i></button></div>";
+    echo "<link rel='stylesheet' href='src/css/admin.css'>
+    
+    
+
+    
+    <div class='menu'>
+    <div class='adminPanelContainer'>
+    <div class='adminPanel'>
+        <div class='btnSet'>
+            <button class='panelBtn' onclick='window.location.href=`dashBoard.php`;'><i class='fa-solid fa-chart-line'></i></button>
+            <label class='panelLabel'>DashBoard</label>
+        </div>
+        
+        <div class='btnSet'>
+            <button class='panelBtn' onclick='window.location.href=`invoices.php`;'><i class='fa-regular fa-file-lines'></i></button>
+            <label class='panelLabel'>Invoices</label>
+        </div>
+        <div class='btnSet'>
+            <button class='panelBtn' onclick='window.location.href=`productUpdate.php`;'><i class='fa-solid fa-box'></i></button>
+            <label class='panelLabel'>Products</label>
+        </div>
+        <div class='btnSet'>
+            <button class='panelBtn' onclick='window.location.href=`addProductForm.php`;'><i class='fa-solid fa-square-plus'></i></button>
+            <label class='panelLabel'>Add Product</label>
+        </div>
+        <div class='btnSet'>
+            <button class='panelBtn' onclick='window.location.href=`usersData.php`;'><i class='fa-solid fa-users'></i></button>
+            <label class='panelLabel'>Users</label>
+        </div>
+        <div class='btnSet'>
+            <button class='panelBtn' onclick='window.location.href=`addProductForm.php`;'><i class='fa-solid fa-table'></i></button>
+            <label class='panelLabel'>Add Category</label>
+        </div>
+
+    </div>
+    </div>
+
+</div>
+    
+    ";
+}

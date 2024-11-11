@@ -15,13 +15,20 @@ require_once 'functions.php';
 <body>
     <div class="mainContainer">
         <?php include 'tempnav.php'; ?>
-        <?php include 'mobileNav.html'; ?>
+        <?php include 'mobileNav.php'; ?>
+        <div class="menu">
+            <?php
+            if ($_SESSION['admin'] == 1) {
+            }
+            ?>
+
+        </div>
 
         <div class="subContainer" id="subContainer">
             <div class="profileContainer">
                 <h2>Profile Details</h2>
                 <div class="profilePicContainer">
-                    <img src="./uploads/samplepic.jpg" alt="" class="profilePic">
+                    <img src="./src/images/user.png" alt="" class="profilePic">
                     <div class="profileBtn">
                         <?php
                         if ($_SESSION['admin'] == 1) {
@@ -43,19 +50,15 @@ require_once 'functions.php';
                     </form>
                 </div>
             </div>
-            <div class="orderHistoryContainer">
+            <div class="order-container">
                 <h2>My Orders</h2>
-                <table>
+                <table class="order-table">
                     <thead>
                         <tr>
-                            <th>Invoice ID</th>
-                            <th>Date</th>
-                            <th>Product Name</th>
                             <th>Price</th>
-                            <th>Quantity</th>
+                            <th>Qty</th>
                             <th>Total</th>
-                            <th>Status</th>
-                            <th>Payment Method</th>
+                            <th>Status/ Payment Method</th>
                         </tr>
                     </thead>
                     <tbody>

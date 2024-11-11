@@ -10,48 +10,27 @@ require_once 'functions.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        .invoiceContainerShow {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100vw;
-            padding: 5px;
+    <link rel="stylesheet" href="src/css/dashboard.css">
 
-        }
-
-        .invoiceContainerHide {
-            display: none;
-
-        }
-
-        .salesChartContainer {
-            display: flex;
-            max-width: 500px;
-
-
-        }
-    </style>
 </head>
 
 <body>
-    <?php include 'tempnav.php'; ?>
-    <?php include 'mobileNav.html'; ?>
 
-    <div >
+    <div class="mainContainer">
+
+        <?php include 'tempnav.php'; ?>
+        <?php include 'mobileNav.php'; ?>
+        <?php adminPanel() ?>
 
 
-        <div>
+        <div class="dashBoardContainer">
 
 
             <h2>Dashbord</h2>
             <div class="salesChartContainer">
                 <canvas id="salesChart"></canvas>
             </div>
-            <div>
-                <button id="showInvoice">Show Invoices</button>
-            </div>
+
             <h2>Monthly Sales Summary</h2>
             <table id="salesTable">
                 <thead>
@@ -96,11 +75,7 @@ require_once 'functions.php';
                     ?>
                 </tbody>
             </table>
-
-
-
         </div>
-
 
     </div>
 
@@ -112,6 +87,7 @@ require_once 'functions.php';
 <?php
 $salesData = getMonthlySalesAndCost($conn);
 ?>
+
 <script>
     const ctx = document.getElementById('salesChart');
 
@@ -214,42 +190,4 @@ $salesData = getMonthlySalesAndCost($conn);
         }
     });
 </script>
-<?php
-function getMonthlySalesAndCostByTable($conn)
-
-{
-    $salesData = getMonthlySalesAndCost($conn);
-    for ($i = 0; $i < count($salesData['months']); $i++) {
-        echo "<tr>";
-        echo "<td>" . $salesData['months'][$i] . "</td>";
-        echo "<td>" . $salesData['sales'][$i] . ".00" . "</td>";
-        echo "<td>" . $salesData['costs'][$i] . "</td>";
-        echo "<td>" . $salesData['profits'][$i] . "</td>";
-        echo "</tr>";
-    }
-}
-
-?>
-
-<script>
-    const showInvoice = document.getElementById('showInvoice');
-    const invoiceContainer = document.getElementById('invoiceContainer');
-    const tableBody = document.getElementById('tableBody');
-
-    let selectedInvoice = true;
-
-
-    showInvoice.addEventListener('click', () => {
-        console.log('clicked');
-        if (selectedInvoice) {
-            invoiceContainer.classList.remove('invoiceContainerHide');
-            invoiceContainer.classList.add('invoiceContainerShow');
-            console.log('show');
-        } else {
-            invoiceContainer.classList.remove('invoiceContainerShow');
-            invoiceContainer.classList.add('invoiceContainerHide');
-            console.log('hide');
-        }
-        selectedInvoice = !selectedInvoice;
-    });
-</script>
+<script src="./src/js/adminBtn.js"></script>

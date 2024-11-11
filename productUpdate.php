@@ -17,8 +17,13 @@ require_once 'functions.php';
 
 <body>
     <div class="mainContainer">
+        <?php include 'tempnav.php';
+        adminPanel(); ?>
+
+
+
         <div>
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="" method="POST" enctype="multipart/form-data" class="searchForm">
                 <input type="text" name="search" placeholder="search">
 
                 <?php
@@ -86,8 +91,8 @@ require_once 'functions.php';
                         $category_result = mysqli_query($conn, $category_sql);
                         echo "<td><select name='category'>";
                         while ($category = mysqli_fetch_assoc($category_result)) {
-                            $selected = ($row['category'] == $category['cat_id']) ? 'selected' : '';
-                            echo "<option value='" . $category['cat_id'] . "' " . $selected . ">" . $category['category_name'] . "</option>";
+                            $selected = ($row['category'] == $category['category_name']) ? 'selected' : '';
+                            echo "<option value='" . $category['category_name'] . "' " . $selected . ">" . $category['category_name'] . "</option>";
                         }
                         echo "</select></td>";
 
@@ -97,7 +102,7 @@ require_once 'functions.php';
                                                                 <option value='1' " . ($row['active'] == 1 ? 'selected' : '') . ">Yes</option>
                                                                 <option value='0' " . ($row['active'] == 0 ? 'selected' : '') . ">No</option>
                                                               </select></td>";
-                        echo "<td><input class='discountLine' type='number' step='0.01' name='discount' value='" . $row['discount'] . "'></td>";
+                        echo "<td class='lastColumn'><input class='discountLine' type='number' step='0.01' name='discount' value='" . $row['discount'] . "'></td>";
                         echo "<td>
                                                                 <button onclick='saveChanges(" . $row['id'] . ")' class='saveBtn'>Save</button>
                                                               </td>";
@@ -135,6 +140,7 @@ require_once 'functions.php';
                         .then(data => {
                             if (data.success) {
                                 alert('Product updated successfully');
+                                console.log(formData.forEach(entry => console.log(entry)));
                             } else {
                                 alert('Error updating product');
                             }
@@ -148,13 +154,12 @@ require_once 'functions.php';
 
         </div>
 
-        <div>
+        <div class="btnSetBottom">
             <button onclick="addNewProduct()">Add New Product</button>
         </div>
     </div>
-    <?php include 'mobileNav.html'; ?>
+    <?php include 'mobileNav.php'; ?>
 </body>
-</body>
-</body>
+<script src="./src/js/adminBtn.js"></script>
 
 </html>

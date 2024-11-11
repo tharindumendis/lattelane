@@ -13,103 +13,96 @@ require_once 'functions.php';
 </head>
 
 <body>
+
     <div class="mainContainer">
 
-        <?php include('tempnav.php'); ?>
-        <?php include 'mobileNav.html'; ?>
+        <?php include 'tempnav.php'; ?>
+        <?php include 'mobileNav.php'; ?>
 
         <form action="userUpdate.php" method="POST">
-            <button name=crearCart>Clear Cart</button>
+            <button name=crearCart class="clearCart"></i><i class="fa-solid fa-xmark"></i>Clear Cart</button>
         </form>
-        <div>
-            <form action="userUpdate.php" method="POST">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Qty</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
 
-                        <?php
 
-                        getCartItems($conn)
-                        ?>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th>Grand Total</th>
-                            <th>
-                                <div class="cartTotal" id="cartTotal">Rs.</div>
-                            </th>
-                        </tr>
+        <form action="userUpdate.php" method="POST" class="cardForm">
+            <table>
+                <tbody>
 
-                    </tbody>
-                </table>
-                <div class="checkoutBtnContainer">
-                    <div class="paymentBtn">
-                        <div class="radioBtnContainer">
-                            <label for="paymentMethod">COD</label>
-                            <input type="radio" name="paymentMethod" id="" value="cod" checked="checked" onclick="cardFormhide()">
-                        </div>
-                        <div class="radioBtnContainer">
-                            <label for="paymentMethod">visa/ master</label>
-                            <input type="radio" name="paymentMethod" id="" value="visa/ master" onclick="cardFormShow()">
-                        </div>
+                    <?php
+
+                    getCartItems($conn)
+                    ?>
+                    <tr>
+                        <th></th>
+                        <th>Grand Total</th>
+                        <th>
+                            <div class="cartTotal" id="cartTotal">Rs.</div>
+                        </th>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div class="checkoutBtnContainer">
+                <div class="paymentBtn">
+                    <div class="radioBtnContainer">
+                        <label for="paymentMethod">COD 💵</label>
+                        <input type="radio" name="paymentMethod" id="" value="cod" checked="checked" onclick="cardFormhide()">
                     </div>
-                    <input type='submit' name='submitInvoice' id='' value="submitInvoice">
-
+                    <div class="radioBtnContainer">
+                        <label for="paymentMethod">Visa/ Master 💳</label>
+                        <input type="radio" name="paymentMethod" id="" value="visa/ master" onclick="cardFormShow()">
+                    </div>
+                </div>
+                <div id="cardBtncod">
+                    <div class="checkoutBtn" id="checkoutBtn">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <p> C h e c k _O u t</p>
+                        <input class="iSubmit" type='submit' name='submitInvoice' id='' value="submitInvoice">
+                    </div>
                 </div>
 
-            </form>
-            <div class="card-form" id="cardForm" style="display: none;">
+            </div>
 
+
+
+            <div class="card-form" id="cardForm" style="display: none;">
                 <div class="form-group">
-                    <label for="cardNumber">Card Number:</label>
-                    <input type="text" name="cardNumber" id="cardNumber" maxlength="16">
+                    <label for="cardNumber" >Card Number:</label>
+                    <input type="text" name="cardNumber" id="cardNumber" maxlength="16" minlength="16" pattern="[0-9]{16}" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="xxxx xxxx xxxx xxxx">
                 </div>
                 <div class="form-group">
                     <label for="cardName">Cardholder Name:</label>
-                    <input type="text" name="cardName" id="cardName">
+                    <input type="text" name="cardName" id="cardName" minlength="5" placeholder="John Doe">
                 </div>
-                <div class="form-row">
+                <div class="form-group">
                     <div class="form-group">
                         <label for="expiryDate">Expiry Date:</label>
-                        <input type="text" name="expiryDate" id="expiryDate" placeholder="MM/YY" maxlength="5">
+                        <input type="text" name="expiryDate" id="expiryDate" placeholder="MM/YY" maxlength="5" pattern="(0[1-9]|1[0-2])\/([0-9]{2})">
                     </div>
                     <div class="form-group">
                         <label for="cvv">CVV:</label>
-                        <input type="text" name="cvv" id="cvv" maxlength="3">
+                        <input type="text" name="cvv" id="cvv" maxlength="3" minlength="3" pattern="[0-9]{3}" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="123">
+                    </div>
+                    <div id="cardBtn">
+                        <div class="checkoutBtn" id="checkoutBtn">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p> C h e c k _O u t</p>
+                            <input class="iSubmit" type='submit' name='submitInvoice' id=''>
+                        </div>
+
                     </div>
                 </div>
+        </form>
 
 
-            </div>
-        </div>
-        <div>
 
-
-        </div>
+    </div>
 
 
     </div>
 
 </body>
 <script src="./src/js/cart.js"></script>
-<?php
-if ($_SESSION['id'] == '') {
-    echo "
-            <script>
-            alert('Hi..🤝 Loggin ➡️ to view your cart 🛒');;
-            alert('🙏 Welcome to the Café Family!👨‍👩‍👧‍👦👨‍👩‍👧‍👦👨‍👩‍👧‍👦 Log in ➡️ to dive into your profile 🙍‍♀️🙍‍♂️ and join the conversation 💬🗨️ on our lively Café Wall . Share 📤 your thoughts and connect 🤝 with fellow coffee ☕ enthusiasts!❤️❤️❤️');
-            </script>
-            ";
-}
-?>
+
 
 </html>

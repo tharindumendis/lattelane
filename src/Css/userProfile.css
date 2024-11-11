@@ -25,6 +25,21 @@
     height: 100px;
     border-radius: 50%;
     margin: 20px;
+    animation: colorP 1s infinite;
+}
+@keyframes colorP{
+    0%{
+        background-color: #ffffff;
+    }
+    30%{
+        background-color: #0099ff88;
+    }
+    60%{
+        background-color: #00ff9188;
+    }
+    100%{
+        background-color: #ffffff;
+    }
 }
 
 .profileContainer {
@@ -142,34 +157,135 @@
     border: none;
     cursor: pointer;
 }
-.orderHistoryContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.order-container {
     width: fit-content;
-    height: 640px;
+    max-width: 1100px;
+    background-color: #ffffff;
     padding: 10px;
-    overflow: scroll;
-    border: solid 5px #0009;
-    border-radius: 10px;
-}
-.orderHistoryContainer h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    width: fit-content;
-    backdrop-filter: blur(2px);
-    position: sticky;
-    top: 0;
-    margin-bottom: 10px;
-    border-radius: 20px;
-}
-th{
-    background-color: #00000011;
+    border-radius: 15px;
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-@media screen and (max-width: 768px) {
+.order-container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 60px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #4CAF50; 
+    padding-bottom: 10px;
+    color: #4CAF50; 
+    letter-spacing: 1px;
+}
+
+
+.order-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    height: 80vh;
+    overflow: scroll;
+}
+
+.order-table thead {
+    background-color: #005eff; 
+    color: white;
+}
+
+.order-table th, .order-table td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.order-table th {
+    font-weight: 600;
+}
+
+.order-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.order-table tbody tr:hover {
+    background-color: #e3f2fd; 
+    cursor: pointer;
+}
+
+
+.status {
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.status.pending {
+    background-color: #ff9800; 
+    color: white;
+    font-size: small;
+}
+
+.status.completed {
+    background-color: #4caf50; 
+    color: white;
+}
+
+.status.cancelled {
+    background-color: #f44336; 
+    color: white;
+}
+
+
+.payment {
+    font-weight: bold;
+    color: #03a9f4; 
+    text-transform: uppercase;
+}
+
+
+.summary td {
+    font-weight: bold;
+    background-color: #e3f2fd; 
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.summary td[colspan="5"] {
+    text-align: right;
+}
+thead{
+    position: sticky;
+    top: 0;
+    background-color: #000000;
+}
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .order-container {
+        width: 100vw;
+        padding: 10px;
+        overflow: scroll;
+    }
+    
+
+    h2 {
+        font-size: 1.6rem;
+    }
+    
+
+    .order-table th, .order-table td {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
     .profileContainer {
         margin-top: 50px;
         width: 90vw;

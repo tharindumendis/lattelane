@@ -3,8 +3,9 @@
     padding: 0;
 }
 body{
-    background-color: rgb(41, 41, 41);
+    background-color: rgb(59, 59, 59);
 }
+
 .mainContainer{
     display: flex;
     flex-direction: column;
@@ -12,7 +13,12 @@ body{
     justify-content: center;
     padding-top: 20px;
     width: 100vw;
-    background-color: #000;
+    background-color: #131313;
+    color: white;
+    min-height: 100vh;
+}
+.adminPanel i{
+    color: #000;
 }
 
 .adminPanelContainer{
@@ -51,6 +57,30 @@ body{
     justify-content: center;
     align-items: center;
 }
+.salesChartContainer{
+    color: white;
+}
+.menuBtn{
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    left: 45px;
+    top: 50px;
+    width: 60px;
+    height: 60px;
+    background-color: #feb1b1;
+    padding: 10px;
+    border-radius: 30%;
+    z-index: 999;
+    transform: all 1s;
+
+}
+.menuBtn i{
+    scale: 2.5;
+}
+
+
 
 
 
@@ -89,4 +119,13 @@ body{
     .adminPanel button i{
         scale: 4;
     }
+    #menuIcon, #menuBtn{
+        display: none;
+
+    }
+}
+@media screen and (min-width: 900px) {
+    
+
+  
 }

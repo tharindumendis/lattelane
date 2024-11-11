@@ -16,13 +16,13 @@ require_once 'functions.php';
 <body>
     <div class="mainContainer">
         <?php include 'tempnav.php'; ?>
-        <?php include 'mobileNav.html'; ?>
+        <?php include 'mobileNav.php'; ?>
         <div id="createPost">
             <form action="cafeWall.php" method="post" enctype="multipart/form-data" id="createPostForm">
                 <input type="file" name="postImage" id="postImage" accept="image/*" onchange="previewImage(this)">
                 <img id="preview" style="max-width: 300px; display: none;">
                 <textarea name="caption" id="caption" placeholder="Once upon a time... Start your story here!"></textarea>
-                <input type="submit" name="submit" value="Upload">
+                <input type="submit" name="submit" value="Upload" id="uploadBtn">
             </form>
         </div>
 
@@ -89,4 +89,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //echo "Data did not add successfully.<br>";
     }
 }
-$conn->close(); ?>
+?>

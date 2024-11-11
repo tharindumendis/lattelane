@@ -1,5 +1,6 @@
 <?php
 require_once 'dataBase.php';
+require_once 'functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +14,47 @@ require_once 'dataBase.php';
 
 <body>
     <div class="mainContainer">
+        <div class="floatingDiv">
+
+            <?php
+            if (($_SESSION['id']) == '') {
+                echo "<h2>SignUp</h2>";
+                //Display loging message
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["email"]) && isset($_POST["password"])) {
+                    $email = $_POST["email"];
+                    $password = $_POST["password"];
+                    logIn($email, $password, $conn);
+                }
+                echo "
+                <div class='formContainer'>
+                <form action='index.php' method='post'>
+                    <h1>Log in</h1>
+                    <label for='email'>Email</label>
+                    <input type='email' name='email' placeholder='email' required>
+                    <label for='password'>Password</label>
+                    <div class='passwordContainer'><input type='password' name='password' placeholder='password' required>
+                        <i class='bx bxs-lock-alt' id='lockIcon'></i>
+                    </div>
+                    <button name-'login' value='1' >Log in</button>
+                    <p>Need an account? <a href='userRegister.php' id='signupLink'>Signup</a></p>
+
+                </form>
+            </div>
+                  
+                ";
+            } else {
+                echo "<h2>CaféWall</h2>";
+                echo "<div id='cafeWall'>";
+                fetchBlogs($conn);
+                echo "</div>";
+            }
+            ?>
+        </div>
+
         <div class="hero">
+
+
+
             <div class="tray" id="tray">
                 <div class="fog" id="fog"></div>
                 <div class="fog2" id="fog"></div>
@@ -30,22 +71,16 @@ require_once 'dataBase.php';
                     </div>
                 </div>
             </div>
+            <h2 class="greeting">Welcome !<?php
+                                            if ($_SESSION["first_name"] != "") {
+                                                echo (" " . $_SESSION["first_name"] . "...");
+                                            } ?></h2>
         </div>
-        <?php include 'tempnav.php'; ?>
-
-        <h2>Hello !😊<?php
-                        if ($_SESSION["first_name"] != "") {
-                            echo ($_SESSION["first_name"] . "...");
-                        }
-                        ?></h2>
-
-
-
-        <?php include 'productContainer.php'; ?>
-
-        <?php include 'mobileNav.html'; ?>
-
-
+        <?php
+        include 'tempnav.php';
+        include 'productContainer.php';
+        include 'mobileNav.php';
+        ?>
     </div>
 
 </body>
@@ -103,4 +138,14 @@ require_once 'dataBase.php';
     const hide = document.querySelector(".hide");
     const hideBtn = document.querySelector(".hideBtn");
     const form = document.querySelector(".form");
+    const likeBtn = document.querySelector('.likeBtn');
+
+    likeBtn.addEventListener("click", function() {
+            console.log("clicked");
+
+            window.location.href = "cafeWall.php";
+
+        }
+
+    );
 </script>

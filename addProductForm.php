@@ -15,8 +15,10 @@ require_once 'dataBase.php';
 
 <body>
     <div class="mainContainer">
-        <?php include 'tempnav.php'; ?>
-        <?php include 'mobileNav.html'; ?>
+        <?php
+        include 'tempnav.php';
+        include 'mobileNav.php';
+        adminPanel() ?>
         <div class="subContainer">
 
             <div class="formContainer">
@@ -28,15 +30,15 @@ require_once 'dataBase.php';
                     <textarea type="text" name="description" placeholder="Product Description" id="description"></textarea>
                     <label for="">Product Category</label>
                     <select name="category" id="category">
-                                            <?php
-                                            $sql = "SELECT * FROM category";
-                                            $result = $conn->query($sql);
-                                            if ($result->num_rows > 0) {
-                                                while($row = $result->fetch_assoc()) {
-                                                    echo '<option value="'.$row['category_name'].'">'.$row['category_name'].'</option>';
-                                                }
-                                            }
-                                            ?>                    </select><br>
+                        <?php
+                        $sql = "SELECT * FROM category";
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo '<option value="' . $row['category_name'] . '">' . $row['category_name'] . '</option>';
+                            }
+                        }
+                        ?> </select><br>
                     <label for="">Product Price: Rs.</label>
                     <input type="text" name="price" placeholder="Product Price" require>
                     <label for="">Product Cost: Rs.</label>
@@ -58,6 +60,7 @@ require_once 'dataBase.php';
 
 
 </body>
+<script src="./src/js/adminBtn.js"></script>
 
 </html>
 

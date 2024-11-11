@@ -1,10 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    transition: all .5s;
+}
+body{
+    overflow-x: hidden;
+}
 .mainContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100vw;
-    padding: 40px 0 10px 0;
+    padding: 40px 0 100px 0;
+    overflow-x: hidden;
 }
 
 table {
@@ -15,26 +24,75 @@ table {
 
 th,
 td {
-    border: 1px solid #ddd;
+    border: none;
     padding: 8px;
     text-align: left;
+
 }
-td input{
-    width: 80px;
+
+.itemBox{
+    box-shadow: 3px 10px 10px #0003;
+    border-top: none;
 }
 
 th {
     background-color: #f2f2f2;
+    
+    box-shadow: 3px 10px 10px #0003;
     font-weight: bold;
+    margin-top: 20px;
+}
+td input{
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+}
+td input:focus{
+    outline: none;
+    background-color: #eee;
+}
+td input[type="number"]::-webkit-inner-spin-button,
+td input[type="number"]::-webkit-outer-spin-button {
+    background-color: #00a952;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+td input[type="number"] {
+    width: 90px;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}.qtyInput{
+    font-size: medium;
+    width: 40px;
+    border: 5px solid ;
+    border-left: none;
+    border-bottom: 1px solid;
+    border-top: 5px solid ;
+    border-right: 5px solid ;
+    text-align: center;
+    border-color: #009e4c;
+    border-radius: 20pc 5pc 5pc 0pc;
+
+}
+.totalContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.subtotalContainer{
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+.qtyInput:hover{
+    background-color: #eee;
+}
+.itemTotal{
+    padding: 1px;
 }
 
-img {
-    max-width: 50px;
-    height: auto;
-}
-.qtyInput{
-    width: 50px;
-}
 .checkoutBtnContainer{
     display: flex;
     justify-content: space-evenly;
@@ -57,8 +115,53 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
+    gap: 10px;
+    max-width: 400px;
+    width: fit-content;
+    border: 5px solid #00a952;
+    padding: 30px 0;
+    border-radius: 20px;
+}
+.card-form div{
+    display: flex;
+    flex-direction: column;
     gap: 10px;
     width: 80vw;
+
+   transition: all .5s;
+}
+#cardBtn{
+    width: fit-content;
+}
+.card-form input{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 10px;
+    width: 240px;
+    border-radius: 20px;
+    background-color: #0000002a;
+    cursor: pointer;
+    transition: all .5s;
+}
+#cardNumber{
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+.card-form #checkoutBtn{
+    flex-direction: row;
+    width: 150px;
+}
+.card-form input:hover{
+    background-color: #00000011;
+}
+.card-form input:focus{
+    outline-color: #00a952;
+    box-shadow: 0 0 5px #000e;
 }
 .form-group{
     display: flex;
@@ -68,13 +171,117 @@ img {
     gap: 10px;
     width: 100%;
 }
+.pImg{
+    width: 100px;
+}
+td button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+td i{
+    scale: 2;
+    color: rgb(213, 0, 0);
+    padding-left: 10px;
+}
+.clearCart i{
+    scale: 2.5;
+    margin-right: 10px;
+    color: #0008;
+
+}
+.clearCart{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #eee;
+    cursor: pointer;
+}
+.cardForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    max-width:700px ;
+
+}
+
+.iSubmit{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 40px;
+    width: 140px;
+}
+.checkoutBtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #00a952;
+    border-radius: 10px;
+    height: 40px;
+    padding: 0 10px;
+}
+.checkoutBtn i{
+    scale: 1.5;
+    color: #faff98;
+    margin-right: 10px;
+}
+.checkoutBtn p{
+    color: white;
+    font-weight: 500;
+}
+input[type="radio"] {
+    width: 1.25em;
+    height: 1.25em;
+    border: 2px solid #00a952;
+    border-radius: 30%;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    appearance: none;
+    background-color: white;
+    margin: 0;
+    position: relative;
+    margin: 5px;
+}
+
+input[type="radio"]:checked {
+    background: linear-gradient(45deg, #f6ff00, #00a952);
+    box-shadow: 0 0 0 2px white inset;
+    transform: scale(1.5);
+}
 
 @media screen and (max-width: 768px) {
- 
-    td input{
-        width: 60px;
+    .card-form{
+        width: 80vw;
     }
-    .qtyInput{
-        width: 20px;
+}
+@media screen and (min-width: 900px) {
+    .card-form{
+        width: 50vw;
     }
+    .pImg{
+        width: 200px;
+    }
+    input {
+        font-size: larger;
+        scale: 1.2;
+        margin-left: 10px;
+
+    }
+    label{
+        font-size: larger;
+    }
+    .cartTotal{
+        scale: 1.5;
+    }
+  
 }
