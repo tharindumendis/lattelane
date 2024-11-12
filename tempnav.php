@@ -15,7 +15,9 @@
     <div class="navRight">
         <a class="navLink" href="index.php">Home</a>
         <a class="navLink" href="cafeWall.php">Cafe Wall</a>
+        <a class="navLink" href="userLogin.php">SignIn</a>
         <a class="navLink" href="userProfile.php"><i class="fa-solid fa-user"></i></a>
+        
         <?php if (($_SESSION["admin"]) == 1) {
             echo "<a class='navLink' href='dashboard.php'>Dashboard</a>";
             

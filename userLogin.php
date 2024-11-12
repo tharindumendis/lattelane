@@ -34,14 +34,15 @@ require_once 'functions.php';
             }
             ?>
             <form action="userLogin.php" method="post">
-                <h1>Log in</h1>
+                <h1>Sign In</h1>
+              
                 <label for="email">Email</label>
                 <input type="email" name="email" placeholder="email" required>
                 <label for="password">Password</label>
                 <div class="passwordContainer"><input type="password" name="password" placeholder="password" required>
-
+        
                 </div>
-                <button name="login" value="1">Log in</button>
+                <button name="login" value="1">Sign In</button>
                 <p>Need an account? <a href="userRegister.php" id="signupLink">Sign up</a></p>
 
             </form>

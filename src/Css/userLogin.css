@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: url('../images/loginBI.jpg') no-repeat center center fixed;
+    background: url('../images/loginpagepic2.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
   }
@@ -22,21 +22,23 @@ body {
     width: 300px;
     padding: 20px;
     border-radius: 20px;
-    background-color: #f5f5f52c;
-    backdrop-filter: blur(10px);
+    background-color:#508d6930;
+    backdrop-filter: blur(6px);
     box-shadow: 0 0px 10px #6f6f6f5b;
 }
 .formContainer form a{
     text-decoration: none;
     color: white;
-    border: solid 3px #fff5; 
+    border:none; 
     padding: 2px 6px;
     border-radius: 20px;
+   
 }
 .formContainer form a:hover{
     color: rgb(247, 255, 251);
-    border: solid 3px #fffb;
+    border: none;
     animation: flash6 1s infinite;
+    
 }
 
 @keyframes flash6 {
@@ -56,11 +58,11 @@ body {
     padding:8px;
     margin-bottom: 20px;
     border-radius: 20px;
-    border-style: solid;
+    border-style:none;
     font-size: 16px;
     border-width: 5px;
     border-color: rgba(0, 0, 0, 0.69);
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color:#508d697e;
     transition: all 0.5s ease-in-out;
     outline: none;
     
@@ -94,7 +96,7 @@ label{
     justify-content: center;
     width: 100px;
     padding: 10px;
-    color:#000000;
+    color:white;
     font-weight: bold;
     font-size: 16px;
 }
