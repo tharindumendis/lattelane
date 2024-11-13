@@ -14,7 +14,7 @@ require_once 'functions.php';
     }
 
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 990px) {
 
 
         .mobileNav {
