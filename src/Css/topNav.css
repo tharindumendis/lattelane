@@ -181,7 +181,7 @@ body {
     position: fixed;
     top: 0;
     z-index: 1000;
-    border: #fffa solid 1px;
+ 
     border-top: none;
     border-left: none;
     border-right: none;
