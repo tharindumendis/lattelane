@@ -11,7 +11,7 @@ body{
     background: url('../images/cafepic1.jpg') no-repeat center center fixed;
     background-size: cover;
     font-family: 'Open Sans', sans-serif;
-    
+
 
 }
 .mainContainer{
@@ -42,6 +42,7 @@ body{
     font-size: 15px;
     margin-bottom: 10px;
     transition: ease-in-out 0.2s;
+    cursor:pointer;
 }
 .submitbtn{
     
@@ -52,7 +53,7 @@ body{
 }
 
 .submitbtn:hover , #backBtn:hover, #nextBtn:hover{
-    background-color: rgb(46,138,87);
+    background-color: rgb(0, 176, 91);
     scale: 1.1;
     color: #f5f5f5;
     box-shadow: 0 0 10px #0000005e;
@@ -104,7 +105,7 @@ input:focus{
 }
 .userFormContainer form input::placeholder{
     transition: all 0.5s ease-in-out;
-    color:white;
+    color:rgb(226, 225, 225);
 }
 #signinLink {
     color:white;

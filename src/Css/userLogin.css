@@ -80,12 +80,12 @@ body {
     color: cornsilk;
 }
 .formContainer form input::placeholder{
-    color: rgba(162, 255, 207, 0.71);
+    color: rgb(226, 225, 225);
     transform: translateX(0px);
 
 }
 .formContainer form input:focus::placeholder{
-    color: rgba(0, 255, 149, 0.753);
+    color: rgb(226, 225, 225);
     transform: translateX(80px);
 }
 .formContainer form input::placeholder{
