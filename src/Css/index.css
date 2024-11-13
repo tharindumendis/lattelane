@@ -267,8 +267,7 @@ body::-webkit-scrollbar {
     }
 }
 
-.floatingDiv:hover{
-}
+
 @keyframes fog {
     0% {
         opacity: 0;
