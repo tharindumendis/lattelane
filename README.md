@@ -6,7 +6,7 @@ A modern e-commerce web application for coffee shops and cafes, built with PHP a
 
 Initial admin credentials for first-time setup:
 - Username: admin@lattelane.com
-- Password: admin123
+- Password: admin1.
 
 
 ## Features
