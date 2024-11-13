@@ -6,6 +6,15 @@ body {
     background-size: cover;
     height: 100vh;
   }
+
+  h1{
+    text-decoration: none;
+    color:white;
+  }
+
+  p{
+    color:#f5f5f5;
+  }
 .formContainer {
     display: flex;
     flex-direction: column;
@@ -106,6 +115,7 @@ label{
     align-content: center;
     justify-content: center;
     width: 100px;
+    height:auto;
     padding: 10px;
     border-radius: 20px;
     border: none;
@@ -163,7 +173,7 @@ label{
 }
 #singupLink:hover{
     color: rgb(247, 255, 251);
-    border: solid 3px #fff8;
+    border: none;
 }
 #message{
     display: flex;

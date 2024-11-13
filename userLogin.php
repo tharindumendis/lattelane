@@ -34,7 +34,7 @@ require_once 'functions.php';
             }
             ?>
             <form action="userLogin.php" method="post">
-                <h1>Sign In</h1>
+                <h1>Sign In</h1><br>
               
                 <label for="email">Email</label>
                 <input type="email" name="email" placeholder="email" required>
@@ -43,7 +43,7 @@ require_once 'functions.php';
         
                 </div>
                 <button name="login" value="1">Sign In</button>
-                <p>Need an account? <a href="userRegister.php" id="signupLink">Sign up</a></p>
+                <p>Need an Account? <a href="userRegister.php" id="signupLink">Sign up</a></p>
 
             </form>
         </div>
