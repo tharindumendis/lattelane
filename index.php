@@ -71,7 +71,7 @@ require_once 'functions.php';
                     </div>
                 </div>
             </div>
-            <h2 class="greeting">Welcome !<?php
+            <h2 class="greeting">Welcome to Lattelane !<?php
                                             if ($_SESSION["first_name"] != "") {
                                                 echo (" " . $_SESSION["first_name"] . "...");
                                             } ?></h2>
