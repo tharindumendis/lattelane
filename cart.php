@@ -56,7 +56,7 @@ require_once 'functions.php';
                 <div id="cardBtncod">
                     <div class="checkoutBtn" id="checkoutBtn">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        <p> C h e c k _O u t</p>
+                        <p>Check Out</p>
                         <input class="iSubmit" type='submit' name='submitInvoice' id='' value="submitInvoice">
                     </div>
                 </div>
@@ -86,7 +86,7 @@ require_once 'functions.php';
                     <div id="cardBtn">
                         <div class="checkoutBtn" id="checkoutBtn">
                             <i class="fa-solid fa-cart-shopping"></i>
-                            <p> C h e c k _O u t</p>
+                            <p>Check Out</p>
                             <input class="iSubmit" type='submit' name='submitInvoice' id=''>
                         </div>
 
