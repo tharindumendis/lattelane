@@ -116,7 +116,7 @@ footer{
                 <ul>
                     <li><a href="index.php">Home</a></li>
                     <li><a href="aboutUs.php">About Us</a></li>
-                    <li><a href="userLogin.php">SingIn</a></li>
+                    <li><a href="userLogin.php">SignIn</a></li>
                     <li><a href="cart.php">Cart</a></li>
                     <li><a href="cafeWall.php">CafeWall</a></li>
                 </ul>
@@ -124,7 +124,7 @@ footer{
        
         </div>
         <div class="footerBottom">
-            <p>All Right Reserved</p>
+            <p>All Right Reserved.</p>
         </div>
 
 
