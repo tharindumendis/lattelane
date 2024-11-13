@@ -19,12 +19,10 @@
         
 
 
-
-
         <?php if (($_SESSION["admin"]) == 1) {
             echo "<a class='navLink' href='dashboard.php'>Dashboard</a>";
         } else {
-            echo "<a class='navLink' href='cart.php'><i class='fa-solid fa-cart-shopping'></i></a>";
+            
         }
         ?>
         <?php if (($_SESSION["id"]) == '') {
@@ -35,6 +33,12 @@
         }
         ?>
 
+         <?php if (($_SESSION["admin"]) != 1) {
+            echo "<a class='navLink' href='cart.php'><i class='fa-solid fa-cart-shopping'></i></a>";
+        } else {
+           
+        }
+        ?>
 
     </div>
 
