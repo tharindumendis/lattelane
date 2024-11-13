@@ -15,6 +15,7 @@ require_once 'functions.php';
 <body>
     <div class="mainContainer">
         <div class="floatingDiv">
+           
             
 
             <?php
@@ -26,6 +27,8 @@ require_once 'functions.php';
 
             ?>
         </div>
+
+    
 
         <div class="hero">
 
@@ -51,6 +54,7 @@ require_once 'functions.php';
                                             if ($_SESSION["first_name"] != "") {
                                                 echo (" " . $_SESSION["first_name"] . "...");
                                             } ?></h2>
+          <button class="signin">SignIn</button>                                  
         </div>
         <?php
         include 'tempnav.php';

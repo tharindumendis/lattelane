@@ -218,12 +218,10 @@ body::-webkit-scrollbar {
 }
 .greeting{
     display: flex;
-    position: absolute;
     align-items: center;
     justify-content: center;
-    top: 100px;
-    left: 80px;
-    font-family: "Kanit", sans-serif;
+    font-family: sans-serif;
+    margin-bottom: 20px;
 }
 .floatingDiv{
     display: flex;
@@ -231,7 +229,7 @@ body::-webkit-scrollbar {
     align-items: center;
     justify-content: center;
     top: 350px;
-    left: 0;
+    left:50vw;
     width: fit-content;
     padding: 20px 10px 20px 30px;
     height: 60px;
@@ -251,6 +249,7 @@ body::-webkit-scrollbar {
     background-color: #eee;
     cursor: pointer;
     border: none;
+    
 }
 @keyframes scale {
     0% {
