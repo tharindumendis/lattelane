@@ -14,7 +14,9 @@
 
     <div class="navRight">
         <a class="navLink" href="index.php">Home</a>
+        <a class="navLink" href="aboutUs.php">About Us</a>
         <a class="navLink" href="cafeWall.php">CafeWall</a>
+        
 
 
 
@@ -26,7 +28,8 @@
         }
         ?>
         <?php if (($_SESSION["id"]) == '') {
-            echo "<a class='navLink' href='userLogin.php'>SignIn</a>";
+             echo "<a class='navLink' href='userLogin.php'><i class='fa-solid fa-user'></i></a>";
+           
         } else {
             echo "<a class='navLink' href='userProfile.php'><i class='fa-solid fa-user'></i></a>";
         }
