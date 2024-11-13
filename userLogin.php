@@ -37,9 +37,9 @@ require_once 'functions.php';
                 <h1>Sign In</h1><br>
               
                 <label for="email">Email</label>
-                <input type="email" name="email" placeholder="email" required>
+                <input type="email" name="email" placeholder="Email" required>
                 <label for="password">Password</label>
-                <div class="passwordContainer"><input type="password" name="password" placeholder="password" required>
+                <div class="passwordContainer"><input type="password" name="password" placeholder="Password" required>
         
                 </div>
                 <button name="login" value="1">Sign In</button>
