@@ -4,7 +4,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "lattelane_db";
+$dbname = "lattelane";
 
 // Create connection
 global $conn;

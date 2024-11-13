@@ -1,5 +1,15 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pacifico&display=swap');
+
 .mainContainer {
     width: 100vw;
+    background-color: #eee;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.mainContainer::-webkit-scrollbar {
+    display: none;
 }
 .hero{
     background-image: url("../images/hero1.jpg");
@@ -13,12 +23,18 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    box-shadow: 0 30px 60px #1114 ,  inset 0 100px 100px #1114;
 }
 body{
     width: 100vw;
     overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
-/*cup*/
+
+body::-webkit-scrollbar {
+    display: none;
+}/*cup*/
 .tray{
     display: flex;
     align-items: center;
@@ -207,6 +223,7 @@ body{
     justify-content: center;
     top: 100px;
     left: 80px;
+    font-family: "Kanit", sans-serif;
 }
 .floatingDiv{
     display: flex;
@@ -219,12 +236,21 @@ body{
     padding: 20px 10px 20px 30px;
     height: 60px;
     border-radius: 0 10px 10px 0;
-    background: #fefefe;
     border: none;
     z-index: 1001;
     transition: 0.5s ease-in-out;
     overflow: hidden;
     animation: scale 1s ease-in infinite;
+}
+.signBtn{
+    padding: 8px 16px;
+    font-size: larger;
+    font-weight: 600;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 30px;
+    background-color: #eee;
+    cursor: pointer;
+    border: none;
 }
 @keyframes scale {
     0% {
@@ -242,19 +268,6 @@ body{
 }
 
 .floatingDiv:hover{
-    top: -500px;
-    width: 800px;
-    height: 1000px;
-    border-radius: 0 0 40pc 0;
-    background-color: rgba(234, 234, 234, 0.108);
-    backdrop-filter: blur(10px);
-    border-bottom: #dedede11 solid 30px;
-    border-left: none;
-    border-right:#dedede solid 0px;
-    border-top: none;
-    justify-content: flex-start;
-    align-items: flex-end;
-    animation: none;
 }
 @keyframes fog {
     0% {

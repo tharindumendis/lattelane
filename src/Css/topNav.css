@@ -1,13 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&display=swap');
 * {
   box-sizing: border-box;
 }
 
 body {
-  background: #202124;
   font-family: Roboto;
 }
 
-button {
+.navContainer button {
   position: relative;
   display: grid;
   place-items: center;
@@ -195,16 +195,17 @@ button {
 .logoText{
     width: 120px;
     height: 20px;
-    background-image: url("../images/defaltPost.png");
     background-size:cover;
     background-position: center;
-    background-color: #ffffff46;
     margin-left: 10px;
     border-radius: 10px;
 }
 .logologo {
     font-weight: bold;
-    color: #00000044;
+    color: #ffe;
+    font-family:  "Edu AU VIC WA NT Pre", cursive;
+    font-size: 1.5rem;
+    transform: translateY(-10px);
 }
 
 .navRight {

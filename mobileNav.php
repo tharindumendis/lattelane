@@ -48,6 +48,23 @@ require_once 'functions.php';
 
         }
 
+        .navlist a {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-size: 24px;
+            width: 60px;
+            height: 60px;
+        }
+
+        .navlist a p {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
     }
 </style>
 
@@ -59,20 +76,26 @@ require_once 'functions.php';
 </head>
 <div class="mobileNav">
     <nav class="navlist">
-        <a href="index.php"><i class="fa-solid fa-house"></i></a>
-        <a href="cafeWall.php"><i class="fa-solid fa-message"></i></a>
+        <a href="index.php"><i class="fa-solid fa-house"></i>
+            <p>Home</p>
+        </a>
+        <a href="cafeWall.php"><i class="fa-solid fa-message"></i>
+            <p>CafeWall</p>
+        </a>
         <?php
 
         if ($_SESSION['admin'] == 1) {
         }
         ?>
-        <a href="userProfile.php"><i class="fa-solid fa-user"></i></a>
+        <a href="userProfile.php"><i class="fa-solid fa-user"></i>
+            <p>Profile</p>
+        </a>
         <?php
 
         if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
-            echo '<a href="dashboard.php"><i class="fa-solid fa-briefcase"></i></a>';
+            echo '<a href="dashboard.php"><i class="fa-solid fa-briefcase"></i><p>Dashbord</p></a>';
         } else {
-            echo '<a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>';
+            echo '<a href="cart.php"><i class="fa-solid fa-cart-shopping"></i><p>Cart</p></a>';
         }
         ?>
 

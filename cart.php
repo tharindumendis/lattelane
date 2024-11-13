@@ -100,6 +100,7 @@ require_once 'functions.php';
 
 
     </div>
+    <?php include 'footer.php'; ?>
 
 </body>
 <script src="./src/js/cart.js"></script>

@@ -31,8 +31,9 @@ require_once 'functions.php';
             fetchBlogs($conn);
             ?>
         </div>
-
     </div>
+    
+    
 
 </body>
 <script src="src/js/blogScript.js"></script>
