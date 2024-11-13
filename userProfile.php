@@ -32,7 +32,7 @@ require_once 'functions.php';
                     <div class="profileBtn">
                         <?php
                         if ($_SESSION['admin'] == 1) {
-                            echo "<a href='admin.php'>Admin Board</a> ";
+                            echo "<a href='dashboard.php'>Admin Board</a> ";
                         } ?>
                         <a href="userLogout.php">Log out</a>
                     </div>

@@ -78,7 +78,18 @@
     height: 50px;
     background-color: #00000011;
     border-radius: 25px;
+    border: solid 5px #000000;
     gap: 10px;
+    transition: 0.5s;
+}
+.profilePicContainer a:hover {
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+}
+.profilePicContainer a:hover::after {
+    content: "X";
+    transition: 0.5s;
 }
 
 .profileContainer h2 {
@@ -267,7 +278,6 @@ thead{
 }
 
 
-/* Mobile responsiveness */
 @media (max-width: 768px) {
     .order-container {
         width: 100vw;

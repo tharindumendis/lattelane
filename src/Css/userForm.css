@@ -8,7 +8,7 @@ body{
     display:flex;
     justify-content:center;
     align-items: center;
-    background: url('lattelane/src/images/cafepic1.jpg') no-repeat center center fixed;
+    background: url('../images/cafepic1.jpg') no-repeat center center fixed;
     background-size: cover;
     font-family: 'Open Sans', sans-serif;
 
@@ -26,7 +26,7 @@ body{
     align-items: center;
     color:white;
 }
-.submitbtn{
+.submitbtn, #backBtn, #nextBtn{
     display: flex;
     align-items: center;
     align-content: center;
@@ -36,14 +36,21 @@ body{
     padding: 10px;
     border-radius: 20px;
     border: none;
-    background-color: rgb(0, 153, 79);
     color:#f5f5f5;
     font-weight: bold;
     font-size: 15px;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     transition: ease-in-out 0.2s;
+}
+.submitbtn{
+    
+    background-color: rgb(0, 153, 79);
+}
+#backBtn, #nextBtn{
+    background-color: rgb(153, 117, 0);
+}
 
-.submitbtn:hover{
+.submitbtn:hover , #backBtn:hover, #nextBtn:hover{
     background-color: rgb(0, 176, 91);
     scale: 1.1;
     color: #f5f5f5;
@@ -51,11 +58,11 @@ body{
 
 }
 
-.submitbtn:active{
+.submitbtn:active, #backBtn:active, #nextBtn:active{
     scale: 1;
 }
 
-}
+
 label{
     color:white;
 }
@@ -80,13 +87,18 @@ input{
     height:30px;
     width:250px;
    background-color: #508d697e;
-   
-
+   outline: none;
+   padding-left: 10px;
+   color:white;
 
 }
-
+input:focus{
+    background-color: #508d697e;
+    border: 2px solid rgb(0, 176, 91);
+    color:white;
+}
 .userFormContainer form input:focus::placeholder{
-    color: rgba(0, 0, 0, 0.297);
+    color: rgba(255, 174, 0, 0.714);
     transform: translateX(80px);
 }
 .userFormContainer form input::placeholder{
@@ -102,4 +114,39 @@ input{
 #signinLink:hover {
     color: white; 
     text-decoration: none; 
+}
+.userFormSection1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    transition: all 0.5s ease-in-out;
+}
+.userFormSection2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    transition: all 0.5s ease-in-out;
+}
+.hide{
+    display: none;
+    transition: all 0.5s ease-in-out;
+}
+.navBtnContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+@media screen and (max-width: 768px) {
+    .userFormContainer{
+        margin: 20%;
+    }
 }

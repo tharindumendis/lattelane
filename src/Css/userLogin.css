@@ -34,6 +34,7 @@ body {
     background-color:#508d6930;
     backdrop-filter: blur(6px);
     box-shadow: 0 0px 10px #6f6f6f5b;
+    border: solid 1px #00ffa231;
 }
 .formContainer form a{
     text-decoration: none;
@@ -44,21 +45,37 @@ body {
    
 }
 .formContainer form a:hover{
-    color: rgb(247, 255, 251);
+    color: rgb(0, 255, 128);
     border: none;
-    animation: flash6 1s infinite;
+    animation: flash7 1s infinite;
     
 }
+.formContainer form a:hover::after{
+    content: "";
+    animation: flash7 1s infinite;
+}
 
-@keyframes flash6 {
+@keyframes flash7 {
     0% {
       opacity: 1;
+      content: " >_____"
     }
-    50% {
+    20% {
         opacity: 0.5;
+        content: " _>____"
+    }40% {
+        opacity: 0.5;
+        content: " __>___"
+    }60% {
+        opacity: 0.5;
+        content: " ___>__"
+    }80% {
+        opacity: 0.5;
+        content: " ____>_"
     }
     100% {
       opacity: 1;
+      content: " _____>"
     }
   }
 .formContainer form input{
@@ -72,17 +89,23 @@ body {
     border-width: 5px;
     border-color: rgba(0, 0, 0, 0.69);
     background-color:#508d697e;
+    color: #fff;
     transition: all 0.5s ease-in-out;
     outline: none;
     
 }
 .formContainer form input:focus{
-    box-shadow: 0 10px 5px #6f6f6f5b;
-    background-color: rgba(255, 255, 255, 0.4);
-    color: #000000;
+    box-shadow: 0 10px 5px #0000005b;
+    background-color: #508d8c7e;
+    color: cornsilk;
+}
+.formContainer form input::placeholder{
+    color: rgba(162, 255, 207, 0.71);
+    transform: translateX(0px);
+
 }
 .formContainer form input:focus::placeholder{
-    color: rgba(0, 0, 0, 0.297);
+    color: rgba(0, 255, 149, 0.753);
     transform: translateX(80px);
 }
 .formContainer form input::placeholder{
@@ -215,7 +238,7 @@ label{
     50% {
       opacity: 0.8;
       background-color: black;
-    color: white;
+        color: white;
     }
     100% {
       opacity: 1;
