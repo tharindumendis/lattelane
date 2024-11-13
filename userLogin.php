@@ -41,7 +41,7 @@ require_once 'functions.php';
                 <label for="password">Password</label>
                 <div class="passwordContainer"><input type="password" name="password" placeholder="Password" required>
         
-                </div>
+                </div><br>
                 <button name="login" value="1">Sign In</button>
                 <p>Need an Account? <a href="userRegister.php" id="signupLink">Sign up</a></p>
 

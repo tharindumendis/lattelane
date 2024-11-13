@@ -17,6 +17,7 @@ body {
 
   p{
     color:#f5f5f5;
+    margin-top: 0px;
   }
 .formContainer {
     display: flex;
@@ -55,32 +56,8 @@ body {
 }
 .formContainer form a:hover::after{
     content: "";
-    animation: flash7 1s infinite;
+   
 }
-
-@keyframes flash7 {
-    0% {
-      opacity: 1;
-      content: " >_____"
-    }
-    20% {
-        opacity: 0.5;
-        content: " _>____"
-    }40% {
-        opacity: 0.5;
-        content: " __>___"
-    }60% {
-        opacity: 0.5;
-        content: " ___>__"
-    }80% {
-        opacity: 0.5;
-        content: " ____>_"
-    }
-    100% {
-      opacity: 1;
-      content: " _____>"
-    }
-  }
 .formContainer form input{
     display: flex;
     width: 260px;
@@ -145,11 +122,11 @@ label{
     padding: 10px;
     border-radius: 20px;
     border: none;
-    background-color: rgb(0, 153, 79);
+    background-color: rgb(46, 138, 87);
     color:#f5f5f5;
     font-weight: bold;
     font-size: 15px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     transition: ease-in-out 0.2s;
 }
 #lockIcon{
@@ -190,16 +167,17 @@ label{
     scale: 1.1;
 
 }
-#singupLink{
+#signupLink{
     color: rgb(255, 255, 255);
-    text-decoration: none;
-    border: solid 3px rgba(0, 0, 0, 0.138);
+    text-decoration:underline;
+    border:none;
     padding: 2px 6px;
     border-radius: 20px;
 }
-#singupLink:hover{
+#signupLink:hover{
     color: rgb(247, 255, 251);
     border: none;
+    text-decoration:none;
 }
 #message{
     display: flex;

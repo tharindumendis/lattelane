@@ -241,14 +241,21 @@ body::-webkit-scrollbar {
     animation: scale 1s ease-in infinite;
 }
 .signBtn{
-    padding: 8px 16px;
-    font-size: larger;
-    font-weight: 600;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    border-radius: 30px;
-    background-color: #eee;
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100px;
+    height:auto;
+    padding: 10px;
+    border-radius: 20px;
     border: none;
+    background-color: rgb(46, 138, 87);
+    color:#f5f5f5;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 40px;
+    transition: ease-in-out 0.2s;
     
 }
 @keyframes scale {

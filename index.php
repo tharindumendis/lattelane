@@ -14,19 +14,7 @@ require_once 'functions.php';
 
 <body>
     <div class="mainContainer">
-        <div class="floatingDiv">
-           
-            
-
-            <?php
-            if (($_SESSION["id"])=='') {
-                echo "<button class='signBtn' onclick='window.location.href=`userLogin.php`'>SignIn <i class='fa-solid fa-right-to-bracket'></i></button>" ;
-            }else{
-                echo "<button class='signBtn' onclick='window.location.href=`cafeWall.php`'>CafeWall <i class='fa-solid fa-share-nodes'></i></button>" ;
-            }
-
-            ?>
-        </div>
+  
 
     
 
@@ -54,7 +42,7 @@ require_once 'functions.php';
                                             if ($_SESSION["first_name"] != "") {
                                                 echo (" " . $_SESSION["first_name"] . "...");
                                             } ?></h2>
-          <button class="signin">SignIn</button>                                  
+                   <button class='signBtn' onclick='window.location.href=`userLogin.php`'>SignIn </button>          
         </div>
         <?php
         include 'tempnav.php';
