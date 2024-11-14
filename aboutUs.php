@@ -24,6 +24,8 @@ require_once 'functions.php';
     <p>To be a place where every sip sparks connection and every visit feels like home. At LatteLane Cafe, we envision a community brought together by the love of quality coffee, warm conversations, and a cozy atmosphere that nurtures creativity, comfort, and joy. We aim to inspire moments of relaxation and meaningful connection, one cup at a time.</p>
 </section>
 
+<img src="path/to/your/image.jpg" alt="A circular image" class="circular-image">
+
 <section class="mission-section">
     <h2>Our Mission</h2>
     <p>At LatteLane Cafe, our mission is to create a thriving community centered around the love of coffee. We believe in the power of coffee to bring people together, inspire connections, and enrich lives.</p>
