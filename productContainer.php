@@ -39,7 +39,7 @@ require_once 'functions.php';
                     <div class='categoryCard'>
                             <img src='{$row['image_path']}' class='categoryImg'>
                             <h2>{$row['category_name']}</h2>
-                            <p>{$row['cat_description']}</p>
+                           
                         </div>
                         </button>
                     </form>  

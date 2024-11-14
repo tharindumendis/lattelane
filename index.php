@@ -42,7 +42,7 @@ require_once 'functions.php';
                                             if ($_SESSION["first_name"] != "") {
                                                 echo (" " . $_SESSION["first_name"] . "...");
                                             } ?></h2>
-                   <button class='signBtn' onclick='window.location.href=`userLogin.php`'>SignIn <i class='fa-solid fa-right-to-bracket'></i></button>          
+                   <button class='signBtn' onclick='window.location.href=`userLogin.php`'>Sign In</button>          
         </div>
         <?php
         include 'tempnav.php';
