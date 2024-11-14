@@ -218,9 +218,10 @@ body::-webkit-scrollbar {
 }
 .greeting{
     display: flex;
+    font-size: 2rem;
     align-items: center;
     justify-content: center;
-    font-family: sans-serif;
+   
     margin-bottom: 20px;
 }
 .floatingDiv{

@@ -76,9 +76,11 @@ label{
     width: 280px;
     border-radius: 20px;
     padding: 20px;
-    background-color: #508d6930;
+    border-radius: 20px;
+    background-color:#508d6930;
     backdrop-filter: blur(6px);
     box-shadow: 0 0px 10px #6f6f6f5b;
+    border: solid 1px #00ffa231;
 }
 .signupHead{
     color:white;

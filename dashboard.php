@@ -26,7 +26,7 @@ require_once 'functions.php';
         <div class="dashBoardContainer">
 
 
-            <h2>Dashbord</h2>
+            <h2>Dashboard</h2>
             <div class="salesChartContainer">
                 <canvas id="salesChart"></canvas>
             </div>

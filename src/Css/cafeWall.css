@@ -3,7 +3,7 @@
     padding: 0;
 }
 body {
-    background-color: #3331;
+    background-color: #fff;
     display: flex;
     justify-content: center;
 }
@@ -16,7 +16,7 @@ body {
     width: 100vw;
     height: auto;
     padding-bottom: 100px;
-    background-color: #fefefe
+    background-color: #fefefe;
 }
 
 #cafeWall {
@@ -50,7 +50,7 @@ body {
     border-radius: 10px 10px 0px 0px;
     margin-top: 10px;
     padding-bottom: 5px;
-    border-bottom: solid 1px black;
+    border-bottom: solid 2px rgba(46, 138, 87, 0.757);
 }
 
 #imageContainer {
@@ -76,6 +76,7 @@ body {
     align-items: center;
     border-radius: 10px;
     padding: 10px;
+    margin-bottom: 12px;
 }
 
 #contentContainer {
