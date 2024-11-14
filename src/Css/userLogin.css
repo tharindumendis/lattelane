@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: url('../images/coffeeimg1.jpg') no-repeat center center fixed;
+    background: url('../images/cafepic3.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
    
@@ -85,7 +85,7 @@ body {
 
 }
 .formContainer form input:focus::placeholder{
-    color: rgb(226, 225, 225);
+    color: rgba(0, 255, 149, 0.753);
     transform: translateX(80px);
 }
 .formContainer form input::placeholder{
