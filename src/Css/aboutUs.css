@@ -85,15 +85,15 @@ scrollbar-width: none;
     height: 300px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #fff; 
+    border: none; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
   }
   .circular-image2{
     width:200px;
     height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #fff; 
+    border-radius:1000px;
+    object-fit:cover;
+    border:none; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
   }
 
