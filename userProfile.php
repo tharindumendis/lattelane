@@ -34,7 +34,7 @@ require_once 'functions.php';
                         if ($_SESSION['admin'] == 1) {
                             echo "<a href='dashboard.php'>Admin Board</a> ";
                         } ?>
-                        <a href="userLogout.php">Log out</a>
+                       
                     </div>
                 </div>
                 <div class="profileDetailsContainer">
@@ -46,7 +46,9 @@ require_once 'functions.php';
                         <p>Address no: <input class="editInputs" type="text" name="address_no" id="" value="<?php echo $_SESSION['address_no']; ?>"></p>
                         <p>Street: <input class="editInputs" type="text" name="street" id="" value="<?php echo $_SESSION['street']; ?>"></p>
                         <p>City: <input class="editInputs" type="text" name="city" id="" value="<?php echo $_SESSION['city']; ?>"></p>
-                        <div class="editBtnContainer"><button type="submit" id="editSubmit" name="update_profile" value="update_profile">Save Edits</button></div>
+                        <div class="editBtnContainer"><button type="submit" id="editSubmit" name="update_profile" value="update_profile">Save Edits</button>
+                        <a href="userLogout.php">Log out</a></div>
+                       
                     </form>
                 </div>
             </div>
