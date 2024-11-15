@@ -80,7 +80,7 @@ require_once 'functions.php';
 if ($_SESSION['id'] == '') {
     echo "
             <script>
-            alert('🙏 Welcome to the Café Family!👨‍👩‍👧‍👦👨‍👩‍👧‍👦👨‍👩‍👧‍👦 Log in ➡️ to dive into your profile 🙍‍♀️🙍‍♂️ and join the conversation 💬🗨️ on our lively Café Wall . Share 📤 your thoughts and connect 🤝 with fellow coffee ☕ enthusiasts!❤️❤️❤️');
+            alert('Welcome to the Café Family! Log in ➡️ to dive into your profile and join the conversation on our lively Café Wall. Share your thoughts and connect with fellow coffee enthusiasts!❤️❤️❤️');
             window.location.href = 'UserLogin.php';
             </script>
             ";
