@@ -58,7 +58,7 @@
     font-size: 15px;
     font-weight: 600;
     color: #302C29;
-    background: linear-gradient(225deg, #F6F1E9 30%, #ffbe57);
+    background-color:white;
     transform: translate(0%, 60px);
     border-radius: 10px;
 }
