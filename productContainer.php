@@ -23,7 +23,7 @@ require_once 'functions.php';
 
     </div>
     <div class="categorySection">
-        <h2>Categories</h2>
+        <h2>Our Menu</h2>
         <div class="categoryContainer" id="scrollingCategories">
             <?php
             $fetchQuery = "SELECT * FROM `category`;";

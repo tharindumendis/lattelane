@@ -161,7 +161,7 @@
 }
 .categorySection{
     display: flex;
-    background-color: #302C2911;
+    background-color:#302C2911;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -281,9 +281,10 @@
 .categorySection h2 {
     margin-top: 10px;
     width: fit-content;
-    border-bottom: solid 1px #302C2988;
+   margin-top: 20px;
     padding: 5px 10px;
     border-radius: 20px;
+    margin-bottom: 20px;
 }
 
 @media screen and (max-width: 768px) {
