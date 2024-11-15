@@ -25,5 +25,4 @@ if (isset($_SESSION["cart"])) {
 } else {
     //echo "Session variables are not set.";
 }
-header('location:index.php');
-require_once 'dataBase.php';
+header('location:index.php', true, 301);

@@ -72,12 +72,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["product_name"])) {
     $category = $_POST["category"];
     $price = $_POST["price"];
     $cost = $_POST["cost"];
-    echo "<br>";
-    print_r($_FILES);
-    echo "<br>";
-    echo "<br>";
-    echo "<br>";
-    echo "<br>";
+    // echo "<br>";
+    // print_r($_FILES);
+    // echo "<br>";
+    // echo "<br>";
+    // echo "<br>";
+    // echo "<br>";
 
     // Handle file upload
     if (isset($_FILES["productImage"])) {
@@ -97,12 +97,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["product_name"])) {
     if (isset($_FILES["productImage"])) {
         $sql = "INSERT INTO products (product_name, description, category, image_path, price, cost) 
         VALUES ('$productName', '$description', '$category', '$targetFile', $price , $cost)";
-        echo "File added successfully.<br>";
+        //echo "File added successfully.<br>";
     } else {
-        echo "File did not add successfully.<br>";
+        //echo "File did not add successfully.<br>";
         $sql = "INSERT INTO products (product_name, description, category, price, cost) 
         VALUES ('$productName', '$description', '$category', $price, $cost)";
-        echo "Query passed without files.<br>";
+        //echo "Query passed without files.<br>";
     }
     if ($conn->query($sql) === True) {
         echo "Data added successfully.<br>";

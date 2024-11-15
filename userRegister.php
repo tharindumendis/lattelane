@@ -114,7 +114,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
             }
 
-            header("Location: userLogin.php");
+            echo '<script> 
+            function loginlink(){window.location.href = "userLogin.php";};
+            loginlink();
+            </script>';
         } else {
             echo "Error Please try again.<br>";
         }

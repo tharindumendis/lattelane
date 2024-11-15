@@ -30,8 +30,8 @@ require_once 'functions.php';
                 <div class="profilePicContainer">
                     <img src="./src/images/user.png" alt="" class="profilePic">
                     <div class="profileBtn">
-                       
-                       
+
+
                     </div>
                 </div>
                 <div class="profileDetailsContainer">
@@ -44,32 +44,34 @@ require_once 'functions.php';
                         <p>Street: <input class="editInputs" type="text" name="street" id="" value="<?php echo $_SESSION['street']; ?>"></p>
                         <p>City: <input class="editInputs" type="text" name="city" id="" value="<?php echo $_SESSION['city']; ?>"></p>
                         <div class="editBtnContainer"><button type="submit" id="editSubmit" name="update_profile" value="update_profile">Save Edits</button>
-                        <button class="editSubmit" onclick="window.location.href='logout.php'">Log Out</button></div>                       
                     </form>
+                    
+                    <a href="userLogout.php">Log Out</a>
                 </div>
             </div>
-            <div class="order-container">
-                <h2>My Orders</h2>
-                <table class="order-table">
-                    <thead>
-                        <tr>
-                            <th>Price</th>
-                            <th>Qty</th>
-                            <th>Total</th>
-                            <th>Status/ Payment Method</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        if ($_SESSION["id"] != "") {
-                            displayBills($conn);
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-
         </div>
+        <div class="order-container">
+            <h2>My Orders</h2>
+            <table class="order-table">
+                <thead>
+                    <tr>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Total</th>
+                        <th>Status/ Payment Method</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if ($_SESSION["id"] != "") {
+                        displayBills($conn);
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
     </div>
 
 
