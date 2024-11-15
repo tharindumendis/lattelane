@@ -225,7 +225,7 @@ h2 {
 }
 
 .order-table thead {
-    background-color: #005eff; 
+    background-color: rgb(46, 138, 87); 
     color: white;
 }
 
@@ -258,7 +258,8 @@ h2 {
 }
 
 .status.pending {
-    background-color: #ff9800; 
+    background-color:  #03a9f4; 
+    ; 
     color: white;
     font-size: small;
 }
