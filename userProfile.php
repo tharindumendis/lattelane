@@ -30,10 +30,7 @@ require_once 'functions.php';
                 <div class="profilePicContainer">
                     <img src="./src/images/user.png" alt="" class="profilePic">
                     <div class="profileBtn">
-                        <?php
-                        if ($_SESSION['admin'] == 1) {
-                            echo "<a href='dashboard.php'>Admin Board</a> ";
-                        } ?>
+                       
                        
                     </div>
                 </div>
@@ -47,8 +44,7 @@ require_once 'functions.php';
                         <p>Street: <input class="editInputs" type="text" name="street" id="" value="<?php echo $_SESSION['street']; ?>"></p>
                         <p>City: <input class="editInputs" type="text" name="city" id="" value="<?php echo $_SESSION['city']; ?>"></p>
                         <div class="editBtnContainer"><button type="submit" id="editSubmit" name="update_profile" value="update_profile">Save Edits</button>
-                        <a href="userLogout.php">Log out</a></div>
-                       
+                        <button class="editSubmit" onclick="window.location.href='logout.php'">Log Out</button></div>                       
                     </form>
                 </div>
             </div>

@@ -163,6 +163,7 @@ body{
 
 .editBtnContainer {
     display: flex;
+    gap:20px;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
@@ -176,6 +177,16 @@ body{
     color: aliceblue;
     border: none;
     cursor: pointer;
+}
+.editSubmit{
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: rgb(46, 138, 87);
+    color: aliceblue;
+    border: none;
+    cursor: pointer;
+
 }
 .order-container {
     width: fit-content;
