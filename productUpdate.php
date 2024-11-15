@@ -22,7 +22,7 @@ require_once 'functions.php';
 
 
 
-        <div>
+        <div class="filterContainer">
             <form action="" method="POST" enctype="multipart/form-data" class="searchForm">
                 <input type="text" name="search" placeholder="search">
 

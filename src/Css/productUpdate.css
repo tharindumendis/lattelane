@@ -147,6 +147,14 @@ td textarea:focus{
     cursor: pointer;
     padding: 10px;
 }
+.filterContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 10px;
+}
 .menuBtn,menu{
     z-index: 1001;
 }
@@ -253,5 +261,12 @@ td textarea:focus{
     }
     .menuBtn{
         display: none;
+    }
+    .filterContainer{
+        flex-direction: column;
+    }
+    .searchForm{
+        margin-top: 20px;
+        flex-direction: column;
     }
 }
