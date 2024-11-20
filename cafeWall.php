@@ -20,7 +20,7 @@ require_once 'functions.php';
         <div id="createPost">
             <form action="cafeWall.php" method="post" enctype="multipart/form-data" id="createPostForm">
                 <input type="file" name="postImage" id="postImage" accept="image/*" onchange="previewImage(this)">
-                <img id="preview" style="max-width: 300px; display: none;">
+                <img id="preview" style="max-height: 230px; display: none;">
                 <textarea name="caption" id="caption" placeholder="Once upon a time... Start your story here!"></textarea>
                 <input type="submit" name="submit" value="Upload" id="uploadBtn">
             </form>
@@ -32,8 +32,8 @@ require_once 'functions.php';
             ?>
         </div>
     </div>
-    
-    
+
+
 
 </body>
 <script src="src/js/blogScript.js"></script>
@@ -70,8 +70,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             image_url,
             content)
             VALUES($user_id, '$firstName', '$lastName','$targetFile','$content');";
-
-        echo "<br>.File added successfully.<br>";
     } else {
         //echo "File did not add successfully.<br>";
         $sql = "INSERT INTO blogs
@@ -84,10 +82,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES($user_id, '$firstName', '$lastName','./src/images/defaltPost.png','$content');";
         // echo "Query passed without files.<br>";
     }
+
     if ($conn->query($sql) === True) {
-        //echo "Data added successfully.<br>";
+        echo "<script>setTimeout(function() { alert('File added successfully.'); window.location.href = 'cafeWall.php'; }, 3000);</script>";
     } else {
-        //echo "Data did not add successfully.<br>";
+        echo "<script>alert('Data did not add successfully.');</script>";
     }
 }
 ?>

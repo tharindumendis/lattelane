@@ -59,9 +59,10 @@ scrollbar-width: none;
     font: sans-serif;
     margin-bottom:10px;
     display: flex;
-flex-direction: column;
-justify-content:center;
-align-items:center;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    padding: 10px;
 
 
 }
@@ -73,6 +74,7 @@ align-items:center;
     flex-direction: column;
     justify-content:center;
     align-items:center;
+    padding: 10px;
 }
 
 .mission-section{
@@ -184,6 +186,23 @@ align-items:center;
   h2{
     font-size: 2rem;
   }
-  
+@media (max-width: 768px) {
+    .images {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .circular-image1,
+    .circular-image2 {
+    }
+
+    .image3 {
+      width: 300px;
+      height: auto;
+    }
+    .special{
+        flex-direction: column;
+    }
+  }
 
  
